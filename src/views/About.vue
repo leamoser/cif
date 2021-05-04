@@ -50,7 +50,7 @@ export default {
      */
     //GET mit Header
     const headers = {
-      "Authorization": "Bearer ggF45!2jHimMs21"
+      "Authorization": `Bearer ${process.env.VUE_APP_API_TOKEN}`
     };
     this.$axios.get(`${process.env.VUE_APP_API_COLLECTION_URL}chapter`, { headers })
       .then(response => {
