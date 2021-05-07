@@ -12,9 +12,7 @@ export default createStore({
     appName: 'CIF*',
     appSlogan: 'Lerne online die tollsten Frontend-Programmiersprachen.',
     //KURSE
-    allCourses: {},
-    //SPRACHEN
-    oneLanguage: ''
+    allCourses: {}
   },
 
   getters: {
@@ -24,9 +22,6 @@ export default createStore({
   mutations: {
     GET_ALL_COURSES(state, allCourses){
       state.allCourses = allCourses
-    },
-    GET_LANGUAGE_BY_ID(state, oneLanguage){
-      state.oneLanguage = oneLanguage
     }
   },
 
@@ -38,16 +33,6 @@ export default createStore({
       axios.get(`${this.state.apiBaseUrl}course?filter[status][_eq]=${this.state.standartStatus}`, { headers })
           .then(response => {
             commit('GET_ALL_COURSES', response.data.data)
-          })
-    },
-    getLanguageById({ commit }, languageId){
-      const headers = {
-        "Authorization": `Bearer ${this.state.apiToken}`
-      };
-      axios.get(`${this.state.apiBaseUrl}languages/${languageId}`, { headers })
-          .then(response => {
-            console.log(response)
-            commit('GET_LANGUAGE_BY_ID', response.data.data)
           })
     }
   },

@@ -1,27 +1,22 @@
 <template>
   <div class="course_box">
     <p>{{ course.title }}</p>
-    <p><span v-for="lang in course.languages_in_course">{{ lang }},</span> | {{ course.chapters.length }} Kapitel</p>
+    <p><languageBox v-for="lang in course.languages_in_course" :languageID="lang"/> | {{ course.chapters.length }} Kapitel</p>
     <div v-html="course.description"></div>
-    <pre>{{ course }}</pre>
   </div>
 </template>
 <script>
+import languageBox from "./languageBox.vue";
 export default{
   name: 'courseBox',
-
+  components: {
+    languageBox
+  },
   props: {
     course: {
       type: Object,
       required: true
     }
-  },
-
-  methods: {
-    doStuff(){
-      console.log('Geladen');
-    }
   }
-
 }
 </script>
