@@ -1,8 +1,16 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link> |
-    <router-link to="/user/1">User</router-link>
-  </div>
+  <Header />
   <router-view/>
+  <Footer />
 </template>
+
+<script>
+import Footer from "./components/structure/Footer.vue";
+import Header from "./components/structure/Header";
+export default {
+  components: {
+    Header,
+    Footer
+  }
+}
+</script>
