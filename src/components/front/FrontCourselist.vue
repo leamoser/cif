@@ -5,21 +5,21 @@
       <p>{{ description }}</p>
     </div>
     <div class="courses">
-      <courseBox v-for="course in courses" :key="course.id" :course="course" />
+      <CourseBox v-for="course in courses" :key="course.id" :course="course" />
     </div>
   </div>
 </template>
 
 
 <script>
-import courseBox from "../courseBox.vue";
+import CourseBox from "../CourseBox.vue";
 
 export default{
 
-  name: 'frontCourselist',
+  name: 'FrontCourselist',
 
   components: {
-    courseBox
+    CourseBox
   },
 
   data(){

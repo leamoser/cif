@@ -5,7 +5,7 @@
 import axios from "axios";
 
 export default {
-  name: 'languageBox',
+  name: 'LanguageBox',
 
   data(){
     return{

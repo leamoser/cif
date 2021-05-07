@@ -6,6 +6,6 @@
 </template>
 <script>
 export default{
-  name: 'frontIntro'
+  name: 'FrontIntro'
 }
 </script>

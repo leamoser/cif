@@ -5,7 +5,7 @@
 </template>
 <script>
 export default{
-  name: 'bigText',
+  name: 'BigText',
   props: {
     text: {
       type: String,
