@@ -1,15 +1,25 @@
 <template>
   <header>
     <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link> |
-      <router-link to="/user/1">User</router-link>
+      <router-link to="/" :tag="tagForRouter">Home</router-link>
+      <router-link to="/about" :tag="tagForRouter">About</router-link>
+      <router-link to="/user/1" :tag="tagForRouter">User</router-link>
     </div>
     <p>Das ist der Header</p>
   </header>
 </template>
 <script>
 export default{
-  name: 'Header'
+  name: 'Header',
+  data(){
+    return{
+      tagForRouter: 'li'
+    }
+  }
 }
 </script>
+<style>
+div#nav>*:not(*:last-of-type)::after{
+  content: ' | ';
+}
+</style>
