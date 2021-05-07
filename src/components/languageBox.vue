@@ -38,3 +38,8 @@ export default {
 
 }
 </script>
+<style>
+span.language:not(span.language:last-of-type)::after{
+  content: ', ';
+}
+</style>

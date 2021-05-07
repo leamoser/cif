@@ -10,7 +10,12 @@ const axiosGet = (url) => {
         })
 }
 
+const header = () => {
+    return headers = { "Authorization": `Bearer ${process.env.VUE_APP_API_TOKEN}` };
+}
+
 
 export {
-    axiosGet
+    axiosGet,
+    header
 }
