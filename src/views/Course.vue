@@ -1,18 +1,21 @@
 <template>
   <section class="mainsection course" id="course">
     <MainIntro :title="course.title"/>
-    <p class="infobar"><LanguageBox v-for="lang in course.languages_in_course" :languageID="lang"/></p>
+    <p class="infobar"><LanguageBox v-for="lang in course.languages_in_course" :languageID="lang"/> | {{ course.chapters?.length || 0 }} Kapitel</p>
+    <div class="content_description" v-html="course.description"></div>
+    <ChapterList :chapters="course.chapters" />
   </section>
 </template>
 
 <script>
 import axios from "axios";
-import MainIntro from "../components/MainIntro";
-import LanguageBox from "../components/LanguageBox";
+import MainIntro from "../components/MainIntro.vue";
+import LanguageBox from "../components/LanguageBox.vue";
+import ChapterList from "../components/ChapterList.vue";
 
 export default {
   name: 'Course',
-  components: {LanguageBox, MainIntro},
+  components: {LanguageBox, MainIntro, ChapterList},
   data() {
     return {
       courseID: this.$route.params.id,
