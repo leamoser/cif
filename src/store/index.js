@@ -30,7 +30,9 @@ export default createStore({
       const headers = {
         "Authorization": `Bearer ${this.state.apiToken}`
       };
-      axios.get(`${this.state.apiBaseUrl}course?filter[status][_eq]=${this.state.standartStatus}`, { headers })
+      const filter = `?filter[status][_eq]=${this.state.standartStatus}`
+      const fields = `&fields=id,status,title, description, languages, chapter.chapter_id.id,chapter.chapter_id.status`
+      axios.get(`${this.state.apiBaseUrl}course${filter}${fields}`, { headers })
           .then(response => {
             commit('GET_ALL_COURSES', response.data.data)
           })

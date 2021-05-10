@@ -29,7 +29,7 @@ export default{
       const headers = {
         "Authorization": `Bearer ${this.$store.state.apiToken}`
       };
-      axios.get(`${this.$store.state.apiBaseUrl}course_chapter_1/${id}?fields[]=chapter_id.title,chapter_id.id`, {headers})
+      axios.get(`${this.$store.state.apiBaseUrl}course_chapter_1/${id}?fields[]=chapter_id.title,chapter_id.id,chapter_id.status`, {headers})
           .then(response => {
             this.chapter = response.data.data.chapter_id
           })

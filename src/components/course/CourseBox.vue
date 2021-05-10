@@ -27,7 +27,13 @@ export default{
   },
   computed: {
     chapterCount(){
-      return this.course.chapter?.length || 0
+      let publishedChapters = []
+      this.course.chapter.forEach(details => {
+        if(details.chapter_id.status == 'published'){
+          publishedChapters.push(details.chapter_id.id)
+        }
+      })
+      return publishedChapters.length || 0
     }
   }
 }
