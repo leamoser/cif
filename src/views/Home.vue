@@ -1,22 +1,32 @@
 <template>
   <section class="mainsection home" id="home">
     <FrontIntro />
-    <BigText text="Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor." />
-    <FrontCourselist />
+    <BigText :text="bigText" />
+    <TitleDesc :title="title" :description="desc" />
+    <CompleteCourselist />
   </section>
 </template>
 
 <script>
-import BigText from '@/components/BigText.vue'
-import FrontIntro from "@/components/front/FrontIntro.vue"
-import FrontCourselist from "@/components/front/FrontCourselist.vue";
+import FrontIntro from "@/components/content/FrontIntro.vue"
+import BigText from '@/components/content/BigText.vue'
+import TitleDesc from "../components/content/TitleDesc.vue"
+import CompleteCourselist from "../components/course/CompleteCourselist.vue";
 
 export default {
   name: 'Home',
   components: {
     BigText,
     FrontIntro,
-    FrontCourselist
+    CompleteCourselist,
+    TitleDesc
+  },
+  data(){
+    return{
+      bigText: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.',
+      title: 'Alle angebotenen Kurse',
+      desc: 'Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.'
+    }
   }
 }
 </script>

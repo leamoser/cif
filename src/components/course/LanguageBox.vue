@@ -12,24 +12,24 @@ export default {
     }
   },
   props: {
-    languageID: {
+    languageComboID: {
       type: Number,
       required: true
     }
   },
   methods: {
-    getLanguageById(id) {
+    getLanguageByComboId(id) {
       const headers = {
         "Authorization": `Bearer ${this.$store.state.apiToken}`
       };
-      axios.get(`${this.$store.state.apiBaseUrl}languages/${id}`, {headers})
+      axios.get(`${this.$store.state.apiBaseUrl}course_language/${id}?fields[]=language_id.*`, {headers})
           .then(response => {
-            this.languageName = response.data.data.language_name
+            this.languageName = response.data.data.language_id.name
           })
     }
   },
   mounted() {
-      this.getLanguageById(this.languageID);
+      this.getLanguageByComboId(this.languageComboID);
   }
 }
 </script>

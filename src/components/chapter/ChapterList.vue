@@ -1,17 +1,16 @@
 <template>
   <div class="chapter_list">
-    <h2>{{ title }}</h2>
-    <ChapterLink v-for="chapter in chapters" :chapterID="chapter" />
+    <ChapterLink v-for="chapter in chapters" :chapter-combo-i-d="chapter" />
   </div>
 </template>
 
-
 <script>
 import ChapterLink from "./ChapterLink.vue";
-
 export default{
   name: 'ChapterList',
-  components: {ChapterLink},
+  components: {
+    ChapterLink
+  },
   props: {
     chapters: {
       type: Array,

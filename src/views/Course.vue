@@ -1,25 +1,32 @@
 <template>
   <section class="mainsection course" id="course">
     <MainIntro :title="course.title"/>
-    <p class="infobar"><LanguageBox v-for="lang in course.languages_in_course" :languageID="lang"/> | {{ course.chapters?.length || 0 }} Kapitel</p>
+    <Infobar :course-i-d="course.id" :languages="course.languages" :chapter-count="chapterCount" />
     <div class="content_description" v-html="course.description"></div>
-    <ChapterList :chapters="course.chapters" />
+    <TitleDesc :title="chapterTitle" />
+    <ChapterList :chapters="course.chapter" />
   </section>
 </template>
 
 <script>
-import axios from "axios";
-import MainIntro from "../components/MainIntro.vue";
-import LanguageBox from "../components/LanguageBox.vue";
-import ChapterList from "../components/ChapterList.vue";
-
+import axios from "axios"
+import MainIntro from "../components/content/MainIntro.vue"
+import Infobar from "../components/course/Infobar.vue"
+import ChapterList from "../components/chapter/ChapterList.vue"
+import TitleDesc from "../components/content/TitleDesc.vue"
 export default {
   name: 'Course',
-  components: {LanguageBox, MainIntro, ChapterList},
+  components: {
+    Infobar,
+    MainIntro,
+    ChapterList,
+    TitleDesc
+  },
   data() {
     return {
       courseID: this.$route.params.id,
-      course: {}
+      course: {},
+      chapterTitle: 'Kapitel des Kurses'
     }
   },
   methods: {
@@ -33,9 +40,13 @@ export default {
           })
     }
   },
-
   mounted() {
     this.getCourseById(this.courseID);
+  },
+  computed: {
+    chapterCount(){
+      return this.course.chapter?.length || 0
+    }
   }
 }
 </script>
