@@ -1,7 +1,7 @@
 <template>
   <div class="intro" id="main">
     <div class="logo_small">{{ $store.state.appName }}</div>
-    <p class="text_l">{{ title }}</p>
+    <h3 class="text_l">{{ title }}</h3>
   </div>
 </template>
 <script>

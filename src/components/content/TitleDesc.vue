@@ -6,7 +6,7 @@
 </template>
 <script>
 export default{
-  name: 'MainIntro',
+  name: 'TitleDesc',
   props: {
     title: {
       type: String,
