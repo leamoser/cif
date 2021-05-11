@@ -19,24 +19,25 @@ export default{
     }
   },
   props: {
-    chapterComboID: {
+    chapterID: {
       type: Number,
       required: true
     }
   },
   methods: {
-    getChapterByComboId(id){
+    getChapterById(id){
       const headers = {
         "Authorization": `Bearer ${this.$store.state.apiToken}`
       };
-      axios.get(`${this.$store.state.apiBaseUrl}course_chapter_1/${id}?fields[]=chapter_id.title,chapter_id.id,chapter_id.status`, {headers})
+      const filter = '?fields=id,title,more_infos,niveau,editor_exercise,external_exercise,quiz,downloads,units'
+      axios.get(`${this.$store.state.apiBaseUrl}chapter/${id}${filter}`, {headers})
           .then(response => {
-            this.chapter = response.data.data.chapter_id
+            this.chapter = response.data.data
           })
     }
   },
   mounted() {
-    this.getChapterByComboId(this.chapterComboID);
+    this.getChapterById(this.chapterID);
   }
 }
 </script>

@@ -1,6 +1,6 @@
 <template>
   <div class="chapter_list">
-    <ChapterLink v-for="chapter in chapters" :chapter-combo-i-d="chapter" />
+    <ChapterLink v-for="chapter in chapters" :chapter-i-d="chapter" />
   </div>
 </template>
 
