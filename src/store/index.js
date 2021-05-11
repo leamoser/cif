@@ -8,6 +8,7 @@ export default createStore({
     apiBaseUrl: process.env.VUE_APP_API_COLLECTION_URL,
     apiAdminUrl: process.env.VUE_APP_API_BASE_URL,
     apiToken: process.env.VUE_APP_API_TOKEN,
+    apiAssetUrl: process.env.VUE_APP_API_ASSETS_URL,
     //BASIC
     appName: 'CIF*',
     appSlogan: 'Lerne online die tollsten Frontend-Programmiersprachen.',

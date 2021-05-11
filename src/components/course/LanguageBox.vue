@@ -22,7 +22,8 @@ export default {
       const headers = {
         "Authorization": `Bearer ${this.$store.state.apiToken}`
       };
-      axios.get(`${this.$store.state.apiBaseUrl}course_language/${id}?fields[]=language_id.*`, {headers})
+      const fields = '?fields[]=language_id.*'
+      axios.get(`${this.$store.state.apiBaseUrl}course_language/${id}${fields}`, {headers})
           .then(response => {
             this.languageName = response.data.data.language_id.name
           })
