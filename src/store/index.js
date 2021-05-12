@@ -13,7 +13,8 @@ export default createStore({
     appName: 'CIF*',
     appSlogan: 'Lerne online die tollsten Frontend-Programmiersprachen.',
     //KURSE
-    allCourses: {}
+    allCourses: {},
+    unitsById: {}
   },
 
   getters: {
@@ -23,6 +24,9 @@ export default createStore({
   mutations: {
     GET_ALL_COURSES(state, allCourses){
       state.allCourses = allCourses
+    },
+    GET_ALL_UNITS_BY_CHAPTER_ID(state, unitsById){
+      state.unitsById = unitsById
     }
   },
 
@@ -32,10 +36,21 @@ export default createStore({
         "Authorization": `Bearer ${this.state.apiToken}`
       };
       const filter = `?filter[status][_eq]=${this.state.standartStatus}`
-      const fields = `&fields=id,status,title, description, languages, chapter.chapter_id.id,chapter.chapter_id.status`
+      const fields = `&fields=id,status,title,description,languages,chapter.chapter_id.id,chapter.chapter_id.status`
       axios.get(`${this.state.apiBaseUrl}course${filter}${fields}`, { headers })
           .then(response => {
             commit('GET_ALL_COURSES', response.data.data)
+          })
+    },
+    getAllUnitsById({ commit }, chapterId){
+      const headers = {
+        "Authorization": `Bearer ${this.state.apiToken}`
+      };
+      const filter = `?filter[chapter_id][_eq]=${chapterId}`
+      const fields = `&fields=id,title,theory,editor_exercise,external_exercise,type`
+      axios.get(`${this.state.apiBaseUrl}unit${filter}${fields}`, { headers })
+          .then(response => {
+            commit('GET_ALL_UNITS_BY_CHAPTER_ID', response.data.data)
           })
     }
   },

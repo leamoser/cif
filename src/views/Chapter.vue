@@ -2,9 +2,7 @@
   <section class="mainsection chapter" id="chapter">
     <MainIntro :title="chapter.title" />
     <Backlink linktext="Zurück zur Kursübersicht" />
-    <div class="units">
-      <mark>Units</mark>
-    </div>
+    <Unit :chapter-i-d="chapterID" />
     <div class="material_container">
       <TitleDesc :title="material_title" />
       <div class="material">
@@ -28,9 +26,11 @@ import ChapterMaterialEditor from "../components/chapter/ChapterMaterialEditor.v
 import ChapterMaterialExternal from "../components/chapter/ChapterMaterialExternal.vue";
 import ChapterMaterialQuiz from "../components/chapter/ChapterMaterialQuiz.vue";
 import Backlink from "../components/content/Backlink.vue";
+import Unit from "../components/unit/Unit.vue";
 export default {
   name: 'Chapter',
   components: {
+    Unit,
     Backlink,
     ChapterMaterialQuiz,
     ChapterMaterialExternal,
@@ -64,6 +64,9 @@ export default {
     },
     hasQuiz(){
       return this.chapter.quiz != null
+    },
+    unitLength(){
+      return this.chapter.units.length
     }
   },
   methods: {
@@ -71,9 +74,10 @@ export default {
       const headers = {
         "Authorization": `Bearer ${this.$store.state.apiToken}`
       };
-      axios.get(`${this.$store.state.apiBaseUrl}chapter/${id}`, {headers})
+      const fields = '?fields=id,title,more_infos,niveau,editor_exercise,external_exercise,quiz,downloads,units.id'
+      axios.get(`${this.$store.state.apiBaseUrl}chapter/${id}${fields}`, {headers})
           .then(response => {
-            this.chapter = response.data.data
+            this.chapter = response.data.data;
           })
     }
   },
