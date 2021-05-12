@@ -1,11 +1,15 @@
 <template>
   <div class="unit_container">
-    <mark>{{unitPosition}}/{{numberOfUnits}}</mark>
-    <div class="unit">
-      <pre>{{ units[unitPosition - 1] }}</pre>
+    <div class="identifier">
+      <p>{{unitPosition}} / {{numberOfUnits}}</p>
     </div>
-    <button v-if="this.unitPosition > 1" @click="previousUnit"> &lt;- previous</button>
-    <button v-if="this.unitPosition <= this.numberOfUnits - 1" @click="nextUnit">next -></button>
+    <div class="unit">
+      <pre>{{activeUnit}}</pre>
+    </div>
+    <div class="controls" v-if="numberOfUnits > 1">
+      <button v-if="this.unitPosition > 1" @click="previousUnit"> &lt;- previous</button>
+      <button v-if="this.unitPosition <= this.numberOfUnits - 1" @click="nextUnit">next -></button>
+    </div>
   </div>
 </template>
 <script>
@@ -28,6 +32,9 @@ export default{
     },
     numberOfUnits(){
       return this.units.length
+    },
+    activeUnit(){
+      return this.units[this.unitPosition - 1]
     }
   },
   methods: {
