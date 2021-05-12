@@ -1,6 +1,6 @@
 <template>
   <div class="about">
-    <h1>This is an about page</h1>
+    <h1>Vorlagen GET, POST, PATCH, DELETE</h1>
     <ol>
       <li v-for="course in courses" :key="course.id">{{ course.title }}</li>
     </ol>
@@ -11,7 +11,7 @@
       <input type="text" id="title" name="title" v-model="addedItem"><br>
       <button>Add Item</button>
     </form>
-    <h1>Update Item</h1>
+    <h1>Update/patch Item</h1>
     <form @submit.prevent="updateItem">
       <label for="newtitle">New Title</label>
       <input type="text" id="newtitle" name="newtitle" v-model="newTitle"><br>

@@ -1,5 +1,6 @@
 <template>
   <div class="editor_exercise">
+    <h3>Abschlussübung</h3>
     <p>Editor-Übung ID: {{exerciseID}}</p>
   </div>
 </template>

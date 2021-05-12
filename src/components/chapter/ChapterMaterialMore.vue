@@ -1,6 +1,10 @@
 <template>
-  <div class="more_infos" v-html="content">
+  <div class="more_infos">
+    <h3>Zusätzliche Infos</h3>
+    <div v-html="content">
+    </div>
   </div>
+
 </template>
 <script>
 export default{
