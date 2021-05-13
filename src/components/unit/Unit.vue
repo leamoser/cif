@@ -4,7 +4,9 @@
       <p>{{unitPosition}} / {{numberOfUnits}}</p>
     </div>
     <div class="unit">
-      <pre>{{activeUnit}}</pre>
+      <UnitTheory v-if="activeUnit.type === 'theory'" :unit-content="activeUnit"/>
+      <UnitExternalExercise v-if="activeUnit.type === 'external_exercise'" :unit-content="activeUnit" />
+      <UnitEditorExercise  v-if="activeUnit.type === 'editor_exercise'" :unit-content="activeUnit" />
     </div>
     <div class="controls" v-if="numberOfUnits > 1">
       <button v-if="this.unitPosition > 1" @click="previousUnit"> &lt;- previous</button>
@@ -13,8 +15,12 @@
   </div>
 </template>
 <script>
+import UnitTheory from "./UnitTheory.vue";
+import UnitExternalExercise from "./UnitExternalExercise";
+import UnitEditorExercise from "./UnitEditorExercise";
 export default{
   name: 'Unit',
+  components: {UnitEditorExercise, UnitExternalExercise, UnitTheory},
   props: {
     chapterID: {
       type: Number,
