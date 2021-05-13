@@ -3,25 +3,15 @@
     <h2>{{unitContent.title}}</h2>
     <div v-if="unitContent.theory" class="content unit_theory" v-html="unitContent.theory"></div>
     <div class="content" v-html="externalExercise.instructions"></div>
-    <div class="download">
-      <p>{{externalExercise.title}}</p>
-      <a class="download_btn" v-if="externalExercise.download" :href="$store.state.apiAssetUrl + externalExercise.download" target="_blank" download>
-        <button>
-          <span>Download</span><span>-></span>
-        </button>
-      </a>
-      <a class="download_btn" v-else :href="externalExercise.download_url" target="_blank" download>
-        <button>
-          <span>Download</span><span>-></span>
-        </button>
-      </a>
-    </div>
+    <DownloadExternalExercise :title="externalExercise.title" :download="externalExercise.download" :download-u-r-l="externalExercise.download_url" />
   </div>
 </template>
 <script>
 import axios from "axios";
+import DownloadExternalExercise from "./DownloadExternalExercise";
 export default{
   name: 'UnitExternalExercise',
+  components: {DownloadExternalExercise},
   props: {
     unitContent: {
       type: Object,
@@ -41,7 +31,6 @@ export default{
       const fields = '?fields[]=id,download,instructions,title,download_url'
       axios.get(`${this.$store.state.apiBaseUrl}external_exercise/${id}${fields}`, {headers})
           .then(response => {
-            //console.log(response)
             this.externalExercise = response.data.data
           })
     }
