@@ -1,6 +1,6 @@
 <template>
   <div v-if="externalExercise" class="unit_external_exercise">
-    <h2 v-if="unitType == 'internal'">{{unitContent?.title}}</h2>
+    <h2 v-if="unitType === 'internal'">{{unitContent?.title}}</h2>
     <h2 v-else>{{externalExercise.title}}</h2>
     <div v-if="unitContent?.theory" class="content unit_theory" v-html="unitContent?.theory"></div>
     <div class="content" v-html="externalExercise?.instructions"></div>
@@ -45,7 +45,7 @@ export default{
     }
   },
   mounted() {
-    if(this.unitType == 'internal'){
+    if(this.unitType === 'internal'){
       this.getExternalExerciseById(this.unitContent.external_exercise)
     }else{
       this.getExternalExerciseById(this.exerciseID)
