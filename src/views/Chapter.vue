@@ -1,7 +1,7 @@
 <template>
   <section class="mainsection chapter" id="chapter">
     <MainIntro :title="chapter.title" />
-    <Backlink linktext="Zurück zur Kursübersicht" />
+    <Backlink :link-u-r-l="'/course/' + this.$store.state.activeCourse" linktext="Zurück zur Kursübersicht" />
     <Unit :chapter-i-d="chapterID" />
     <div class="material_container">
       <TitleDesc :title="material_title" />

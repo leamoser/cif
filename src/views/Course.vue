@@ -43,6 +43,7 @@ export default {
   },
   mounted() {
     this.getCourseById(this.courseID);
+    this.$store.dispatch('changeActiveCourse', this.courseID)
   },
   computed: {
     allPublishedChapters(){

@@ -1,5 +1,8 @@
 <template>
-  <p class="backlink"><a @click="$router.go(-1)">{{ linktext }}</a></p>
+  <p class="backlink">
+    <router-link v-if="linkURL" :to="linkURL">{{ linktext }}</router-link>
+    <a v-else @click="$router.go(-1)">{{ linktext }}</a>
+  </p>
 </template>
 <script>
 export default{
@@ -8,6 +11,10 @@ export default{
     linktext: {
       type: String,
       required: true
+    },
+    linkURL: {
+      type: String,
+      required: false
     }
   }
 }

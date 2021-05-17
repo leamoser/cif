@@ -14,7 +14,8 @@ export default createStore({
     appSlogan: 'Lerne online die tollsten Frontend-Programmiersprachen.',
     //KURSE
     allCourses: {},
-    unitsById: {}
+    unitsById: {},
+    activeCourse: 1
   },
 
   getters: {
@@ -27,6 +28,9 @@ export default createStore({
     },
     GET_ALL_UNITS_BY_CHAPTER_ID(state, unitsById){
       state.unitsById = unitsById
+    },
+    CHANGE_ACTIVE_COURSE(state, id){
+      state.activeCourse = id
     }
   },
 
@@ -52,6 +56,9 @@ export default createStore({
           .then(response => {
             commit('GET_ALL_UNITS_BY_CHAPTER_ID', response.data.data)
           })
+    },
+    changeActiveCourse({commit}, courseId){
+      commit('CHANGE_ACTIVE_COURSE', courseId)
     }
   },
 
