@@ -35,8 +35,10 @@ export default {
 }
 </script>
 
-<style>
-span.language:not(span.language:last-of-type)::after{
-  content: ', ';
+<style lang="scss" scoped>
+span:not(.language:last-of-type){
+  &.language::after{
+    content: ', ';
+  }
 }
 </style>

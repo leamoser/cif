@@ -1,7 +1,7 @@
 <template>
   <section class="mainsection chapter" id="chapter">
     <MainIntro :title="chapter.title" />
-    <Backlink :link-u-r-l="'/course/' + this.$store.state.activeCourse.id" linktext="Zurück zur Kursübersicht" />
+    <Backlink v-if="backlink" :link-u-r-l="backlink" linktext="Zurück zur Kursübersicht" />
     <Unit :chapter-i-d="chapterID" />
     <div class="material_container">
       <TitleDesc :title="material_title" />
@@ -67,6 +67,11 @@ export default {
     },
     unitLength(){
       return this.chapter.units.length
+    },
+    backlink(){
+      let id = this.$store.state.activeCourse.id
+      if(id) return '/course/' + id
+      return false
     }
   },
   methods: {
@@ -87,3 +92,9 @@ export default {
   },
 }
 </script>
+
+<style lang="scss" scoped>
+  div.material{
+    @include grid(4);
+  }
+</style>

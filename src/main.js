@@ -6,7 +6,7 @@ import router from './router'
 import store from './store'
 import axios from "axios";
 //styles
-import '/src/css/main.css';
+import '/src/css/main.scss';
 //config & mount
 const myapp = createApp(App);
 myapp.config.globalProperties.$axios = axios;

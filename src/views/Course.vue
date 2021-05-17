@@ -1,5 +1,5 @@
 <template>
-  <section class="mainsection course" id="course">
+  <section class="mainsection course" id="course" v-if="course">
     <MainIntro :title="course.title"/>
     <Infobar :course-i-d="course.id" :languages="course.languages" :chapter-count="allPublishedChapters.length" />
     <div class="content_description" v-html="course.description"></div>
@@ -24,8 +24,8 @@ export default {
   },
   data() {
     return {
-      courseID: this.$route.params.id,
-      course: {},
+      courseID: this.$route.params.id || null,
+      course: null,
       chapterTitle: 'Kapitel des Kurses'
     }
   },
