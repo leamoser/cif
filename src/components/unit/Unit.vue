@@ -32,6 +32,11 @@ export default{
       unitPosition: 1
     }
   },
+  watch: {
+    unitPosition: function (){
+      this.$router.push({path: '/chapter/' + this.chapterID, query:{up: this.unitPosition}})
+    }
+  },
   computed:{
     units(){
       return this.$store.state.unitsById
@@ -60,6 +65,7 @@ export default{
   },
   mounted() {
     this.$store.dispatch('getAllUnitsById', this.chapterID);
+    this.unitPosition = this.$route.query.up
   }
 }
 </script>

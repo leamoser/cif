@@ -1,5 +1,6 @@
 <template>
-  <router-link :to="chapterURL + chapter.id">
+  <!--<router-link :to="chapterURL + chapter.id">-->
+  <router-link :to="{path: chapterURL + chapterID, query: {unitposition: 1}}">
     <div class="chapter_link">
       <p>{{chapter.title}}</p>
     </div>
