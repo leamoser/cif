@@ -22,7 +22,7 @@ export default{
       required: true
     },
     download: {
-      type: Number,
+      type: String,
       required: true
     },
     downloadURL: {

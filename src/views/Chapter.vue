@@ -1,5 +1,5 @@
 <template>
-  <section class="mainsection chapter" id="chapter">
+  <section v-if="chapter" class="mainsection chapter" id="chapter">
     <MainIntro :title="chapter.title" />
     <Backlink v-if="backlink" :link-u-r-l="backlink" linktext="Zurück zur Kursübersicht" />
     <Unit :chapter-i-d="chapterID" />
@@ -42,8 +42,8 @@ export default {
   },
   data() {
     return {
-      chapterID: this.$route.params.id,
-      chapter: {}
+      chapterID: parseInt(this.$route.params.id) || null,
+      chapter: null
     }
   },
   computed: {
@@ -54,16 +54,16 @@ export default {
       return this.chapter.downloads != 0
     },
     hasMoreInfos(){
-      return this.chapter.more_infos
+      return this.chapter.more_infos || null
     },
     hasEditorExercise(){
-      return this.chapter.editor_exercise != null
+      return this.chapter.editor_exercise || null
     },
     hasExternalExercise(){
-      return this.chapter.external_exercise != null
+      return this.chapter.external_exercise || null
     },
     hasQuiz(){
-      return this.chapter.quiz != null
+      return this.chapter.quiz || null
     },
     unitLength(){
       return this.chapter.units.length

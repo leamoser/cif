@@ -1,5 +1,5 @@
 <template>
-  <div class="unit_external_exercise">
+  <div v-if="externalExercise" class="unit_external_exercise">
     <h2 v-if="unitType == 'internal'">{{unitContent?.title}}</h2>
     <h2 v-else>{{externalExercise.title}}</h2>
     <div v-if="unitContent?.theory" class="content unit_theory" v-html="unitContent?.theory"></div>
@@ -29,7 +29,7 @@ export default{
   },
   data(){
     return{
-      externalExercise: {}
+      externalExercise: null
     }
   },
   methods: {

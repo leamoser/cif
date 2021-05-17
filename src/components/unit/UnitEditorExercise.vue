@@ -1,5 +1,5 @@
 <template>
-  <div class="unit_editor_exercise">
+  <div v-if="editorExercise" class="unit_editor_exercise">
     <h2 v-if="unitType == 'internal'">{{unitContent.title}}</h2>
     <h2 v-else>{{editorExercise.title}}</h2>
     <div v-if="unitContent?.theory || unitType == 'internal'" class="content unit_theory" v-html="unitContent?.theory"></div>
@@ -27,7 +27,7 @@ export default{
   },
   data(){
     return{
-      editorExercise: {}
+      editorExercise: null
     }
   },
   methods: {

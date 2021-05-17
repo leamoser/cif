@@ -1,5 +1,5 @@
 <template>
-  <div class="download">
+  <div v-if="download" class="download">
     <p>{{download.file_title}}</p>
     <a class="download_btn" v-if="hasFile" :href="$store.state.apiAssetUrl + download.file" target="_blank" download>
       <button>
@@ -19,7 +19,7 @@ export default{
   name: 'Download',
   data(){
     return {
-      download: {}
+      download: null
     }
   },
   props: {
@@ -30,7 +30,7 @@ export default{
   },
   computed:{
     hasFile(){
-      return this.download.file != null
+      return this.download.file || null
     }
   },
   methods: {

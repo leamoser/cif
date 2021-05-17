@@ -1,5 +1,5 @@
 <template>
-  <span class="language">{{ languageName }}</span>
+  <span v-if="languageName" class="language">{{ languageName }}</span>
 </template>
 
 <script>
@@ -8,7 +8,7 @@ export default {
   name: 'LanguageBox',
   data(){
     return{
-      languageName: '...'
+      languageName: null
     }
   },
   props: {
