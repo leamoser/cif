@@ -3,6 +3,7 @@ import Home from '../views/Home.vue'
 import User from '../views/User.vue'
 import Course from "../views/Course.vue"
 import Chapter from "../views/Chapter.vue"
+import EditorExercise from "../views/EditorExercise.vue";
 
 const routes = [
   {
@@ -32,6 +33,11 @@ const routes = [
     path: '/chapter/:id',
     name: 'Chapter',
     component: Chapter
+  },
+  {
+    path: '/editorexercise/:id',
+    name: 'EditorExercise',
+    component: EditorExercise
   },
 ]
 
