@@ -1,8 +1,10 @@
 <template>
-  <div class="quiz">
-    <h3>Abschlussquiz</h3>
-    <p>Quiz ID: {{quizID}}</p>
-  </div>
+  <router-link :to="quizUrl + quizID">
+    <div class="quiz">
+      <h3>Abschlussquiz</h3>
+      <p>Quiz ID: {{quizID}}</p>
+    </div>
+  </router-link>
 </template>
 <script>
 export default{
@@ -11,6 +13,11 @@ export default{
     quizID: {
       type: Number,
       required: true
+    }
+  },
+  data(){
+    return{
+      quizUrl: '/quiz/'
     }
   }
 }

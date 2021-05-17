@@ -5,6 +5,7 @@ import Course from "../views/Course.vue"
 import Chapter from "../views/Chapter.vue"
 import EditorExercise from "../views/EditorExercise.vue";
 import ExternalExercise from "../views/ExternalExercise.vue";
+import Quiz from "../views/Quiz.vue";
 
 const routes = [
   {
@@ -44,6 +45,11 @@ const routes = [
     path: '/externalexercise/:id',
     name: 'ExternalExercise',
     component: ExternalExercise
+  },
+  {
+    path: '/quiz/:id',
+    name: 'Quiz',
+    component: Quiz
   },
 ]
 
