@@ -4,6 +4,7 @@ import User from '../views/User.vue'
 import Course from "../views/Course.vue"
 import Chapter from "../views/Chapter.vue"
 import EditorExercise from "../views/EditorExercise.vue";
+import ExternalExercise from "../views/ExternalExercise.vue";
 
 const routes = [
   {
@@ -38,6 +39,11 @@ const routes = [
     path: '/editorexercise/:id',
     name: 'EditorExercise',
     component: EditorExercise
+  },
+  {
+    path: '/externalexercise/:id',
+    name: 'ExternalExercise',
+    component: ExternalExercise
   },
 ]
 

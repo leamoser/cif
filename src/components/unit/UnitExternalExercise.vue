@@ -1,9 +1,10 @@
 <template>
   <div class="unit_external_exercise">
-    <h2>{{unitContent.title}}</h2>
-    <div v-if="unitContent.theory" class="content unit_theory" v-html="unitContent.theory"></div>
-    <div class="content" v-html="externalExercise.instructions"></div>
-    <DownloadExternalExercise :title="externalExercise.title" :download="externalExercise.download" :download-u-r-l="externalExercise.download_url" />
+    <h2 v-if="unitType == 'internal'">{{unitContent?.title}}</h2>
+    <h2 v-else>{{externalExercise.title}}</h2>
+    <div v-if="unitContent?.theory" class="content unit_theory" v-html="unitContent?.theory"></div>
+    <div class="content" v-html="externalExercise?.instructions"></div>
+    <DownloadExternalExercise :title="externalExercise?.title" :download="externalExercise?.download" :download-u-r-l="externalExercise?.download_url" />
   </div>
 </template>
 <script>
@@ -15,6 +16,14 @@ export default{
   props: {
     unitContent: {
       type: Object,
+      required: false
+    },
+    exerciseID: {
+      type: Number,
+      required: false
+    },
+    unitType: {
+      type: String,
       required: true
     }
   },
@@ -36,7 +45,11 @@ export default{
     }
   },
   mounted() {
-    this.getExternalExerciseById(this.unitContent.external_exercise)
+    if(this.unitType == 'internal'){
+      this.getExternalExerciseById(this.unitContent.external_exercise)
+    }else{
+      this.getExternalExerciseById(this.exerciseID)
+    }
   }
 }
 </script>

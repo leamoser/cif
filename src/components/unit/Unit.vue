@@ -5,7 +5,7 @@
     </div>
     <div class="unit">
       <UnitTheory v-if="activeUnitType === 'theory'" :unit-content="activeUnit"/>
-      <UnitExternalExercise v-if="activeUnitType === 'external_exercise'" :unit-content="activeUnit" />
+      <UnitExternalExercise v-if="activeUnitType === 'external_exercise'" :unit-content="activeUnit" unit-type="internal" />
       <UnitEditorExercise  v-if="activeUnitType === 'editor_exercise'" :unit-content="activeUnit" unit-type="internal" />
     </div>
     <div class="controls" v-if="numberOfUnits > 1">
