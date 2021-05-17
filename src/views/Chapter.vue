@@ -1,7 +1,7 @@
 <template>
   <section class="mainsection chapter" id="chapter">
     <MainIntro :title="chapter.title" />
-    <Backlink :link-u-r-l="'/course/' + this.$store.state.activeCourse" linktext="Zurück zur Kursübersicht" />
+    <Backlink :link-u-r-l="'/course/' + this.$store.state.activeCourse.id" linktext="Zurück zur Kursübersicht" />
     <Unit :chapter-i-d="chapterID" />
     <div class="material_container">
       <TitleDesc :title="material_title" />
@@ -78,6 +78,7 @@ export default {
       axios.get(`${this.$store.state.apiBaseUrl}chapter/${id}${fields}`, {headers})
           .then(response => {
             this.chapter = response.data.data;
+            this.$store.dispatch('changeActiveChapter', {id: this.chapterID, title: this.chapter.title})
           })
     }
   },

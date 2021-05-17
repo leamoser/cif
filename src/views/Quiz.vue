@@ -1,5 +1,5 @@
 <template>
-  <MainIntro title="Abschlussquiz" />
+  <MainIntro :title="'Abschlussquiz ' + $store.state.activeChapter.title" />
   <Backlink linktext="Zurück zum Kapitel" />
   <div class="unit">
     <h2>Quiz {{quizID}}</h2>

@@ -15,7 +15,14 @@ export default createStore({
     //KURSE
     allCourses: {},
     unitsById: {},
-    activeCourse: 1
+    activeCourse: {
+      id: 1,
+      title: ''
+    },
+    activeChapter: {
+      id: 1,
+      title: ''
+    }
   },
 
   getters: {
@@ -29,8 +36,13 @@ export default createStore({
     GET_ALL_UNITS_BY_CHAPTER_ID(state, unitsById){
       state.unitsById = unitsById
     },
-    CHANGE_ACTIVE_COURSE(state, id){
-      state.activeCourse = id
+    CHANGE_ACTIVE_COURSE(state, course){
+      state.activeCourse.id = course.id
+      state.activeCourse.title = course.title
+    },
+    CHANGE_ACTIVE_CHAPTER(state, chapter){
+      state.activeChapter.id = chapter.id
+      state.activeChapter.title = chapter.title
     }
   },
 
@@ -57,8 +69,11 @@ export default createStore({
             commit('GET_ALL_UNITS_BY_CHAPTER_ID', response.data.data)
           })
     },
-    changeActiveCourse({commit}, courseId){
-      commit('CHANGE_ACTIVE_COURSE', courseId)
+    changeActiveCourse({commit}, course){
+      commit('CHANGE_ACTIVE_COURSE', course)
+    },
+    changeActiveChapter({commit}, chapter){
+      commit('CHANGE_ACTIVE_CHAPTER', chapter)
     }
   },
 

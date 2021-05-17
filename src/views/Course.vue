@@ -30,20 +30,20 @@ export default {
     }
   },
   methods: {
-    getCourseById(id) {
+    async getCourseById(id) {
       const headers = {
         "Authorization": `Bearer ${this.$store.state.apiToken}`
       };
       const filter = `?fields=id,title,status,description,languages,chapter.chapter_id.status,chapter.chapter_id.id`;
-      axios.get(`${this.$store.state.apiBaseUrl}course/${id}${filter}`, {headers})
+      await axios.get(`${this.$store.state.apiBaseUrl}course/${id}${filter}`, {headers})
           .then(response => {
             this.course = response.data.data
+            this.$store.dispatch('changeActiveCourse', {id: this.courseID, title: this.course.title})
           })
     }
   },
   mounted() {
     this.getCourseById(this.courseID);
-    this.$store.dispatch('changeActiveCourse', this.courseID)
   },
   computed: {
     allPublishedChapters(){

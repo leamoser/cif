@@ -1,5 +1,5 @@
 <template>
-  <MainIntro title="Abschlussübung" />
+  <MainIntro :title="'Abschlussübung ' + $store.state.activeChapter.title" />
   <Backlink linktext="Zurück zum Kapitel" />
   <div class="unit">
     <UnitEditorExercise unit-type="external" :exercise-i-d="editorexerciseID" />

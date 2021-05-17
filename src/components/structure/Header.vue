@@ -6,6 +6,10 @@
       <router-link to="/user/1" :tag="tagForRouter">User</router-link>
     </div>
     <p>Das ist der Header</p>
+<!--
+    <pre>{{$store.state.activeCourse}}</pre>
+    <pre>{{$store.state.activeChapter}}</pre>
+-->
   </header>
 </template>
 <script>
