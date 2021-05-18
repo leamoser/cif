@@ -2,6 +2,7 @@
 node_modules
 /dist
 **/assets
+/public
 
 
 # local env files
