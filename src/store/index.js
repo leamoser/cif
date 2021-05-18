@@ -23,7 +23,9 @@ export default createStore({
     activeChapter: {
       id: 1,
       title: ''
-    }
+    },
+    //USER
+    userIsLoggedIn: false
   },
 
   getters: {
@@ -31,6 +33,7 @@ export default createStore({
   },
 
   mutations: {
+    //CONTENT
     GET_ALL_COURSES(state, allCourses){
       state.allCourses = allCourses
     },
@@ -44,10 +47,18 @@ export default createStore({
     CHANGE_ACTIVE_CHAPTER(state, chapter){
       state.activeChapter.id = chapter.id
       state.activeChapter.title = chapter.title
+    },
+    //USER
+    SET_USER_ACTIVE(state,chapter){
+      state.userIsLoggedIn = true
+    },
+    SET_USER_INACTIVE(state,chapter){
+      state.userIsLoggedIn = false
     }
   },
 
   actions: {
+    //CONTENT
     getAllCourses({ commit }){
       const headers = {
         "Authorization": `Bearer ${this.state.apiToken}`
@@ -75,6 +86,13 @@ export default createStore({
     },
     changeActiveChapter({commit}, chapter){
       commit('CHANGE_ACTIVE_CHAPTER', chapter)
+    },
+    //USER
+    setUserActive({commit}){
+      commit('SET_USER_ACTIVE')
+    },
+    setUserInactive({commit}){
+      commit('SET_USER_INACTIVE')
     }
   },
 

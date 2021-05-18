@@ -90,6 +90,13 @@ export default{
     div.question{
       border: $bo-standard;
       padding: $ga-inner;
+      button{
+        margin-top: 20px;
+        background-color: $co-akzent-light-50;
+        border: $bo-standard;
+        padding: $btn-basic;
+        border-radius: $btn-basic-radius;
+      }
     }
     div.explanation{
       border: $bo-standard;
