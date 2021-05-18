@@ -17,3 +17,8 @@ export default{
   }
 }
 </script>
+<style lang="scss" scoped>
+  h3{
+    padding-bottom: $ga-inner;
+  }
+</style>

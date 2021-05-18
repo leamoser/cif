@@ -2,7 +2,7 @@
   <div v-if="editorExercise" class="unit_editor_exercise">
     <h2 v-if="unitType === 'internal'">{{unitContent.title}}</h2>
     <h2 v-else>{{editorExercise.title}}</h2>
-    <div v-if="unitContent?.theory || unitType === 'internal'" class="content unit_theory" v-html="unitContent?.theory"></div>
+    <div v-if="unitContent?.theory || unitType === 'internal'" class="content gc" v-html="unitContent?.theory"></div>
     <div class="editor" id="editor"><pre>{{editorExercise.code_start}}</pre></div>
   </div>
 </template>
@@ -51,3 +51,8 @@ export default{
   }
 }
 </script>
+<style lang="scss" scoped>
+h2{
+  margin-bottom: $ga-top-s;
+}
+</style>

@@ -1,7 +1,7 @@
 <template>
   <div class="more_infos">
     <h3>Zusätzliche Infos</h3>
-    <div class="content-small" v-html="content">
+    <div class="content-small gc" v-html="content">
     </div>
   </div>
 
@@ -17,3 +17,8 @@ export default{
   }
 }
 </script>
+<style lang="scss" scoped>
+h3{
+  padding-bottom: $ga-inner;
+}
+</style>

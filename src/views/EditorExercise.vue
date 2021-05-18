@@ -20,3 +20,13 @@ export default {
   }
 }
 </script>
+<style lang="scss" scoped>
+div.unit{
+  padding: $ga-top-l $ga-around;
+  position: relative;
+  border-top: $bo-standard;
+  border-bottom: $bo-standard;
+  min-height: 90vh;
+  overflow: hidden;
+}
+</style>

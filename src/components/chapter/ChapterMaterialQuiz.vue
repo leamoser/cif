@@ -2,7 +2,7 @@
   <router-link :to="quizUrl + quizID">
     <div class="quiz">
       <h3>Abschlussquiz</h3>
-      <p class="small">Quiz ID: {{quizID}}</p>
+      <p class="small">Stelle dein Wissen auf die Probe und absolviede das Abschlussquiz zum Kapitel.</p>
     </div>
   </router-link>
 </template>
@@ -22,3 +22,11 @@ export default{
   }
 }
 </script>
+<style lang="scss" scoped>
+a{
+  @include linkreset;
+  h3{
+    padding-bottom: $ga-inner;
+  }
+}
+</style>

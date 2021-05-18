@@ -3,7 +3,7 @@
     <div class="course_box">
       <h3 class="title">{{ course.title }}</h3>
       <Infobar :languages="course.languages" :chapter-count="chapterCount" />
-      <div class="content_description" v-html="course.description"></div>
+      <div class="content-small gc" v-html="course.description"></div>
     </div>
   </router-link>
 </template>
@@ -38,3 +38,14 @@ export default{
   }
 }
 </script>
+<style lang="scss" scoped>
+  a{
+    @include linkreset;
+  }
+  div.course_box{
+    background-color: $co-font;
+    height: auto;
+    padding: $ga-inner;
+    color: $co-bg;
+  }
+</style>

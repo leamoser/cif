@@ -35,19 +35,3 @@ h2{
 h3{
     font: $f-headline-s;
 }
-
-//Content
-div.content-small{
-    p,
-    ul,
-    li{
-        font: $f-text-s;
-    }
-}
-div.content{
-    p,
-    ul,
-    li{
-        font: $f-text-m;
-    }
-}

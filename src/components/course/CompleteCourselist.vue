@@ -27,5 +27,6 @@ export default{
 <style lang="scss" scoped>
 div{
   @include grid(3);
+  padding: 0 $ga-around $ga-around $ga-around;
 }
 </style>

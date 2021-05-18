@@ -25,12 +25,12 @@ export default{
 <style lang="scss" scoped>
   div{
     cursor: pointer;
-    @include flex(row,center,flex-start)
+    @include flex(row,center,flex-start);
+    padding: 15px $ga-around $ga-around $ga-around;
   }
   p{
     a{
-      text-decoration: none;
-      color: $co-font;
+      @include linkreset;
     }
   }
   img{

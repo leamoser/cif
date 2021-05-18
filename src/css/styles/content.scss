@@ -1,0 +1,34 @@
+//Content
+div.gc{
+  a{
+    @include linkreset;
+  }
+  ul,
+  ol{
+    padding: 10px;
+    padding-left: 20px;
+    li{
+      padding: 2px 0;
+    }
+  }
+  &.content{
+    p,
+    ul li,
+    ol li{
+      font: $f-text-m;
+    }
+  }
+  &.content-small{
+    p,
+    ul li,
+    ol li{
+      font: $f-text-s;
+    }
+  }
+  h2{
+    margin: 40px 0 20px 0;
+  }
+  h3{
+    margin: 15px 0 5px 0;
+  }
+}

@@ -1,8 +1,10 @@
 <template>
   <section class="mainsection course" id="course" v-if="course">
     <MainIntro :title="course.title"/>
-    <Infobar :course-i-d="course.id" :languages="course.languages" :chapter-count="allPublishedChapters.length" />
-    <div class="content" v-html="course.description"></div>
+    <div class="add_infos">
+      <Infobar :course-i-d="course.id" :languages="course.languages" :chapter-count="allPublishedChapters.length" />
+      <div class="content gc" v-html="course.description"></div>
+    </div>
     <TitleDesc :title="chapterTitle" />
     <ChapterList :chapters="allPublishedChapters" />
   </section>
@@ -60,3 +62,8 @@ export default {
   }
 }
 </script>
+<style lang="scss" scoped>
+  div.add_infos{
+    padding: 0 $ga-around $ga-around $ga-around;
+  }
+</style>

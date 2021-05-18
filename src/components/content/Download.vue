@@ -1,14 +1,16 @@
 <template>
   <div v-if="download" class="download">
     <p class="small">{{download.file_title}}</p>
-    <a class="download_btn" v-if="hasFile" :href="$store.state.apiAssetUrl + download.file" target="_blank" download>
+    <a class="download_btn" v-if="hasFile" :href="downloadLink" target="_blank" download>
       <div>
         <p class="code">Download</p>
+        <img src="/img/webicons/download.svg" alt="Icon Download">
       </div>
     </a>
     <a class="download_btn" v-else :href="download.file_url" target="_blank" download>
       <div>
         <p class="code">Download</p>
+        <img src="/img/webicons/download.svg" alt="Icon Download">
       </div>
     </a>
   </div>
@@ -31,6 +33,9 @@ export default{
   computed:{
     hasFile(){
       return this.download.file || null
+    },
+    downloadLink(){
+      return this.$store.state.apiAssetUrl + this.download.file || null
     }
   },
   methods: {
@@ -50,3 +55,22 @@ export default{
   }
 }
 </script>
+<style lang="scss" scoped>
+  div.download{
+    margin-bottom: 10px;
+    a{
+      @include linkreset;
+    }
+    div{
+      margin: 5px 0;
+      @include flex(row,center,space-between);
+      background-color: $co-akzent-light-50;
+      padding: $btn-basic;
+      border-radius: $btn-basic-radius;
+      border: $bo-standard;
+      p{
+        color: $co-font;
+      }
+    }
+  }
+</style>

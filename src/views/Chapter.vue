@@ -95,6 +95,13 @@ export default {
 
 <style lang="scss" scoped>
   div.material{
-    @include grid(4);
+    padding: 0 $ga-around;
+    @include grid(3);
+    >*{
+      background-color: $co-akzent-dark;
+      padding: $ga-inner;
+      color: $co-bg;
+      min-height: 250px;
+    }
   }
 </style>

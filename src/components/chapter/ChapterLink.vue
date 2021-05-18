@@ -42,3 +42,15 @@ export default{
   }
 }
 </script>
+<style lang="scss" scoped>
+  a{
+    @include linkreset;
+    div {
+      background-color: $co-akzent-light-50;
+      padding: $btn-basic;
+      border-radius: $btn-basic-radius;
+      border: $bo-standard;
+      margin-top: -1px;
+    }
+  }
+</style>

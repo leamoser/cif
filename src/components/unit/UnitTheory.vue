@@ -1,6 +1,6 @@
 <template>
   <h2>{{unitContent.title}}</h2>
-  <div class="unit_theory content" v-html="unitContent.theory"></div>
+  <div class="content gc" v-html="unitContent.theory"></div>
 </template>
 <script>
 export default{
@@ -13,3 +13,8 @@ export default{
   }
 }
 </script>
+<style lang="scss" scoped>
+  h2{
+    margin-bottom: $ga-top-s;
+  }
+</style>

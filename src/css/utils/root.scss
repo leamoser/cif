@@ -13,11 +13,11 @@ $f-logo-l: 900 8rem/100% acumin-pro-wide, sans-serif;
 $f-logo-s: 900 3rem/100% acumin-pro-wide, sans-serif;
 $f-front-subline: 500 1.8rem/140% acumin-pro-wide, sans-serif;
 //headlines
-$f-headline-m: 700 2rem/140% acumin-pro-wide, sans-serif;
-$f-headline-s: 700 1.6rem/140% acumin-pro-wide, sans-serif;
+$f-headline-m: 700 2rem/120% acumin-pro-wide, sans-serif;
+$f-headline-s: 700 1.6rem/120% acumin-pro-wide, sans-serif;
 //text
 $f-text-m: 400 1.2rem/120% acumin-pro-wide, sans-serif;
-$f-text-s: 400 1.0rem/120% acumin-pro-wide, sans-serif;
+$f-text-s: 400 1rem/120% acumin-pro-wide, sans-serif;
 //auszeichnungen
 $f-code-m: 400 1.1rem/120% antarctican-mono, sans-serif;
 $f-code-s: 400 0.95rem/120% antarctican-mono, sans-serif;
@@ -32,3 +32,12 @@ $ga-top-l: 70px;
 $ic-s: 20px;
 $ic-m: 30px;
 $ic-l: 40px;
+
+//Borders
+$bo-standard: 1px solid $co-font;
+
+//Buttons
+$btn-big: 30px 50px;
+$btn-big-radius: 50px;
+$btn-basic: 15px;
+$btn-basic-radius: 500px;

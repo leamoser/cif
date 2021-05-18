@@ -12,6 +12,7 @@ export default createStore({
     //BASIC
     appName: 'CIF*',
     appSlogan: 'Lerne online die tollsten Frontend-Programmiersprachen.',
+    appClaim: '* Code is fun',
     //KURSE
     allCourses: {},
     unitsById: {},

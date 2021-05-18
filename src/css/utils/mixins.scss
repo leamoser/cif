@@ -65,6 +65,7 @@ $breakpoint-large-desktop: 88em;
 @mixin grid($columns){
   display: grid;
   grid-template-columns: repeat($columns, 1fr);
+  grid-gap: $ga-inner;
   >*{
     width: 100%;
   }
@@ -89,4 +90,10 @@ $breakpoint-large-desktop: 88em;
   transform: rotate($rotate);
   width: $iconsize;
   height: auto;
+}
+
+//reset link
+@mixin linkreset(){
+  color: inherit;
+  text-decoration: none;
 }

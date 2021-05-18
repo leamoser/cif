@@ -19,7 +19,10 @@ export default{
 </script>
 <style lang="scss" scoped>
   a{
-    color: inherit;
-    text-decoration: none;
+    @include linkreset;
+  }
+  div{
+    padding: $ga-around;
+    padding-bottom: 0;
   }
 </style>

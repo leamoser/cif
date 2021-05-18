@@ -14,3 +14,19 @@ export default{
   }
 }
 </script>
+<style lang="scss" scoped>
+  div{
+    background-color: $co-akzent-dark;
+    margin: $ga-around;
+    padding: 150px 250px;
+    text-align: center;
+    color: $co-bg;
+    border-radius: 500px;
+    @include tablet-down{
+      padding: 100px;
+    }
+    @include mobile-down{
+      padding: 50px;
+    }
+  }
+</style>

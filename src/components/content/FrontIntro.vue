@@ -9,3 +9,8 @@ export default{
   name: 'FrontIntro'
 }
 </script>
+<style lang="scss" scoped>
+  div{
+    padding: $ga-around;
+  }
+</style>

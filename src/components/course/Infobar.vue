@@ -20,3 +20,8 @@ export default{
   }
 }
 </script>
+<style lang="scss" scoped>
+  p{
+    padding-bottom: $ga-inner;
+  }
+</style>
