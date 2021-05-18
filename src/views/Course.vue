@@ -1,6 +1,7 @@
 <template>
   <section class="mainsection course" id="course" v-if="course">
     <MainIntro :title="course.title"/>
+    <Backlink link-u-r-l="/" linktext="Zurück zur Startseite" />
     <div class="add_infos">
       <Infobar :course-i-d="course.id" :languages="course.languages" :chapter-count="allPublishedChapters.length" />
       <div class="content gc" v-html="course.description"></div>
@@ -16,9 +17,11 @@ import MainIntro from "../components/content/MainIntro.vue"
 import Infobar from "../components/course/Infobar.vue"
 import ChapterList from "../components/chapter/ChapterList.vue"
 import TitleDesc from "../components/content/TitleDesc.vue"
+import Backlink from "../components/content/Backlink";
 export default {
   name: 'Course',
   components: {
+    Backlink,
     Infobar,
     MainIntro,
     ChapterList,
