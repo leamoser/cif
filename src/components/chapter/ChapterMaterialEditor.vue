@@ -2,7 +2,7 @@
   <router-link :to="editorexerciseUrl + exerciseID">
     <div class="editor_exercise">
       <h3>Abschlussübung</h3>
-      <p>Editor-Übung ID: {{exerciseID}}</p>
+      <p class="small">Teste dein Wissen am Ende der Lektion.</p>
     </div>
   </router-link>
 </template>

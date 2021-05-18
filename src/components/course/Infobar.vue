@@ -1,5 +1,5 @@
 <template>
-  <p class="infobar"><LanguageBox v-for="lang in languages" :language-combo-i-d="lang"/> | {{chapterCount}} Kapitel</p>
+  <p class="code small"><LanguageBox v-for="lang in languages" :language-combo-i-d="lang"/> | {{chapterCount}} Kapitel</p>
 </template>
 <script>
 import LanguageBox from "./LanguageBox.vue";

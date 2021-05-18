@@ -2,7 +2,7 @@
   <router-link :to="quizUrl + quizID">
     <div class="quiz">
       <h3>Abschlussquiz</h3>
-      <p>Quiz ID: {{quizID}}</p>
+      <p class="small">Quiz ID: {{quizID}}</p>
     </div>
   </router-link>
 </template>

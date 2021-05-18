@@ -1,7 +1,7 @@
 <template>
   <div class="more_infos">
     <h3>Zusätzliche Infos</h3>
-    <div v-html="content">
+    <div class="content-small" v-html="content">
     </div>
   </div>
 

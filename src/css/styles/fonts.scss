@@ -1,15 +1,53 @@
-div.logo_big{
-    font: $f-logo;
+//Logos & Introheader
+p.logo_big{
+    font: $f-logo-l;
 }
-p.text_l{
+p.logo_small{
+    font: $f-logo-s;
+}
+p.intro{
     font: $f-front-subline;
 }
+
+//Text
+p,
+ul,
+li{
+    font: $f-text-m;
+    &.small{
+        font: $f-text-s;
+    }
+    &.giant{
+        font: $f-headline-m;
+    }
+    &.code{
+        font: $f-code-m;
+        &.small{
+           font: $f-code-s;
+        }
+    }
+}
+
+//Titel
 h2{
     font: $f-headline-m;
 }
 h3{
     font: $f-headline-s;
 }
-p{
-    font: $f-text-s;
+
+//Content
+div.content-small{
+    p,
+    ul,
+    li{
+        font: $f-text-s;
+    }
+}
+div.content{
+    p,
+    ul,
+    li{
+        font: $f-text-m;
+    }
 }

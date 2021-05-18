@@ -1,6 +1,6 @@
 <template>
   <div class="text_big">
-    {{ text }}
+    <p class="giant">{{ text }}</p>
   </div>
 </template>
 <script>

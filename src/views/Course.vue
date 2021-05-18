@@ -2,7 +2,7 @@
   <section class="mainsection course" id="course" v-if="course">
     <MainIntro :title="course.title"/>
     <Infobar :course-i-d="course.id" :languages="course.languages" :chapter-count="allPublishedChapters.length" />
-    <div class="content_description" v-html="course.description"></div>
+    <div class="content" v-html="course.description"></div>
     <TitleDesc :title="chapterTitle" />
     <ChapterList :chapters="allPublishedChapters" />
   </section>

@@ -1,15 +1,15 @@
 <template>
   <div v-if="download" class="download">
-    <p>{{download.file_title}}</p>
+    <p class="small">{{download.file_title}}</p>
     <a class="download_btn" v-if="hasFile" :href="$store.state.apiAssetUrl + download.file" target="_blank" download>
-      <button>
-        <span>Download</span><span>-></span>
-      </button>
+      <div>
+        <p class="code">Download</p>
+      </div>
     </a>
     <a class="download_btn" v-else :href="download.file_url" target="_blank" download>
-      <button>
-        <span>Download</span><span>-></span>
-      </button>
+      <div>
+        <p class="code">Download</p>
+      </div>
     </a>
   </div>
 </template>

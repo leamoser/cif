@@ -1,7 +1,9 @@
 <template>
   <div class="intro" id="main">
-    <div class="logo_small">{{ $store.state.appName }}</div>
-    <h3 class="text_l">{{ title }}</h3>
+    <router-link to="/">
+      <p class="logo_small">{{ $store.state.appName }}</p>
+    </router-link>
+    <p class="intro">{{ title }}</p>
   </div>
 </template>
 <script>
@@ -15,3 +17,9 @@ export default{
   }
 }
 </script>
+<style lang="scss" scoped>
+  a{
+    color: inherit;
+    text-decoration: none;
+  }
+</style>

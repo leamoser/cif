@@ -75,3 +75,18 @@ $breakpoint-large-desktop: 88em;
     display: block;
   }
 }
+
+//flex
+@mixin flex($direction,$align,$justify){
+  display: flex;
+  flex-direction: $direction;
+  align-items: $align;
+  justify-content: $justify;
+}
+
+//icons
+@mixin icon($rotate,$iconsize){
+  transform: rotate($rotate);
+  width: $iconsize;
+  height: auto;
+}

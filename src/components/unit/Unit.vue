@@ -1,7 +1,7 @@
 <template>
   <div class="unit_container">
     <div class="identifier">
-      <p>{{unitPosition}} / {{numberOfUnits}}</p>
+      <p class="code">{{unitPosition}} / {{numberOfUnits}}</p>
     </div>
     <div class="unit">
       <UnitTheory v-if="activeUnitType === 'theory'" :unit-content="activeUnit"/>
@@ -9,8 +9,8 @@
       <UnitEditorExercise  v-if="activeUnitType === 'editor_exercise'" :unit-content="activeUnit" unit-type="internal" />
     </div>
     <div class="controls" v-if="numberOfUnits > 1">
-      <button v-if="this.unitPosition > 1" @click="previousUnit"> &lt;- previous</button>
-      <button v-if="this.unitPosition <= this.numberOfUnits - 1" @click="nextUnit">next -></button>
+      <div v-if="this.unitPosition > 1" @click="previousUnit"><p class="code">&lt;-</p></div>
+      <div v-if="this.unitPosition <= this.numberOfUnits - 1" @click="nextUnit"><p class="code">-></p></div>
     </div>
   </div>
 </template>

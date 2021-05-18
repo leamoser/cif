@@ -2,7 +2,7 @@
   <!--<router-link :to="chapterURL + chapter.id">-->
   <router-link v-if="chapter" :to="{path: chapterURL + chapterID, query: {up: 1}}">
     <div class="chapter_link">
-      <p>{{chapter.title}}</p>
+      <p class="code">{{chapter.title}}</p>
     </div>
   </router-link>
 </template>

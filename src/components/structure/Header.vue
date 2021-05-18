@@ -5,7 +5,6 @@
       <router-link to="/about" :tag="tagForRouter">About</router-link>
       <router-link to="/user/1" :tag="tagForRouter">User</router-link>
     </div>
-    <p>Das ist der Header</p>
 <!--
     <pre>{{$store.state.activeCourse}}</pre>
     <pre>{{$store.state.activeChapter}}</pre>
@@ -22,8 +21,11 @@ export default{
   }
 }
 </script>
-<style>
+<style lang="scss" scoped>
 div#nav>*:not(*:last-of-type)::after{
   content: ' | ';
+}
+header{
+  display: none;
 }
 </style>
