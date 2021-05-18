@@ -1,5 +1,5 @@
 <template>
-  <MainIntro :title="'Abschlussquiz ' + $store.state.activeChapter.title" />
+  <MainIntro :title="title" />
   <Backlink linktext="Zurück zum Kapitel" />
   <div class="unit">
     <h2>Quiz {{quizID}}</h2>
@@ -22,6 +22,11 @@ export default {
       quiz: {}
     }
   },
+  computed: {
+    title(){
+      return 'Abschlussquiz ' + this.$store.state.activeChapter.title || null
+    }
+  },
   methods: {
     getQuiz(id){
       const headers = {
@@ -39,6 +44,7 @@ export default {
   }
 }
 </script>
+
 <style lang="scss" scoped>
   div.unit{
     padding: $ga-top-l $ga-around;

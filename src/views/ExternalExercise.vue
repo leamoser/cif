@@ -1,5 +1,5 @@
 <template>
-  <MainIntro :title="'Abschlussübung ' + $store.state.activeChapter.title" />
+  <MainIntro :title="title" />
   <Backlink linktext="Zurück zum Kapitel" />
   <div class="unit">
     <UnitExternalExercise unit-type="external" :exercise-i-d="externalexerciseID" />
@@ -16,6 +16,11 @@ export default {
   data(){
     return{
       externalexerciseID: this.$route.params.id
+    }
+  },
+  computed:{
+    title(){
+      return 'Abschlussübung ' + this.$store.state.activeChapter.title || null
     }
   }
 }
