@@ -12,7 +12,8 @@ p.intro{
 //Text
 p,
 ul,
-li{
+li,
+label{
     font: $f-text-m;
     &.small{
         font: $f-text-s;

@@ -1,3 +1,15 @@
+//mainsection
 section.mainsection{
   min-height: 80vh;
+}
+//quiz
+div.evaluated{
+  div{
+    label{
+      color: $co-neg;
+    }
+    label[data-correct]{
+      color: $co-pos;
+    }
+  }
 }

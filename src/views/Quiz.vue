@@ -1,11 +1,9 @@
 <template>
   <MainIntro :title="title" />
   <Backlink linktext="Zurück zum Kapitel" />
-  <div class="unit">
-    <h2>Quiz {{quizID}}</h2>
-    <div>
-      <pre>{{quiz}}</pre>
-    </div>
+  <div class="unit" v-if="quiz">
+    <h2>{{quiz.quiz_name}}</h2>
+    <Question v-for="(question, index) in quiz.questions" :key="index" :question="question" />
   </div>
 </template>
 
@@ -13,13 +11,14 @@
 import Backlink from "../components/content/Backlink.vue";
 import MainIntro from "../components/content/MainIntro.vue";
 import axios from "axios";
+import Question from "../components/quiz/Question";
 export default {
-  name: 'ExternalExercise',
-  components: {MainIntro, Backlink},
+  name: 'Quiz',
+  components: {Question, MainIntro, Backlink},
   data(){
     return{
       quizID: this.$route.params.id,
-      quiz: {}
+      quiz: null
     }
   },
   computed: {
@@ -47,6 +46,9 @@ export default {
 
 <style lang="scss" scoped>
   div.unit{
+    h2{
+      margin-bottom: $ga-top-s;
+    }
     padding: $ga-top-l $ga-around;
     position: relative;
     border-top: $bo-standard;
