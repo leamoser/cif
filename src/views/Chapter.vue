@@ -94,6 +94,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+section{
   div.material{
     padding: 0 $ga-around;
     @include grid(3);
@@ -104,4 +105,6 @@ export default {
       min-height: 250px;
     }
   }
+}
+
 </style>
