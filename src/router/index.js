@@ -6,6 +6,8 @@ import Chapter from "../views/Chapter.vue"
 import EditorExercise from "../views/EditorExercise.vue";
 import ExternalExercise from "../views/ExternalExercise.vue";
 import Quiz from "../views/Quiz.vue";
+import Login from "../views/Login";
+import Register from "../views/Register";
 
 const routes = [
   {
@@ -22,7 +24,7 @@ const routes = [
     component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
   },
   {
-    path: '/user/:id',
+    path: '/user/',
     name: 'User',
     component: User
   },
@@ -50,6 +52,16 @@ const routes = [
     path: '/quiz/:id',
     name: 'Quiz',
     component: Quiz
+  },
+  {
+    path: '/login/',
+    name: 'Login',
+    component: Login
+  },
+  {
+    path: '/register/',
+    name: 'Register',
+    component: Register
   },
 ]
 

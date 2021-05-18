@@ -6,13 +6,13 @@
       <div v-if="contentNavActive" class="nav_container">
         <router-link to="/">Home</router-link>
         <router-link to="/about">About</router-link>
-        <router-link to="/user/1">User</router-link>
       </div>
     </div>
     <div class="user" @click="toggleUser">
       <img src="/img/webicons/user.svg" alt="Icon User">
       <div v-if="userNavActive" class="nav_container">
-        <router-link to="/">Home (nachher User)</router-link>
+        <router-link to="/login">Login</router-link>
+        <router-link to="/register">Registrieren</router-link>
       </div>
     </div>
   </header>
