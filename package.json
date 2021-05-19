@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "axios": "^0.21.1",
+    "bcryptjs": "^2.4.3",
     "core-js": "^3.6.5",
     "register-service-worker": "^1.7.1",
     "sass-resources-loader": "^2.2.1",

@@ -24,6 +24,7 @@
 <script>
 import MainIntro from "../components/content/MainIntro";
 import TitleDesc from "../components/content/TitleDesc";
+import bcrypt from "bcryptjs";
 export default {
   name: 'Register',
   components: {TitleDesc, MainIntro},
@@ -46,6 +47,7 @@ export default {
   methods:{
     registerUser(){
       if(this.user.username && this.user.lastname && this.user.username && this.user.email && this.user.password){
+        this.user.password = bcrypt.hashSync(this.user.password,8);
         const headers = {
           "Authorization": `Bearer ${this.$store.state.apiToken}`
         };
