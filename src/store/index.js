@@ -38,6 +38,13 @@ export default createStore({
       return state.apiBaseUrl || null
     },
     //USER
+    areUserInfosLoaded: state => {
+      if(state.userInfos.id){
+        return true
+      }else{
+        return false
+      }
+    },
     getUserInfos: state => {
       return state.userInfos || null
     },

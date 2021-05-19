@@ -1,6 +1,6 @@
 <template>
   <TitleDesc :title="title" :description="description" />
-  <div class="marked_courses" v-if="courses">
+  <div class="marked_courses" v-if="areUserInfosLoaded">
     <CourseBox v-for="course in courses" :key="course.id" :course="course" />
   </div>
 </template>
@@ -12,19 +12,28 @@ import CourseBox from "../course/CourseBox";
 export default {
   name: 'ProfileMarkedCourses',
   components: {CourseBox, TitleDesc},
+  computed: {
+    areUserInfosLoaded(){
+      return this.$store.getters.areUserInfosLoaded
+    }
+  },
   data(){
     return{
       title: 'Deine markierten Kurse',
       description: 'Deine markierten Kurse sind jene, die du mit einem Herz markiert hast. Sobald du das Herz entfernst, erscheint der Kurs hier nicht mehr.',
-      courses: null
+      courses: null,
+    }
+  },
+  watch:{
+    areUserInfosLoaded(val) {
+      if(val) this.getMarkedCourses()
     }
   },
   methods:{
-    getMarkedCourses(){
+    async getMarkedCourses(){
       if(this.$store.getters.getUserMarkedCourses && this.$store.getters.getUserMarkedCourses.length !== 0){
         const headers = { "Authorization": `Bearer ${this.$store.getters.getApiToken}` };
         const filter = `filter[id][_in]=${this.$store.getters.getUserMarkedCourses}`;
-        console.log(this.$store.getters.getUserMarkedCourses.length)
         axios.get(`${this.$store.state.apiBaseUrl}course?${filter}`, {headers})
             .then(response => {
               this.courses = response.data.data;
@@ -33,8 +42,9 @@ export default {
     }
   },
   mounted() {
-      this.getMarkedCourses();
+    if (this.areUserInfosLoaded) this.getMarkedCourses()
   }
+
 }
 </script>
 
