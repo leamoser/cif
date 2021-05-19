@@ -11,15 +11,17 @@
     <div class="msg" :class="{'success': formValidation.isValid}">
       <p class="code" v-if="formValidation.note">{{formValidation.note}}</p>
     </div>
+    <LoginRegsisterNav />
   </section>
 </template>
 
 <script>
 import MainIntro from "../components/content/MainIntro";
 import bcrypt from "bcryptjs";
+import LoginRegsisterNav from "../components/user/LoginRegisterNav";
 export default {
   name: 'Login',
-  components: {MainIntro},
+  components: {LoginRegsisterNav, MainIntro},
   data(){
     return{
       user: {
@@ -35,8 +37,6 @@ export default {
   methods: {
     logIn(){
       if(this.user.username && this.user.password){
-
-        //User holen
         const headers = {
           "Authorization": `Bearer ${this.$store.state.apiToken}`
         };
@@ -49,20 +49,22 @@ export default {
                   if(pw){
                     this.formValidation.isValid = true;
                     this.formValidation.note = 'Du hast dich eingeloggt :D'
+                    this.$store.dispatch('setUserActive');
+                    localStorage.setItem('username', response.data.data[0].username);
+                    localStorage.setItem('token', response.data.data[0].token);
                     for (const key in this.user) {
                       this.user[key] = '';
                     }
+                    this.$router.push('/user')
                   }else{
                     this.formValidation.note = 'Passwort oder Username sind inkorrekt.'
                   }
                 })
-
-              }else{ //User nicht vorhanden
+              }else{
                 this.formValidation.note = 'Passwort oder Username sind inkorrekt.'
               }
             })
       }else{
-        //Wenn nicht alles ausgefüllt
         this.formValidation.note = 'Bitte fülle alle Felder aus'
       }
     }

@@ -18,6 +18,7 @@
     <div class="msg" :class="{'success': formValidation.isValid}">
       <p class="code" v-if="formValidation.note">{{formValidation.note}}</p>
     </div>
+    <LoginRegsisterNav />
   </section>
 </template>
 
@@ -25,9 +26,10 @@
 import MainIntro from "../components/content/MainIntro";
 import TitleDesc from "../components/content/TitleDesc";
 import bcrypt from "bcryptjs";
+import LoginRegsisterNav from "../components/user/LoginRegisterNav";
 export default {
   name: 'Register',
-  components: {TitleDesc, MainIntro},
+  components: {LoginRegsisterNav, TitleDesc, MainIntro},
   data(){
     return{
       pageIntro: 'Hier kannst du dich für CIF* registerieren. Mit einem Konto stehen dir alle Möglichkeiten zur Verfügung.',

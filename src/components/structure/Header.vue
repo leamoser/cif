@@ -11,8 +11,10 @@
     <div class="user" @click="toggleUser">
       <img src="/img/webicons/user.svg" alt="Icon User">
       <div v-if="userNavActive" class="nav_container">
-        <router-link to="/login">Login</router-link>
-        <router-link to="/register">Registrieren</router-link>
+        <router-link v-if="!$store.state.userIsLoggedIn" to="/login">Login</router-link>
+        <router-link v-if="!$store.state.userIsLoggedIn" to="/register">Registrieren</router-link>
+        <router-link v-if="$store.state.userIsLoggedIn" to="/" @click="logOutUser">Logout</router-link>
+        <router-link v-if="$store.state.userIsLoggedIn" to="/user">Profil</router-link>
       </div>
     </div>
   </header>
@@ -38,6 +40,10 @@ export default{
     toggleUser(){
       this.userNavActive = !this.userNavActive;
       this.contentNavActive = false;
+    },
+    logOutUser(){
+      localStorage.clear();
+      this.$store.dispatch('setUserInactive');
     }
   }
 }

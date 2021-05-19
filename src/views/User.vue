@@ -1,9 +1,16 @@
 <template>
-  <h1>User</h1>
+  <MainIntro :title="pageTitle" />
 </template>
 
 <script>
+import MainIntro from "../components/content/MainIntro";
 export default {
-  name: 'User'
+  name: 'User',
+  components: {MainIntro},
+  computed: {
+    pageTitle(){
+      return `Profil von ${localStorage.getItem('username')}`
+    }
+  }
 }
 </script>
