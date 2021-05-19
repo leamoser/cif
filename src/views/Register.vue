@@ -1,23 +1,23 @@
 <template>
   <MainIntro title="Registrieren" />
+  <TitleDesc :description="pageIntro" />
   <section class="mainsection">
-    <TitleDesc :description="pageIntro" />
+    <div v-if="formValidation.note" class="msg" :class="{'success': formValidation.isValid}">
+      <p class="code">{{formValidation.note}}</p>
+    </div>
       <form @submit.prevent="registerUser">
-        <label for="firstname">Vorname:</label>
+        <label for="firstname">Vorname<span class="req">*</span></label>
         <input type="text" id="firstname" name="firstname" v-model="user.firstname"><br>
-        <label for="lastname">Nachname:</label>
+        <label for="lastname">Nachname<span class="req">*</span></label>
         <input type="text" id="lastname" name="lastname" v-model="user.lastname"><br>
-        <label for="username">Nutzername:</label>
+        <label for="username">Nutzername<span class="req">*</span></label>
         <input type="text" id="username" name="username" v-model="user.username"><br>
-        <label for="email">Email:</label>
+        <label for="email">Email<span class="req">*</span></label>
         <input type="email" id="email" name="email" v-model="user.email"><br>
-        <label for="password">Passwort:</label>
+        <label for="password">Passwort<span class="req">*</span></label>
         <input type="password" id="password" name="password" v-model="user.password"><br>
         <button><p class="code">Registrieren</p></button>
       </form>
-    <div class="msg" :class="{'success': formValidation.isValid}">
-      <p class="code" v-if="formValidation.note">{{formValidation.note}}</p>
-    </div>
     <LoginRegsisterNav />
   </section>
 </template>
@@ -68,3 +68,8 @@ export default {
   }
 }
 </script>
+<style lang="scss" scoped>
+section{
+  padding: $ga-around;
+}
+</style>

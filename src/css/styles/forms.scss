@@ -1,0 +1,32 @@
+form{
+  label{
+    display: block;
+    margin: 25px 0 5px 0;
+    span.req{
+      color: $co-akzent-light;
+      margin-left: 5px;
+    }
+  }
+  input{
+    border: $bo-standard;
+    padding: 10px;
+    width: 100%;
+    font: $f-code-m;
+  }
+  button{
+    background-color: $co-akzent-light-50;
+    border: $bo-standard;
+    padding: $btn-basic;
+    border-radius: $btn-basic-radius;
+    margin-top: $ga-inner;
+  }
+}
+div.msg{
+  padding: $btn-basic;
+  border-radius: $btn-basic-radius;
+  border: $bo-standard;
+  background-color: $co-neg;
+  &.success{
+    background-color: $co-pos;
+  }
+}

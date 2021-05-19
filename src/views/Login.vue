@@ -1,16 +1,17 @@
 <template>
   <MainIntro title="Login" />
+  <TitleDesc :description="pageIntro" />
   <section class="mainsection">
+    <div v-if="formValidation.note" class="msg" :class="{'success': formValidation.isValid}">
+      <p class="code">{{formValidation.note}}</p>
+    </div>
     <form @submit.prevent="logIn">
-      <label for="username">Nutzername:</label>
+      <label for="username">Nutzername<span class="req">*</span></label>
       <input type="text" id="username" name="username" v-model="user.username"><br>
-      <label for="password">Passwort:</label>
+      <label for="password">Passwort<span class="req">*</span></label>
       <input type="password" id="password" name="password" v-model="user.password"><br>
       <button><p class="code">Login</p></button>
     </form>
-    <div class="msg" :class="{'success': formValidation.isValid}">
-      <p class="code" v-if="formValidation.note">{{formValidation.note}}</p>
-    </div>
     <LoginRegsisterNav />
   </section>
 </template>
@@ -19,9 +20,10 @@
 import MainIntro from "../components/content/MainIntro";
 import bcrypt from "bcryptjs";
 import LoginRegsisterNav from "../components/user/LoginRegisterNav";
+import TitleDesc from "../components/content/TitleDesc";
 export default {
   name: 'Login',
-  components: {LoginRegsisterNav, MainIntro},
+  components: {TitleDesc, LoginRegsisterNav, MainIntro},
   data(){
     return{
       user: {
@@ -31,7 +33,8 @@ export default {
       formValidation: {
         isValid: false,
         note: ''
-      }
+      },
+      pageIntro: 'Du hast schon ein Profil? Logge dich hier ein.'
     }
   },
   methods: {
@@ -73,5 +76,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+  section{
+    padding: $ga-around;
+  }
 </style>

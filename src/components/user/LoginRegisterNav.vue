@@ -1,7 +1,7 @@
 <template>
   <div>
-    <router-link to="/login">Login</router-link>
-    <router-link to="/register">Registrieren</router-link>
+    <router-link to="/login"><p class="code">Du hast schon ein Profil? Dann kannst du dich hier einloggen.</p></router-link>
+    <router-link to="/register"><p class="code">Du hast noch kein Profil? Hier zum Registrieren.</p></router-link>
   </div>
 </template>
 
@@ -13,8 +13,18 @@ export default{
 
 <style lang="scss" scoped>
   div{
-    >*:not(*:last-of-type)::after{
-      content: ' | ';
+    margin-top: $ga-around;
+    p{
+      display: inline;
+    }
+    >a{
+      @include linkreset;
+      &:hover{
+        text-decoration: underline;
+      }
+      &.router-link-active{
+        display: none;
+      }
     }
   }
 </style>
