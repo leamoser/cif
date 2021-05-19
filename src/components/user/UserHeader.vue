@@ -1,6 +1,5 @@
 <template>
   <div v-if="isVisible"></div>
-  <div v-if="$store.state.userIsLoggedIn" class="userstate"><p class="code small">{{welcomeUser}}</p></div>
 </template>
 
 <script>
@@ -8,16 +7,21 @@ export default{
   name: 'UserHeader',
   data(){
     return{
-      isVisible: false
+      isVisible: false,
+      username: null
     }
   },
   computed: {
     welcomeUser(){
-      return `Angemeldet als ${localStorage.getItem('username')}`
+      return `Angemeldet als ${this.username}`
+    },
+    userIsLoggedIn(){
+      return this.$store.state.userIsLoggedIn;
     }
   },
   methods: {
     checkIfUserIsLoggedIn(){
+      this.username = localStorage.getItem('username');
       if(localStorage.getItem('username') && localStorage.getItem('token')){
         this.$store.dispatch('setUserActive')
       }else{
@@ -26,6 +30,9 @@ export default{
     }
   },
   mounted() {
+    this.checkIfUserIsLoggedIn()
+  },
+  updated() {
     this.checkIfUserIsLoggedIn()
   }
 }
