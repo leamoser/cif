@@ -22,5 +22,8 @@ export default{
 <style lang="scss" scoped>
   div{
     padding: $ga-around;
+    h2{
+      margin-bottom: 7px;
+    }
   }
 </style>

@@ -61,6 +61,9 @@ export default{
   },
   mounted() {
     this.checkIfCourseIsMarked()
+  },
+  updated() {
+    this.checkIfCourseIsMarked()
   }
 }
 </script>

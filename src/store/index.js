@@ -30,7 +30,18 @@ export default createStore({
   },
 
   getters: {
-
+    getApiToken: state => {
+      return state.apiToken || null
+    },
+    getUserInfos: state => {
+      return state.userInfos || null
+    },
+    isUserLoggedIn: state => {
+      return state.userIsLoggedIn || null
+    },
+    getUserMarkedCourses: state => {
+      return state.userInfos.marked_course || null
+    }
   },
 
   mutations: {

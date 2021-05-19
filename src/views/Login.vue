@@ -40,12 +40,10 @@ export default {
   methods: {
     logIn(){
       if(this.user.username && this.user.password){
-        const headers = {
-          "Authorization": `Bearer ${this.$store.state.apiToken}`
-        };
-        const filter = `?filter[username][_eq]=${this.user.username}`;
-        const fields = `&fields=id,username,password,token`;
-        this.$axios.get(`${this.$store.state.apiBaseUrl}user${filter}${fields}`, { headers })
+        const headers = { "Authorization": `Bearer ${this.$store.getters.getApiToken}` };
+        const filter = `filter[username][_eq]=${this.user.username}`;
+        const fields = `fields=id,username,password,token`;
+        this.$axios.get(`${this.$store.state.apiBaseUrl}user?${filter}&${fields}`, { headers })
             .then(response => {
               if(response.data.data.length === 1){ //User vorhanden
                 bcrypt.compare(this.user.password, response.data.data[0].password).then((pw) => {

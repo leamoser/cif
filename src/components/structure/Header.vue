@@ -52,6 +52,7 @@ export default{
     logOutUser(){
       localStorage.clear();
       this.$store.dispatch('setUserInactive');
+      this.$store.dispatch('clearUserInfo');
     },
     refreshUsername(){
       this.username = localStorage.getItem('username');

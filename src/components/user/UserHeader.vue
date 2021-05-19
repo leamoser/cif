@@ -1,5 +1,6 @@
 <template>
   <div v-if="isVisible"></div>
+  <pre>{{$store.state}}</pre>
 </template>
 
 <script>
@@ -12,11 +13,14 @@ export default{
     }
   },
   computed: {
-    welcomeUser(){
-      return `Angemeldet als ${this.username}`
-    },
     userIsLoggedIn(){
-      return this.$store.state.userIsLoggedIn;
+      return this.$store.getters.isUserLoggedIn;
+    }
+  },
+  watch: {
+    $route() {
+      this.checkIfUserIsLoggedIn();
+      this.getUserInformations();
     }
   },
   methods: {
@@ -37,10 +41,6 @@ export default{
     }
   },
   mounted() {
-    this.checkIfUserIsLoggedIn();
-    this.getUserInformations();
-  },
-  updated() {
     this.checkIfUserIsLoggedIn();
     this.getUserInformations();
   }

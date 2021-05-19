@@ -1,7 +1,7 @@
 <template>
   <TitleDesc :title="title" :description="description" />
   <div class="marked_courses">
-    [tbd]
+    {{ marked_courses }}
   </div>
 </template>
 
@@ -10,6 +10,12 @@ import TitleDesc from "../content/TitleDesc";
 export default {
   name: 'ProfileMarkedCourses',
   components: {TitleDesc},
+  props:{
+    marked_courses:{
+      type: Array,
+      required: true
+    }
+  },
   data(){
     return{
       title: 'Deine markierten Kurse',
