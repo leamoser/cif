@@ -7,7 +7,7 @@
     </div>
     <ProfileActiveCourses />
     <ProfileFinishedCourses />
-    <ProfileMarkedCourses :marked_courses="user?.marked_course" />
+    <ProfileMarkedCourses />
 </template>
 
 <script>

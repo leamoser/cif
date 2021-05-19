@@ -29,7 +29,7 @@ export default{
     chapterCount(){
       let publishedChapters = []
       this.course.chapter.forEach(details => {
-        if(details.chapter_id.status === 'published'){
+        if(details?.chapter_id?.status === 'published'){
           publishedChapters.push(details.chapter_id.id)
         }
       })

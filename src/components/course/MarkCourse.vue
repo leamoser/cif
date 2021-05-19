@@ -31,38 +31,35 @@ export default{
       this.courseActive = this.$store.state.userInfos.marked_course.indexOf(this.courseID) !== -1;
     },
     addCourseToList(){
-      const headers = {
-        "Authorization": `Bearer ${this.$store.state.apiToken}`
-      };
-      const originalContent = this.$store.state.userInfos.marked_course;
-      const content = {
-        marked_course: [...originalContent,this.courseID]
-      }
-      this.$axios.patch(`${this.$store.state.apiBaseUrl}user/${this.$store.state.userInfos.id}`, content, {headers})
+      const headers = { "Authorization": `Bearer ${this.$store.getters.getApiToken}` };
+      const originalContent = this.$store.getters.getUserMarkedCourses;
+      const content = { marked_course: [...originalContent,this.courseID] }
+      this.$axios.patch(`${this.$store.getters.getApiBaseUrl}user/${this.$store.getters.getUserId}`, content, {headers})
           .then(() => {
             this.$store.dispatch('getUserInformationByUsername', localStorage.getItem('username'));
-            this.courseActive = true
+            this.setCourseActive();
           })
     },
     removeCourseFromList(){
-      const headers = {
-        "Authorization": `Bearer ${this.$store.state.apiToken}`
-      };
+      const headers = { "Authorization": `Bearer ${this.$store.getters.getApiToken}` };
       const newContent = this.$store.state.userInfos.marked_course.filter((item) => {
-          return item !== this.courseID;
+        return item !== this.courseID;
       })
       const content = { marked_course: newContent }
       this.$axios.patch(`${this.$store.state.apiBaseUrl}user/${this.$store.state.userInfos.id}`, content, {headers})
           .then(() => {
             this.$store.dispatch('getUserInformationByUsername', localStorage.getItem('username'));
-            this.courseActive = false
+            this.setCourseInactive();
           })
+    },
+    setCourseActive(){
+      this.courseActive = true
+    },
+    setCourseInactive(){
+      this.courseActive = false
     }
   },
   mounted() {
-    this.checkIfCourseIsMarked()
-  },
-  updated() {
     this.checkIfCourseIsMarked()
   }
 }

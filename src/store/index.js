@@ -30,9 +30,14 @@ export default createStore({
   },
 
   getters: {
+    //API
     getApiToken: state => {
       return state.apiToken || null
     },
+    getApiBaseUrl: state => {
+      return state.apiBaseUrl || null
+    },
+    //USER
     getUserInfos: state => {
       return state.userInfos || null
     },
@@ -41,6 +46,9 @@ export default createStore({
     },
     getUserMarkedCourses: state => {
       return state.userInfos.marked_course || null
+    },
+    getUserId: state => {
+      return state.userInfos.id || null
     }
   },
 
