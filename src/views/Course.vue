@@ -6,6 +6,7 @@
       <Infobar :course-i-d="course.id" :languages="course.languages" :chapter-count="allPublishedChapters.length" />
       <div class="content gc" v-html="course.description"></div>
     </div>
+    <MarkCourse :course-i-d="course.id" />
     <TitleDesc :title="chapterTitle" />
     <ChapterList :chapters="allPublishedChapters" />
   </section>
@@ -18,9 +19,11 @@ import Infobar from "../components/course/Infobar.vue"
 import ChapterList from "../components/chapter/ChapterList.vue"
 import TitleDesc from "../components/content/TitleDesc.vue"
 import Backlink from "../components/content/Backlink";
+import MarkCourse from "../components/course/MarkCourse";
 export default {
   name: 'Course',
   components: {
+    MarkCourse,
     Backlink,
     Infobar,
     MainIntro,
