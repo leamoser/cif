@@ -1,7 +1,7 @@
 <template>
   <UserHeader />
   <header>
-    <div class="nav" @click="toggleNav"  :class="{active: contentNavActive}">
+    <div class="nav" @click="toggleNav"  :class="{active: contentNavActive}" v-if="$store.state.userIsLoggedIn">
       <img v-if="!contentNavActive" src="/img/webicons/burger.svg" alt="Burger-Navigation Icon">
       <img v-else src="/img/webicons/burgeractive.svg" alt="Burger-Navigation Icon Aktiv">
       <div v-if="contentNavActive" class="nav_container">

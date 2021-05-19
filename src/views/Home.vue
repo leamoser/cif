@@ -2,8 +2,8 @@
   <section class="mainsection home" id="home">
     <FrontIntro />
     <BigText :text="bigText" />
-    <TitleDesc :title="title" :description="desc" />
-    <CompleteCourselist />
+    <TitleDesc v-if="$store.state.userIsLoggedIn" :title="title" :description="desc" />
+    <CompleteCourselist v-if="$store.state.userIsLoggedIn" />
   </section>
 </template>
 
@@ -12,7 +12,6 @@ import FrontIntro from "@/components/content/FrontIntro.vue"
 import BigText from '@/components/content/BigText.vue'
 import TitleDesc from "../components/content/TitleDesc.vue"
 import CompleteCourselist from "../components/course/CompleteCourselist.vue";
-
 export default {
   name: 'Home',
   components: {
