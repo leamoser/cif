@@ -25,7 +25,8 @@ export default createStore({
       title: ''
     },
     //USER
-    userIsLoggedIn: false
+    userIsLoggedIn: false,
+    userInfos: {}
   },
 
   getters: {
@@ -54,6 +55,12 @@ export default createStore({
     },
     SET_USER_INACTIVE(state,chapter){
       state.userIsLoggedIn = false
+    },
+    GET_USER_INFORMATION_BY_USERNAME(state, userInfos){
+      state.userInfos = userInfos
+    },
+    CLEAR_USER_INFORMATION(state){
+      state.userInfos = {}
     }
   },
 
@@ -93,6 +100,20 @@ export default createStore({
     },
     setUserInactive({commit}){
       commit('SET_USER_INACTIVE')
+    },
+    getUserInformationByUsername({commit}, username){
+      const headers = {
+        "Authorization": `Bearer ${this.state.apiToken}`
+      };
+      const filter = `?filter[username][_eq]=${username}`
+      const fields = `&fields=id,firstname,lastname,username,email,marked_course,solved_chapters`
+      axios.get(`${this.state.apiBaseUrl}user${filter}${fields}`, { headers })
+          .then(response => {
+            commit('GET_USER_INFORMATION_BY_USERNAME', response.data.data[0])
+          })
+    },
+    clearUserInfo({commit}){
+      commit('CLEAR_USER_INFORMATION');
     }
   },
 

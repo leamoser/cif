@@ -27,13 +27,22 @@ export default{
       }else{
         this.$store.dispatch('setUserInactive')
       }
+    },
+    getUserInformations(){
+      if(localStorage.getItem('username') && localStorage.getItem('token')) {
+        this.$store.dispatch('getUserInformationByUsername', localStorage.getItem('username'));
+      }else{
+        this.$store.dispatch('clearUserInfo');
+      }
     }
   },
   mounted() {
-    this.checkIfUserIsLoggedIn()
+    this.checkIfUserIsLoggedIn();
+    this.getUserInformations();
   },
   updated() {
-    this.checkIfUserIsLoggedIn()
+    this.checkIfUserIsLoggedIn();
+    this.getUserInformations();
   }
 }
 </script>

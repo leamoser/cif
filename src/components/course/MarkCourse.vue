@@ -1,11 +1,11 @@
 <template>
-  <div class="mark_course" v-if="!courseActive">
+  <div class="mark_course" v-if="!courseActive" @click="addCourseToList">
     <div class="icon">
       <img src="/img/webicons/heartEmpty.svg" alt="Icon Kurs Markieren">
     </div>
     <p class="code">Kurs für dich markieren</p>
   </div>
-  <div class="mark_course" v-else>
+  <div class="mark_course" v-else @click="removeCourseFromList">
     <div class="icon">
       <img src="/img/webicons/heart.svg" alt="Icon Kurs Markieren">
     </div>
@@ -25,6 +25,42 @@ export default{
     return{
       courseActive: false
     }
+  },
+  methods: {
+    checkIfCourseIsMarked(){
+      this.courseActive = this.$store.state.userInfos.marked_course.indexOf(this.courseID) !== -1;
+    },
+    addCourseToList(){
+      const headers = {
+        "Authorization": `Bearer ${this.$store.state.apiToken}`
+      };
+      const originalContent = this.$store.state.userInfos.marked_course;
+      const content = {
+        marked_course: [...originalContent,this.courseID]
+      }
+      this.$axios.patch(`${this.$store.state.apiBaseUrl}user/${this.$store.state.userInfos.id}`, content, {headers})
+          .then(() => {
+            this.$store.dispatch('getUserInformationByUsername', localStorage.getItem('username'));
+            this.courseActive = true
+          })
+    },
+    removeCourseFromList(){
+      const headers = {
+        "Authorization": `Bearer ${this.$store.state.apiToken}`
+      };
+      const newContent = this.$store.state.userInfos.marked_course.filter((item) => {
+          return item !== this.courseID;
+      })
+      const content = { marked_course: newContent }
+      this.$axios.patch(`${this.$store.state.apiBaseUrl}user/${this.$store.state.userInfos.id}`, content, {headers})
+          .then(() => {
+            this.$store.dispatch('getUserInformationByUsername', localStorage.getItem('username'));
+            this.courseActive = false
+          })
+    }
+  },
+  mounted() {
+    this.checkIfCourseIsMarked()
   }
 }
 </script>
