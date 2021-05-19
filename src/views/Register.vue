@@ -15,6 +15,9 @@
         <input type="password" id="password" name="password" v-model="user.password"><br>
         <button><p class="code">Registrieren</p></button>
       </form>
+    <div class="msg" :class="{'success': formValidation.isValid}">
+      <p class="code" v-if="formValidation.note">{{formValidation.note}}</p>
+    </div>
   </section>
 </template>
 
@@ -33,6 +36,10 @@ export default {
         username: '',
         email: '',
         password: ''
+      },
+      formValidation: {
+        isValid: false,
+        note: ''
       }
     }
   },
@@ -44,9 +51,14 @@ export default {
         };
         this.$axios.post(`${this.$store.state.apiBaseUrl}user`, this.user, { headers })
             .then(response => {
-              console.log(response)
+              for (const key in this.user) {
+                this.user[key] = '';
+              }
+              this.formValidation.isValid = true
+              this.formValidation.note = 'Du hast dich erfolgreich registriert :) Geh zur Login-Page und melde dich an.'
             })
-        console.log('User wird registriert')
+      }else{
+        this.formValidation.note = 'Bitte fülle alle Felder aus. '
       }
     }
   }
