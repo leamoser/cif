@@ -36,5 +36,11 @@ div.user_stats {
   border: $bo-standard;
   padding: $ga-inner;
   position: relative;
+  h2{
+    margin-bottom: $ga-inner;
+  }
+  p:not(:last-of-type){
+    margin-bottom: 10px;
+  }
 }
 </style>

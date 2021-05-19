@@ -33,8 +33,13 @@ div.user_info{
   border: $bo-standard;
   padding: $ga-inner;
   position: relative;
+  h2{
+    margin-bottom: $ga-inner;
+  }
+  p:not(:last-of-type){
+    margin-bottom: 10px;
+  }
   div.edit_toggle{
-    display: none;
     cursor: pointer;
     position: absolute;
     top: -1px;

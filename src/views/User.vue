@@ -1,12 +1,13 @@
 <template>
   <MainIntro :title="pageTitle" />
-  <section class="mainsection">
     <div class="profilestats" v-if="user">
       <ProfileImage />
       <ProfileUserInfo :user="user" />
       <ProfileUserStats :user="user" />
     </div>
-  </section>
+    <ProfileActiveCourses />
+    <ProfileFinishedCourses />
+    <ProfileMarkedCourses />
 </template>
 
 <script>
@@ -15,9 +16,14 @@ import ProfileImage from "../components/user/ProfileImage";
 import axios from "axios";
 import ProfileUserInfo from "../components/user/ProfileUserInfo";
 import ProfileUserStats from "../components/user/ProfileUserStats";
+import ProfileActiveCourses from "../components/user/ProfileActiveCourses";
+import ProfileFinishedCourses from "../components/user/ProfileFinishedCourses";
+import ProfileMarkedCourses from "../components/user/ProfileMarkedCourses";
 export default {
   name: 'User',
-  components: {ProfileUserStats, ProfileUserInfo, ProfileImage, MainIntro},
+  components: {
+    ProfileMarkedCourses,
+    ProfileFinishedCourses, ProfileActiveCourses, ProfileUserStats, ProfileUserInfo, ProfileImage, MainIntro},
   data(){
     return{
       user: null
@@ -47,10 +53,10 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-section{
-  padding: $ga-around;
   div.profilestats{
-    @include grid(3);
+    padding: $ga-around;
+    display: grid;
+    grid-gap: $ga-inner;
+    grid-template-columns: 3fr 4fr 5fr;
   }
-}
 </style>
