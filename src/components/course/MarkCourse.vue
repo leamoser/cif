@@ -51,23 +51,23 @@ export default{
           })
     },
     async addCourseToList(){
-      console.log('add')
       const headers = { "Authorization": `Bearer ${this.$store.getters.getApiToken}` };
       const content = {
         user_id: this.userID,
         course_id: this.courseID
       }
       this.$axios.post(`${this.$store.getters.getApiBaseUrl}user_course`, content, {headers})
-          .then(() => {
+          .then(response => {
+            this.activeCourseComboID = response.data.data.id
             this.$store.dispatch('getUserInformationByUsername', localStorage.getItem('username'));
             this.setCourseActive();
           })
     },
     async removeCourseFromList(){
-      console.log('remove')
       const headers = { "Authorization": `Bearer ${this.$store.getters.getApiToken}` };
-      await this.$axios.delete(`${this.$store.getters.getApiBaseUrl}user_course/${this.activeCourseComboID}`, {headers})
+      await this.$axios.delete(`${this.$store.getters.getApiBaseUrl}user_course/${this?.activeCourseComboID}`, {headers})
       .then(() => {
+        this.activeCourseComboID = null
         this.$store.dispatch('getUserInformationByUsername', localStorage.getItem('username'));
         this.setCourseInactive();
       })
