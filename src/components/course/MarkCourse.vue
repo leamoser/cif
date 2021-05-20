@@ -13,6 +13,8 @@
   </div>
 </template>
 <script>
+import axios from "axios";
+
 export default{
   name: 'MarkCourse',
   props: {
@@ -23,34 +25,52 @@ export default{
   },
   data(){
     return{
-      courseActive: false
+      courseActive: false,
+      activeCourseComboID: null
+    }
+  },
+  computed: {
+    userID(){
+      return this.$store.getters.getUserId;
     }
   },
   methods: {
-    checkIfCourseIsMarked(){
-      this.courseActive = this.$store.state.userInfos.marked_course.indexOf(this.courseID) !== -1;
-    },
-    addCourseToList(){
+    async isCourseMarked(){
       const headers = { "Authorization": `Bearer ${this.$store.getters.getApiToken}` };
-      const originalContent = this.$store.getters.getUserMarkedCourses;
-      const content = { marked_course: [...originalContent,this.courseID] }
-      this.$axios.patch(`${this.$store.getters.getApiBaseUrl}user/${this.$store.getters.getUserId}`, content, {headers})
+      const filter_user = `filter[user_id][_eq]=${this.userID}`;
+      const filter_course = `filter[course_id][_eq]=${this.courseID}`;
+      await axios.get(`${this.$store.state.apiBaseUrl}user_course?${filter_user}&${filter_course}`, {headers})
+          .then(response => {
+            const isMarked = !!response.data.data.length;
+            if(isMarked){
+              this.activeCourseComboID = response.data.data[0].id
+            }else{
+              this.activeCourseComboID = null
+            }
+            this.courseActive = isMarked;
+          })
+    },
+    async addCourseToList(){
+      console.log('add')
+      const headers = { "Authorization": `Bearer ${this.$store.getters.getApiToken}` };
+      const content = {
+        user_id: this.userID,
+        course_id: this.courseID
+      }
+      this.$axios.post(`${this.$store.getters.getApiBaseUrl}user_course`, content, {headers})
           .then(() => {
             this.$store.dispatch('getUserInformationByUsername', localStorage.getItem('username'));
             this.setCourseActive();
           })
     },
-    removeCourseFromList(){
+    async removeCourseFromList(){
+      console.log('remove')
       const headers = { "Authorization": `Bearer ${this.$store.getters.getApiToken}` };
-      const newContent = this.$store.state.userInfos.marked_course.filter((item) => {
-        return item !== this.courseID;
+      await this.$axios.delete(`${this.$store.getters.getApiBaseUrl}user_course/${this.activeCourseComboID}`, {headers})
+      .then(() => {
+        this.$store.dispatch('getUserInformationByUsername', localStorage.getItem('username'));
+        this.setCourseInactive();
       })
-      const content = { marked_course: newContent }
-      this.$axios.patch(`${this.$store.state.apiBaseUrl}user/${this.$store.state.userInfos.id}`, content, {headers})
-          .then(() => {
-            this.$store.dispatch('getUserInformationByUsername', localStorage.getItem('username'));
-            this.setCourseInactive();
-          })
     },
     setCourseActive(){
       this.courseActive = true
@@ -60,7 +80,7 @@ export default{
     }
   },
   mounted() {
-    this.checkIfCourseIsMarked()
+    this.isCourseMarked()
   }
 }
 </script>

@@ -51,13 +51,13 @@ export default createStore({
     isUserLoggedIn: state => {
       return state.userIsLoggedIn || null
     },
-    getUserMarkedCourses: state => {
-      return state.userInfos.marked_course || null
-    },
     getUserId: state => {
       return state.userInfos.id || null
     },
-    getUserSolvedChapters: state => {
+    getUserMarkedCourseUser: state => {
+      return state.userInfos.marked_course || null
+    },
+    getUserSolvedChapterUser: state => {
       return state.userInfos.solved_chapters || null
     }
   },
