@@ -5,7 +5,6 @@
       <ProfileUserInfo :user="user" />
       <ProfileUserStats :user="user" />
     </div>
-    <ProfileActiveCourses v-if="user" />
     <ProfileFinishedCourses v-if="user" />
     <ProfileMarkedCourses v-if="user" />
 </template>
@@ -16,7 +15,6 @@ import ProfileImage from "../components/user/ProfileImage";
 import axios from "axios";
 import ProfileUserInfo from "../components/user/ProfileUserInfo";
 import ProfileUserStats from "../components/user/ProfileUserStats";
-import ProfileActiveCourses from "../components/user/ProfileActiveCourses";
 import ProfileFinishedCourses from "../components/user/ProfileFinishedCourses";
 import ProfileMarkedCourses from "../components/user/ProfileMarkedCourses";
 export default {
@@ -24,7 +22,6 @@ export default {
   components: {
     ProfileMarkedCourses,
     ProfileFinishedCourses,
-    ProfileActiveCourses,
     ProfileUserStats,
     ProfileUserInfo,
     ProfileImage,
