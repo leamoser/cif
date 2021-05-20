@@ -1,7 +1,7 @@
 <template>
   <TitleDesc :title="title" :description="description" />
   <div class="marked_courses" v-if="areUserInfosLoaded">
-    <CourseBox v-for="course in courses" :key="course.id" :course="course" />
+    <CourseBox v-if="courses" v-for="course in courses" :key="course.course_id.id" :course="course.course_id" />
   </div>
 </template>
 
@@ -31,10 +31,12 @@ export default {
   },
   methods:{
     async getMarkedCourses(){
-      if(this.$store.getters.getUserMarkedCourses && this.$store.getters.getUserMarkedCourses.length !== 0){
-        const headers = { "Authorization": `Bearer ${this.$store.getters.getApiToken}` };
-        const filter = `filter[id][_in]=${this.$store.getters.getUserMarkedCourses}`;
-        axios.get(`${this.$store.state.apiBaseUrl}course?${filter}`, {headers})
+      if(this.$store.getters.getUserMarkedCourseUser && this.$store.getters.getUserMarkedCourseUser.length !== 0){
+        const headers = { "Authorization": `Bearer ${this.$store.getters.getApiToken}` }
+        const filter_user = `filter[user_id][_eq]=${this.$store.getters.getUserId}`;
+        const filter_courses = `filter[id][_in]=${this.$store.getters.getUserMarkedCourseUser.toString()}`;
+        const fields = `fields=course_id.id,course_id.status,course_id.title,course_id.description,course_id.languages,course_id.chapter.chapter_id.id,course_id.chapter.chapter_id.status`;
+        await axios.get(`${this.$store.state.apiBaseUrl}user_course?${filter_user}&${filter_courses}&${fields}`, {headers})
             .then(response => {
               this.courses = response.data.data;
             })
