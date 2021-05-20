@@ -43,7 +43,6 @@ export default{
       const headers = { "Authorization": `Bearer ${this.$store.getters.getApiToken}` };
       const filter_user = `filter[user_id][_eq]=${this.$store.getters.getUserId}`;
       const filter_chapter = `filter[chapter_id][_eq]=${this.chapterID}`;
-      console.log(this.chapterID, this.$store.getters.getUserId)
       await axios.get(`${this.$store.state.apiBaseUrl}user_chapter?${filter_user}&${filter_chapter}`, {headers})
           .then(response => {
             const isFinalized = !!response.data.data.length;

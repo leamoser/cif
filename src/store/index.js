@@ -59,6 +59,10 @@ export default createStore({
     },
     getUserSolvedChapterUser: state => {
       return state.userInfos.solved_chapters || null
+    },
+    //COURSES
+    getAllCourses: state => {
+      return state.allCourses || null
     }
   },
 
