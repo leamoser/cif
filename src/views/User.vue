@@ -5,8 +5,8 @@
       <ProfileUserInfo :user="user" />
       <ProfileUserStats :user="user" />
     </div>
-    <ProfileFinishedCourses v-if="user" />
     <ProfileMarkedCourses v-if="user" />
+    <!--<ProfileFinishedCourses v-if="user" />-->
 </template>
 
 <script>
