@@ -46,8 +46,8 @@ div.user_info{
     right: -1px;
     border: $bo-standard;
     background-color: $co-akzent-light-50;
-    padding: $btn-big;
-    border-bottom-left-radius: $btn_big-radius;
+    padding: 20px 30px;
+    border-bottom-left-radius: 30px;
     img{
       @include icon(0,$ic-s)
     }
