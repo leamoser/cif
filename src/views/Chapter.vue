@@ -2,7 +2,7 @@
   <section v-if="chapter" class="mainsection chapter" id="chapter">
     <MainIntro :title="chapter.title" />
     <Backlink v-if="backlink" :link-u-r-l="backlink" linktext="Zurück zur Kursübersicht" />
-    <Unit :chapter-i-d="chapterID" />
+    <Unit :chapter-i-d="chapterID" :backlink="backlink" />
     <div class="material_container">
       <TitleDesc :title="material_title" />
       <div class="material">

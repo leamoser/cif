@@ -12,6 +12,9 @@
       <div id="prev" v-if="unitPosition > 1" @click="previousUnit"><img src="/img/webicons/arrow.svg"></div>
       <div id="next" v-if="unitPosition <= numberOfUnits - 1" @click="nextUnit"><img src="/img/webicons/arrow.svg"></div>
     </div>
+    <div class="finish_unit" v-if="isLastUnit" @click="finalizeChapter">
+      <p class="code small">Kapitel abschliessen</p>
+    </div>
   </div>
 </template>
 
@@ -25,6 +28,10 @@ export default{
   props: {
     chapterID: {
       type: Number,
+      required: true
+    },
+    backlink: {
+      type: String,
       required: true
     }
   },
@@ -50,6 +57,9 @@ export default{
     },
     activeUnitType(){
       return this.activeUnit?.type || null
+    },
+    isLastUnit(){
+      return this.numberOfUnits == this.unitPosition;
     }
   },
   methods: {
@@ -62,6 +72,19 @@ export default{
       if(this.unitPosition > 1){
         this.unitPosition--
       }
+    },
+    async finalizeChapter() {
+      /*
+      const headers = { "Authorization": `Bearer ${this.$store.getters.getApiToken}` };
+      const originalContent = this.$store.getters.getUserSolvedChapters;
+      const content = { solved_chapters: [...originalContent,this.chapterID] }
+      console.log(originalContent,content)
+      await this.$axios.patch(`${this.$store.getters.getApiBaseUrl}user/${this.$store.getters.getUserId}`, content, {headers})
+          .then(() => {
+            this.$store.dispatch('getUserInformationByUsername', localStorage.getItem('username'));
+          })
+      await this.$router.push(this.backlink)
+       */
     }
   },
   mounted() {
@@ -73,7 +96,7 @@ export default{
 
 <style lang="scss" scoped>
 div.unit_container{
-  padding: $ga-top-l $ga-around;
+  padding: 100px $ga-around;
   position: relative;
   border-top: $bo-standard;
   border-bottom: $bo-standard;
@@ -115,6 +138,16 @@ div.unit_container{
         }
       }
     }
+  }
+  div.finish_unit{
+    cursor: pointer;
+    position: absolute;
+    right: -1px;
+    bottom: -1px;
+    padding: $btn-big;
+    border-top-left-radius: $btn-big-radius;
+    border: $bo-standard;
+    background-color: $co-akzent-light;
   }
 }
 </style>

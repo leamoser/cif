@@ -52,7 +52,6 @@ export default {
   },
   mounted() {
     this.getUserInfo();
-    console.log("User init")
   }
 }
 </script>

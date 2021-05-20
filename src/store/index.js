@@ -56,6 +56,9 @@ export default createStore({
     },
     getUserId: state => {
       return state.userInfos.id || null
+    },
+    getUserSolvedChapters: state => {
+      return state.userInfos.solved_chapters || null
     }
   },
 
