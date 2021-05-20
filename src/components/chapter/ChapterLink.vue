@@ -1,8 +1,9 @@
 <template>
-  <!--<router-link :to="chapterURL + chapter.id">-->
   <router-link v-if="chapter" :to="{path: chapterURL + chapterID, query: {up: 1}}">
-    <div class="chapter_link">
+    <div class="chapter_link" :class="{done: chapterFinalized}">
+      <div v-if="chapterFinalized" class="badge"><p class="code">done</p></div>
       <p class="code">{{chapter.title}}</p>
+      <img src="/img/webicons/go_dark.svg" alt="Icon weiter">
     </div>
   </router-link>
 </template>
@@ -16,7 +17,9 @@ export default{
   data(){
     return{
       chapter: null,
-      chapterURL: '/chapter/'
+      chapterURL: '/chapter/',
+      chapterFinalized: false,
+      activeChapterComboID: null
     }
   },
   props: {
@@ -35,22 +38,56 @@ export default{
           .then(response => {
             this.chapter = response.data.data
           })
+    },
+    async checkifChapterIsSolved(){
+      const headers = { "Authorization": `Bearer ${this.$store.getters.getApiToken}` };
+      const filter_user = `filter[user_id][_eq]=${this.$store.getters.getUserId}`;
+      const filter_chapter = `filter[chapter_id][_eq]=${this.chapterID}`;
+      console.log(this.chapterID, this.$store.getters.getUserId)
+      await axios.get(`${this.$store.state.apiBaseUrl}user_chapter?${filter_user}&${filter_chapter}`, {headers})
+          .then(response => {
+            const isFinalized = !!response.data.data.length;
+            if(isFinalized){
+              this.activeChapterComboID = response.data.data[0].id
+            }else{
+              this.activeChapterComboID = null
+            }
+            this.chapterFinalized = isFinalized;
+          })
     }
   },
   mounted() {
     this.getChapterById(this.chapterID);
+    this.checkifChapterIsSolved()
   }
 }
 </script>
 <style lang="scss" scoped>
   a{
     @include linkreset;
-    div {
+    div.chapter_link {
+      @include flex(row,center,flex-start);
+      position: relative;
       background-color: $co-akzent-light-50;
       padding: $btn-basic;
+      height: 65px;
       border-radius: $btn-basic-radius;
       border: $bo-standard;
       margin-top: -1px;
+      &.done{
+        background-color: $co-akzent-light;
+      }
+      div.badge{
+        background-color: $co-pos;
+        padding:$btn-small;
+        border-radius: $btn-small-radius;
+        border: $bo-standard;
+        margin-right: 15px;
+      }
+      img{
+        position: absolute;
+        right: 15px;
+      }
     }
   }
 </style>

@@ -5,9 +5,9 @@
       <ProfileUserInfo :user="user" />
       <ProfileUserStats :user="user" />
     </div>
-    <ProfileActiveCourses />
-    <ProfileFinishedCourses />
-    <ProfileMarkedCourses />
+    <ProfileActiveCourses v-if="user" />
+    <ProfileFinishedCourses v-if="user" />
+    <ProfileMarkedCourses v-if="user" />
 </template>
 
 <script>
