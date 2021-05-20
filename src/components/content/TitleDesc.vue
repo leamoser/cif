@@ -25,5 +25,8 @@ export default{
     h2{
       margin-bottom: 7px;
     }
+    p{
+      @include content();
+    }
   }
 </style>

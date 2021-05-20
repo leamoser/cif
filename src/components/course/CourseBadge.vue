@@ -27,7 +27,7 @@ export default{
       }else if(this?.chapterDetails?.solvedChapterCount >= 1 && this?.chapterDetails?.solvedChapterCount !== this?.chapterDetails?.chapterCount){
         return {
           badgetext: 'in progress',
-          more: 'weitermachen'
+          more: 'weiter'
         }
       }else if(this?.chapterDetails?.solvedChapterCount === 0){
         return {
@@ -46,9 +46,9 @@ div.badge_leiste{
   padding-top: $ga-inner;
   @include flex(row,center,space-between);
   div.badge{
-    padding: $btn-basic;
+    padding: $btn-small;
     border: $bo-standard;
-    border-radius: $btn-basic-radius;
+    border-radius: $btn-small-radius;
     &.open{
       background-color: $co-neg;
     }

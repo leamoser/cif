@@ -16,6 +16,7 @@ div.gc{
     ul li,
     ol li{
       font: $f-text-m;
+      @include content;
     }
   }
   &.content-small{

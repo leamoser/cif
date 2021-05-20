@@ -73,7 +73,7 @@ $breakpoint-large-desktop: 88em;
     grid-template-columns: repeat(2, 1fr);
   }
   @include mobile-down{
-    display: block;
+    grid-template-columns: repeat(1, 1fr);
   }
 }
 
@@ -96,4 +96,12 @@ $breakpoint-large-desktop: 88em;
 @mixin linkreset(){
   color: inherit;
   text-decoration: none;
+}
+
+//content width
+@mixin content(){
+  width: 50%;
+  @include tablet-down {
+    width: 100%;
+  }
 }

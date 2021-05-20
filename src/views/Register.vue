@@ -5,7 +5,7 @@
     <div v-if="formValidation.note" class="msg" :class="{'success': formValidation.isValid}">
       <p class="code">{{formValidation.note}}</p>
     </div>
-      <form @submit.prevent="registerUser">
+      <form @submit.prevent="registerUser" class="user_form">
         <label for="firstname">Vorname<span class="req">*</span></label>
         <input type="text" id="firstname" name="firstname" v-model="user.firstname"><br>
         <label for="lastname">Nachname<span class="req">*</span></label>

@@ -46,6 +46,7 @@ a{
     padding: $btn-basic;
     border-radius: $btn-basic-radius;
     border: $bo-standard;
+    @include content;
   }
 }
 
