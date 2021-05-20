@@ -3,7 +3,6 @@
     <h2>Statistiken</h2>
     <p>Nutzer*in seit: {{userSince}}</p>
     <p>Absolvierte Lektionen: {{finishedLessons}}</p>
-    <p>Fertige Kurse: to be defined</p>
     <p>Aktive Kurse: {{activeCourses}}</p>
   </div>
 </template>

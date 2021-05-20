@@ -22,6 +22,7 @@ export default{
     text-align: center;
     color: $co-bg;
     border-radius: 500px;
+    border: $bo-standard;
     @include tablet-down{
       padding: 100px;
     }
