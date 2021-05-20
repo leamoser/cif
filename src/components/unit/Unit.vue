@@ -12,9 +12,7 @@
       <div id="prev" v-if="unitPosition > 1" @click="previousUnit"><img src="/img/webicons/arrow.svg"></div>
       <div id="next" v-if="unitPosition <= numberOfUnits - 1" @click="nextUnit"><img src="/img/webicons/arrow.svg"></div>
     </div>
-    <div class="finish_unit" v-if="isLastUnit" @click="finalizeChapter">
-      <p class="code small">Kapitel abschliessen</p>
-    </div>
+    <FinalizeChapter v-if="isLastUnit" :chapter-i-d="chapterID" :backlink="backlink" />
   </div>
 </template>
 
@@ -22,9 +20,10 @@
 import UnitTheory from "./UnitTheory.vue";
 import UnitExternalExercise from "./UnitExternalExercise.vue";
 import UnitEditorExercise from "./UnitEditorExercise.vue";
+import FinalizeChapter from "../chapter/FinalizeChapter";
 export default{
   name: 'Unit',
-  components: {UnitEditorExercise, UnitExternalExercise, UnitTheory},
+  components: {FinalizeChapter, UnitEditorExercise, UnitExternalExercise, UnitTheory},
   props: {
     chapterID: {
       type: Number,
@@ -74,6 +73,7 @@ export default{
       }
     },
     async finalizeChapter() {
+      console.log('chapter is solved')
       /*
       const headers = { "Authorization": `Bearer ${this.$store.getters.getApiToken}` };
       const originalContent = this.$store.getters.getUserSolvedChapters;
@@ -138,16 +138,6 @@ div.unit_container{
         }
       }
     }
-  }
-  div.finish_unit{
-    cursor: pointer;
-    position: absolute;
-    right: -1px;
-    bottom: -1px;
-    padding: $btn-big;
-    border-top-left-radius: $btn-big-radius;
-    border: $bo-standard;
-    background-color: $co-akzent-light;
   }
 }
 </style>
