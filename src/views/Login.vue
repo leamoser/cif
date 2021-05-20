@@ -56,7 +56,7 @@ export default {
                     for (const key in this.user) {
                       this.user[key] = '';
                     }
-                    this.$router.push('/user')
+                    this.$router.push('/')
                   }else{
                     this.formValidation.note = 'Passwort oder Username sind inkorrekt.'
                   }
