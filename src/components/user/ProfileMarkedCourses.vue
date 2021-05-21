@@ -1,7 +1,7 @@
 <template>
   <TitleDesc :title="title" :description="description" />
   <div class="marked_courses" v-if="areUserInfosLoaded">
-    <CourseBox v-if="courses" v-for="course in courses" :key="course.course_id.id" :course="course.course_id" />
+    <CourseBox v-if="courses" v-for="course in courses" :key="course?.course_id?.id" :course="course?.course_id" />
   </div>
 </template>
 

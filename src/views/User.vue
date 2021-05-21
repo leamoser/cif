@@ -2,7 +2,7 @@
   <MainIntro :title="pageTitle" v-if="user" />
     <div class="profilestats">
       <ProfileImage />
-      <ProfileUserInfo :user="user" />
+      <ProfileUserInfo />
       <ProfileUserStats :user="user" />
     </div>
     <ProfileMarkedCourses v-if="user" />
@@ -57,7 +57,7 @@ export default {
     padding: $ga-around;
     display: grid;
     grid-gap: $ga-inner;
-    grid-template-columns: 3fr 4fr 5fr;
+    grid-template-columns: 2fr 5fr 5fr;
     >*{
       width: 100%;
     }

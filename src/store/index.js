@@ -39,7 +39,7 @@ export default createStore({
     },
     //USER
     areUserInfosLoaded: state => {
-      if(state.userInfos.id){
+      if(state?.userInfos?.id){
         return true
       }else{
         return false
@@ -139,7 +139,7 @@ export default createStore({
         "Authorization": `Bearer ${this.state.apiToken}`
       };
       const filter = `?filter[username][_eq]=${username}`
-      const fields = `&fields=id,firstname,lastname,username,email,marked_course,solved_chapters`
+      const fields = `&fields=id,firstname,lastname,username,email,marked_course,solved_chapters,date_created`
       axios.get(`${this.state.apiBaseUrl}user${filter}${fields}`, { headers })
           .then(response => {
             commit('GET_USER_INFORMATION_BY_USERNAME', response.data.data[0])

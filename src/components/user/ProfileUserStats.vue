@@ -10,13 +10,10 @@
 <script>
 export default {
   name: 'ProfileUserStats',
-  props: {
-    user: {
-      type: Object,
-      required: true
-    }
-  },
   computed: {
+    user(){
+      return this.$store.getters.getUserInfos || null
+    },
     userSince(){
       return new Date(this.user.date_created).toLocaleDateString() || null
     },
