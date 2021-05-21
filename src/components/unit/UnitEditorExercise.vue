@@ -8,7 +8,6 @@
 </template>
 <script>
 import axios from "axios";
-
 export default{
   name: 'UnitEditorExercise',
   props: {
@@ -31,12 +30,10 @@ export default{
     }
   },
   methods: {
-    getEditorExerciseById(id){
-      const headers = {
-        "Authorization": `Bearer ${this.$store.state.apiToken}`
-      };
-      const fields = '?fields[]=id,title,code_start,code_end,hints'
-      axios.get(`${this.$store.state.apiBaseUrl}editor_exercise/${id}${fields}`, {headers})
+    async getEditorExerciseById(id){
+      const headers = { "Authorization": `Bearer ${this.$store.getters.getApiToken}` };
+      const fields = 'fields[]=id,title,code_start,code_end,hints'
+      await axios.get(`${this.$store.getters.getApiBaseUrl}editor_exercise/${id}?${fields}`, {headers})
           .then(response => {
             this.editorExercise = response.data.data
           })

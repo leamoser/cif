@@ -1,5 +1,5 @@
 <template>
-  <div class="text_big">
+  <div class="text_big" v-if="text">
     <p class="giant">{{ text }}</p>
   </div>
 </template>

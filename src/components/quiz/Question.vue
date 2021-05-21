@@ -33,11 +33,11 @@ export default{
   },
   computed:{
     questionTitle(){
-      return this.question.quiz_question_id.question
+      return this.question.quiz_question_id.question || null
     },
     imageLink(){
       if(this.question.quiz_question_id.image){
-        return this.$store.state.apiAssetUrl + this.question.quiz_question_id.image || null
+        return this.$store.getters.getApiAssetUrl + this.question.quiz_question_id.image || null
       }else{
         return null
       }

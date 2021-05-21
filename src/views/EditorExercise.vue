@@ -2,7 +2,7 @@
   <MainIntro :title="title" />
   <Backlink linktext="Zurück zum Kapitel" />
   <div class="unit">
-    <UnitEditorExercise unit-type="external" :exercise-i-d="editorexerciseID" />
+    <UnitEditorExercise v-if="editorexerciseID" unit-type="external" :exercise-i-d="editorexerciseID" />
   </div>
 </template>
 
@@ -13,14 +13,12 @@ import MainIntro from "../components/content/MainIntro.vue";
 export default {
   name: 'EditorExercise',
   components: {MainIntro, Backlink, UnitEditorExercise},
-  data(){
-    return{
-      editorexerciseID: this.$route.params.id
-    }
-  },
   computed:{
     title(){
-      return 'Abschlussübung ' + this.$store.state.activeChapter.title || null
+      return 'Abschlussübung ' + this.$store.getters.getActiveChapterTitle || null
+    },
+    editorexerciseID(){
+      return parseInt(this.$route.params.id) || null;
     }
   }
 }

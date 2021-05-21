@@ -1,5 +1,5 @@
 <template>
-  <router-link :to="quizUrl + quizID">
+  <router-link v-if="quizID && url" :to="url">
     <div class="quiz">
       <h3>Abschlussquiz</h3>
       <p class="small">Stelle dein Wissen auf die Probe und absolviede das Abschlussquiz zum Kapitel.</p>
@@ -15,9 +15,9 @@ export default{
       required: true
     }
   },
-  data(){
-    return{
-      quizUrl: '/quiz/'
+  computed: {
+    url(){
+      return this.quizID ? '/quiz/' + this.quizID : null
     }
   }
 }

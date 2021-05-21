@@ -1,5 +1,5 @@
 <template>
-  <footer>
+  <footer v-if="appClaim">
     <p>Evtl. Footernavi</p>
     <p>{{appClaim}}</p>
   </footer>
@@ -9,7 +9,7 @@ export default{
   name: 'Footer',
   computed: {
     appClaim(){
-      return this.$store.state.appClaim
+      return this.$store.getters.getAppClaim || null
     }
   }
 }

@@ -2,8 +2,8 @@
   <MainIntro :title="title" />
   <Backlink linktext="Zurück zum Kapitel" />
   <div class="unit" v-if="quiz">
-    <h2>{{quiz.quiz_name}}</h2>
-    <Question v-for="(question, index) in quiz.questions" :key="index" :question="question" />
+    <h2 v-if="quizName">{{quizName}}</h2>
+    <Question v-if="quizQuestions" v-for="(question, index) in quizQuestions" :key="index" :question="question" />
   </div>
 </template>
 
@@ -23,16 +23,20 @@ export default {
   },
   computed: {
     title(){
-      return 'Abschlussquiz ' + this.$store.state.activeChapter.title || null
+      return 'Abschlussquiz ' + this.$store.getters.getActiveChapterTitle || null
+    },
+    quizName(){
+      return this.quiz.quiz_name || null
+    },
+    quizQuestions(){
+      return this.quiz.questions || null
     }
   },
   methods: {
-    getQuiz(id){
-      const headers = {
-        "Authorization": `Bearer ${this.$store.state.apiToken}`
-      };
+    async getQuiz(id){
+      const headers = { "Authorization": `Bearer ${this.$store.getters.getApiToken}` };
       const fields = '?fields=id, quiz_name,questions.quiz_question_id.question,questions.quiz_question_id.image,questions.quiz_question_id.explanation,questions.quiz_question_id.answers.quiz_question_answer_id.*'
-      axios.get(`${this.$store.state.apiBaseUrl}quiz/${id}${fields}`, {headers})
+      await axios.get(`${this.$store.getters.getApiBaseUrl}quiz/${id}${fields}`, {headers})
           .then(response => {
             this.quiz = response.data.data;
           })

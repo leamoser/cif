@@ -1,9 +1,9 @@
 <template>
-  <div class="intro" id="main">
+  <div class="intro" id="main" v-if="appName && title">
     <router-link to="/">
-      <p class="logo_small">{{ $store.state.appName }}</p>
+      <p class="logo_small">{{appName}}</p>
     </router-link>
-    <p class="intro">{{ title }}</p>
+    <p class="intro">{{title}}</p>
   </div>
 </template>
 <script>
@@ -13,6 +13,11 @@ export default{
     title: {
       type: String,
       required: true
+    }
+  },
+  computed: {
+    appName(){
+      return this.$store.getters.getAppName || null
     }
   }
 }

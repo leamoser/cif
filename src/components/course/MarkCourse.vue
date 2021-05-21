@@ -14,7 +14,6 @@
 </template>
 <script>
 import axios from "axios";
-
 export default{
   name: 'MarkCourse',
   props: {
@@ -31,7 +30,7 @@ export default{
   },
   computed: {
     userID(){
-      return this.$store.getters.getUserId;
+      return this.$store.getters.getUserId || null;
     }
   },
   methods: {
@@ -39,7 +38,7 @@ export default{
       const headers = { "Authorization": `Bearer ${this.$store.getters.getApiToken}` };
       const filter_user = `filter[user_id][_eq]=${this.userID}`;
       const filter_course = `filter[course_id][_eq]=${this.courseID}`;
-      await axios.get(`${this.$store.state.apiBaseUrl}user_course?${filter_user}&${filter_course}`, {headers})
+      await axios.get(`${this.$store.getters.getApiBaseUrl}user_course?${filter_user}&${filter_course}`, {headers})
           .then(response => {
             const isMarked = !!response.data.data.length;
             if(isMarked){
@@ -56,7 +55,7 @@ export default{
         user_id: this.userID,
         course_id: this.courseID
       }
-      this.$axios.post(`${this.$store.getters.getApiBaseUrl}user_course`, content, {headers})
+      await this.$axios.post(`${this.$store.getters.getApiBaseUrl}user_course`, content, {headers})
           .then(response => {
             this.activeCourseComboID = response.data.data.id
             this.$store.dispatch('getUserInformationByUsername', localStorage.getItem('username'));

@@ -3,10 +3,9 @@
     <div class="profilestats">
       <ProfileImage />
       <ProfileUserInfo />
-      <ProfileUserStats :user="user" />
+      <ProfileUserStats />
     </div>
     <ProfileMarkedCourses v-if="user" />
-    <!--<ProfileFinishedCourses v-if="user" />-->
 </template>
 
 <script>
@@ -37,11 +36,11 @@ export default {
     }
   },
   methods: {
-    getUserInfo(){
+    async getUserInfo(){
       const headers = { "Authorization": `Bearer ${this.$store.getters.getApiToken}` };
       const filter = `filter[username][_eq]=${localStorage.getItem('username')}`
       const fields = `fields=id,firstname,lastname,username,email,date_created,marked_course,solved_chapters`;
-      axios.get(`${this.$store.state.apiBaseUrl}user?${filter}&${fields}`, {headers})
+      await axios.get(`${this.$store.getters.getApiBaseUrl}user?${filter}&${fields}`, {headers})
           .then(response => {
             this.user = response.data.data[0];
           })

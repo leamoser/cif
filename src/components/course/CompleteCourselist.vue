@@ -1,13 +1,11 @@
 <template>
-  <div class="course_list">
+  <div class="course_list" v-if="courses">
       <CourseBox v-for="course in courses" :key="course.id" :course="course" />
   </div>
 </template>
 
-
 <script>
 import CourseBox from "./CourseBox.vue"
-
 export default{
   name: 'CompleteCourselist',
   components: {
@@ -15,7 +13,7 @@ export default{
   },
   computed: {
     courses(){
-      return this.$store.state.allCourses
+      return this.$store.getters.getAllCourses || null;
     }
   },
   mounted() {

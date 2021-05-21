@@ -30,7 +30,7 @@ export default{
   },
   computed: {
     userID(){
-      return this.$store.getters.getUserId;
+      return this.$store.getters.getUserId || null;
     }
   },
   methods: {
@@ -38,7 +38,7 @@ export default{
       const headers = { "Authorization": `Bearer ${this.$store.getters.getApiToken}` };
       const filter_user = `filter[user_id][_eq]=${this.userID}`;
       const filter_chapter = `filter[chapter_id][_eq]=${this.chapterID}`;
-      await axios.get(`${this.$store.state.apiBaseUrl}user_chapter?${filter_user}&${filter_chapter}`, {headers})
+      await axios.get(`${this.$store.getters.getApiBaseUrl}user_chapter?${filter_user}&${filter_chapter}`, {headers})
           .then(response => {
             const isFinalized = !!response.data.data.length;
             if(isFinalized){
@@ -55,7 +55,7 @@ export default{
         user_id: this.userID,
         chapter_id: this.chapterID
       }
-      this.$axios.post(`${this.$store.getters.getApiBaseUrl}user_chapter`, content, {headers})
+      await axios.post(`${this.$store.getters.getApiBaseUrl}user_chapter`, content, {headers})
           .then(response => {
             this.activeChapterComboID = response.data.data.id
             this.$store.dispatch('getUserInformationByUsername', localStorage.getItem('username'));

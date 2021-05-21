@@ -1,5 +1,5 @@
 <template>
-  <div class="title_desc">
+  <div class="title_desc" v-if="title && description">
     <h2>{{title}}</h2>
     <p v-if="description">{{description}}</p>
   </div>

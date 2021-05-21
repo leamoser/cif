@@ -2,7 +2,7 @@
   <MainIntro :title="title" />
   <Backlink linktext="Zurück zum Kapitel" />
   <div class="unit">
-    <UnitExternalExercise unit-type="external" :exercise-i-d="externalexerciseID" />
+    <UnitExternalExercise v-if="externalexerciseID" unit-type="external" :exercise-i-d="externalexerciseID" />
   </div>
 </template>
 
@@ -13,14 +13,12 @@ import UnitExternalExercise from "../components/unit/UnitExternalExercise.vue";
 export default {
   name: 'ExternalExercise',
   components: {UnitExternalExercise, MainIntro, Backlink},
-  data(){
-    return{
-      externalexerciseID: this.$route.params.id
-    }
-  },
   computed:{
     title(){
-      return 'Abschlussübung ' + this.$store.state.activeChapter.title || null
+      return 'Abschlussübung ' + this.$store.getters.getActiveChapterTitle || null
+    },
+    externalexerciseID(){
+      return parseInt(this.$route.params.id) || null;
     }
   }
 }

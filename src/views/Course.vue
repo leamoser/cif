@@ -8,7 +8,7 @@
     </div>
     <MarkCourse :course-i-d="course.id" />
     <TitleDesc :title="chapterTitle" />
-    <ChapterList :chapters="allPublishedChapters" />
+    <ChapterList :chapters-i-ds="allPublishedChapters" />
   </section>
 </template>
 
@@ -37,22 +37,6 @@ export default {
       chapterTitle: 'Kapitel des Kurses'
     }
   },
-  methods: {
-    async getCourseById(id) {
-      const headers = {
-        "Authorization": `Bearer ${this.$store.state.apiToken}`
-      };
-      const filter = `?fields=id,title,status,description,languages,chapter.chapter_id.status,chapter.chapter_id.id`;
-      await axios.get(`${this.$store.state.apiBaseUrl}course/${id}${filter}`, {headers})
-          .then(response => {
-            this.course = response.data.data
-            this.$store.dispatch('changeActiveCourse', {id: this.courseID, title: this.course.title})
-          })
-    }
-  },
-  mounted() {
-    this.getCourseById(this.courseID);
-  },
   computed: {
     allPublishedChapters(){
       let allPublishedChapters = []
@@ -65,6 +49,20 @@ export default {
       }
       return allPublishedChapters
     }
+  },
+  methods: {
+    async getCourseById(id) {
+      const headers = { "Authorization": `Bearer ${this.$store.getters.getApiToken}` };
+      const filter = `fields=id,title,status,description,languages,chapter.chapter_id.status,chapter.chapter_id.id`;
+      await axios.get(`${this.$store.getters.getApiBaseUrl}course/${id}?${filter}`, {headers})
+          .then(response => {
+            this.course = response.data.data
+            this.$store.dispatch('changeActiveCourse', {id: this.courseID, title: this.course.title})
+          })
+    }
+  },
+  mounted() {
+    this.getCourseById(this.courseID);
   }
 }
 </script>

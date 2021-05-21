@@ -1,5 +1,4 @@
 <template>
-  <!--<pre>{{$store.state.userInfos}}</pre>-->
   <div class="user_info" v-if="user">
     <div class="edit_toggle" @click="makeProfileEditable" v-if="!profileEditMode">
       <img src="/img/webicons/edit.svg" alt="Icon Edit">
@@ -71,13 +70,11 @@ export default {
       if(this.newUser.password){
         contents.password = bcrypt.hashSync(this.newUser.password,8);
       }
-      await this.$axios.patch(`${this.$store.state.apiBaseUrl}user/${this.user.id}`, contents, {headers})
+      await this.$axios.patch(`${this.$store.getters.getApiBaseUrl}user/${this.user.id}`, contents, {headers})
           .then(() => {
             this.$store.dispatch('getUserInformationByUsername', this.user.username);
           })
     }
-  },
-  mounted() {
   }
 }
 </script>

@@ -1,18 +1,21 @@
 import { createStore } from 'vuex'
 import axios from "axios";
+import api from "./modules/api";
 
 export default createStore({
   state: {
-    //API-SETTING
+    //API
     standartStatus: 'published',
     apiBaseUrl: process.env.VUE_APP_API_COLLECTION_URL,
     apiAdminUrl: process.env.VUE_APP_API_BASE_URL,
     apiToken: process.env.VUE_APP_API_TOKEN,
     apiAssetUrl: process.env.VUE_APP_API_ASSETS_URL,
+
     //BASIC
     appName: 'CIF*',
     appSlogan: 'Lerne online die tollsten Frontend-Programmiersprachen.',
     appClaim: '* Code is fun',
+
     //KURSE
     allCourses: {},
     unitsById: {},
@@ -24,9 +27,11 @@ export default createStore({
       id: 1,
       title: ''
     },
+
     //USER
     userIsLoggedIn: false,
     userInfos: {}
+
   },
 
   getters: {
@@ -37,6 +42,21 @@ export default createStore({
     getApiBaseUrl: state => {
       return state.apiBaseUrl || null
     },
+    getApiAssetUrl: state => {
+      return state.apiAssetUrl || null
+    },
+
+    //BASIC
+    getAppName: state => {
+      return state.appName || null
+    },
+    getAppSlogan: state => {
+      return state.appSlogan || null
+    },
+    getAppClaim: state => {
+      return state.appClaim || null
+    },
+
     //USER
     areUserInfosLoaded: state => {
       if(state?.userInfos?.id){
@@ -60,10 +80,18 @@ export default createStore({
     getUserSolvedChapterUser: state => {
       return state.userInfos.solved_chapters || null
     },
+
     //COURSES
+    getActiveCourseId: state => {
+      return state.activeCourse.id || null
+    },
+    getActiveChapterTitle: state => {
+      return state.activeChapter.title || null
+    },
     getAllCourses: state => {
       return state.allCourses || null
     }
+
   },
 
   mutations: {
@@ -150,6 +178,5 @@ export default createStore({
     }
   },
 
-  modules: {
-  }
+  modules: {}
 })

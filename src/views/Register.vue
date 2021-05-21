@@ -47,14 +47,12 @@ export default {
     }
   },
   methods:{
-    registerUser(){
+    async registerUser(){
       if(this.user.username && this.user.lastname && this.user.username && this.user.email && this.user.password){
         this.user.password = bcrypt.hashSync(this.user.password,8);
-        const headers = {
-          "Authorization": `Bearer ${this.$store.state.apiToken}`
-        };
-        this.$axios.post(`${this.$store.state.apiBaseUrl}user`, this.user, { headers })
-            .then(response => {
+        const headers = { "Authorization": `Bearer ${this.$store.getters.getApiToken}` };
+        await this.$axios.post(`${this.$store.getters.getApiBaseUrl}user`, this.user, { headers })
+            .then(() => {
               for (const key in this.user) {
                 this.user[key] = '';
               }

@@ -1,5 +1,5 @@
 <template>
-  <span v-if="languageName" class="language">{{ languageName }}</span>
+  <span v-if="languageName" class="language">{{languageName}}</span>
 </template>
 
 <script>
@@ -18,10 +18,10 @@ export default {
     }
   },
   methods: {
-    getLanguageByComboId(id) {
-      const headers = { "Authorization": `Bearer ${this.$store.state.apiToken}` };
+    async getLanguageByComboId(id) {
+      const headers = { "Authorization": `Bearer ${this.$store.getters.getApiToken}` };
       const fields = 'fields[]=language_id.*'
-      axios.get(`${this.$store.state.apiBaseUrl}course_language/${id}?${fields}`, {headers})
+      await axios.get(`${this.$store.getters.getApiBaseUrl}course_language/${id}?${fields}`, {headers})
           .then(response => {
             this.languageName = response.data.data.language_id.name
           })

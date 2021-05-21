@@ -3,7 +3,7 @@
     <img src="/img/webicons/arrow.svg">
     <p class="code">
       <router-link v-if="linkURL" :to="linkURL">{{ linktext }}</router-link>
-      <a v-else @click="$router.go(-1)">{{ linktext }}</a>
+      <a v-else @click="backlink">{{ linktext }}</a>
     </p>
   </div>
 </template>
@@ -18,6 +18,11 @@ export default{
     linkURL: {
       type: String,
       required: false
+    }
+  },
+  computed: {
+    backlink(){
+      return this.$router.go(-1) || null
     }
   }
 }

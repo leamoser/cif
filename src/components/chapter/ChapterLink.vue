@@ -29,12 +29,10 @@ export default{
     }
   },
   methods: {
-    getChapterById(id){
-      const headers = {
-        "Authorization": `Bearer ${this.$store.state.apiToken}`
-      };
-      const filter = '?fields=id,title,more_infos,niveau,editor_exercise,external_exercise,quiz,downloads,units'
-      axios.get(`${this.$store.state.apiBaseUrl}chapter/${id}${filter}`, {headers})
+    async getChapterById(id){
+      const headers = { "Authorization": `Bearer ${this.$store.getters.getApiToken}` };
+      const filter = 'fields=id,title,more_infos,niveau,editor_exercise,external_exercise,quiz,downloads,units'
+      await axios.get(`${this.$store.getters.getApiBaseUrl}chapter/${id}?${filter}`, {headers})
           .then(response => {
             this.chapter = response.data.data
           })
@@ -43,7 +41,7 @@ export default{
       const headers = { "Authorization": `Bearer ${this.$store.getters.getApiToken}` };
       const filter_user = `filter[user_id][_eq]=${this.$store.getters.getUserId}`;
       const filter_chapter = `filter[chapter_id][_eq]=${this.chapterID}`;
-      await axios.get(`${this.$store.state.apiBaseUrl}user_chapter?${filter_user}&${filter_chapter}`, {headers})
+      await axios.get(`${this.$store.getters.getApiBaseUrl}user_chapter?${filter_user}&${filter_chapter}`, {headers})
           .then(response => {
             const isFinalized = !!response.data.data.length;
             if(isFinalized){

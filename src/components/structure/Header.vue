@@ -33,7 +33,6 @@
 </template>
 <script>
 import UserHeader from "../user/UserHeader";
-
 export default {
   name: 'Header',
   components: {UserHeader},
@@ -57,7 +56,6 @@ export default {
     toggleNav() {
       this.contentNavActive = !this.contentNavActive;
       this.userNavActive = false;
-
     },
     toggleUser() {
       this.userNavActive = !this.userNavActive;

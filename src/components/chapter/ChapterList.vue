@@ -1,6 +1,6 @@
 <template>
   <div class="chapter_list">
-    <ChapterLink v-for="chapter in chapters" :chapter-i-d="chapter" />
+    <ChapterLink v-for="chapter in chaptersIDs" :chapter-i-d="chapter" />
   </div>
 </template>
 
@@ -12,7 +12,7 @@ export default{
     ChapterLink
   },
   props: {
-    chapters: {
+    chaptersIDs: {
       type: Array,
       required: true
     }
@@ -26,6 +26,6 @@ export default{
 </script>
 <style lang="scss" scoped>
   div{
-    padding: 0 $ga-around;
+    padding: $ga-around;
   }
 </style>

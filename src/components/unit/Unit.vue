@@ -72,20 +72,6 @@ export default{
         this.unitPosition--
       }
     },
-    async finalizeChapter() {
-      console.log('chapter is solved')
-      /*
-      const headers = { "Authorization": `Bearer ${this.$store.getters.getApiToken}` };
-      const originalContent = this.$store.getters.getUserSolvedChapters;
-      const content = { solved_chapters: [...originalContent,this.chapterID] }
-      console.log(originalContent,content)
-      await this.$axios.patch(`${this.$store.getters.getApiBaseUrl}user/${this.$store.getters.getUserId}`, content, {headers})
-          .then(() => {
-            this.$store.dispatch('getUserInformationByUsername', localStorage.getItem('username'));
-          })
-      await this.$router.push(this.backlink)
-       */
-    }
   },
   mounted() {
     this.$store.dispatch('getAllUnitsById', this.chapterID);

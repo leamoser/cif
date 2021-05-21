@@ -35,7 +35,7 @@ export default{
       return this.download.file || null
     },
     downloadLink(){
-      return this.$store.state.apiAssetUrl + this.download.file || null
+      return this.$store.getters.getApiAssetUrl + this.download.file || null
     }
   },
   methods: {

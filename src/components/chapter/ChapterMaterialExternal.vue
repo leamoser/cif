@@ -1,5 +1,5 @@
 <template>
-  <router-link :to="externalexerciseUrl + exerciseID">
+  <router-link v-if="exerciseID && url" :to="url">
     <div class="external_exercise">
       <h3>Abschlussübung</h3>
       <p class="small">Teste dein Wissen am Ende der Lektion.</p>
@@ -15,9 +15,9 @@ export default{
       required: true
     }
   },
-  data(){
-    return{
-      externalexerciseUrl: '/externalexercise/'
+  computed: {
+    url(){
+      return this.exerciseID ? '/externalexercise/' + this.exerciseID : null
     }
   }
 }

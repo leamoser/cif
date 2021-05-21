@@ -48,7 +48,7 @@ export default {
   },
   computed: {
     material_title(){
-      return `Zusatzmaterial "${this.chapter.title}"`
+      return `Zusatzmaterial "${this.chapter.title}"` || null
     },
     hasDownloads(){
       return this.chapter.downloads != 0
@@ -69,18 +69,16 @@ export default {
       return this.chapter.units.length
     },
     backlink(){
-      let id = this.$store.state.activeCourse.id
+      let id = this.$store.getters.getActiveCourseId
       if(id) return '/course/' + id
       return false
     }
   },
   methods: {
-    getChapterById(id) {
-      const headers = {
-        "Authorization": `Bearer ${this.$store.state.apiToken}`
-      };
-      const fields = '?fields=id,title,more_infos,niveau,editor_exercise,external_exercise,quiz,downloads,units.id'
-      axios.get(`${this.$store.state.apiBaseUrl}chapter/${id}${fields}`, {headers})
+    async getChapterById(id) {
+      const headers = { "Authorization": `Bearer ${this.$store.getters.getApiToken}` };
+      const fields = 'fields=id,title,more_infos,niveau,editor_exercise,external_exercise,quiz,downloads,units.id'
+      await axios.get(`${this.$store.getters.getApiBaseUrl}chapter/${id}?${fields}`, {headers})
           .then(response => {
             this.chapter = response.data.data;
             this.$store.dispatch('changeActiveChapter', {id: this.chapterID, title: this.chapter.title})
@@ -106,5 +104,4 @@ section{
     }
   }
 }
-
 </style>

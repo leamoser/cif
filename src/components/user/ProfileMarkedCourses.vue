@@ -36,7 +36,7 @@ export default {
         const filter_user = `filter[user_id][_eq]=${this.$store.getters.getUserId}`;
         const filter_courses = `filter[id][_in]=${this.$store.getters.getUserMarkedCourseUser.toString()}`;
         const fields = `fields=course_id.id,course_id.status,course_id.title,course_id.description,course_id.languages,course_id.chapter.chapter_id.id,course_id.chapter.chapter_id.status`;
-        await axios.get(`${this.$store.state.apiBaseUrl}user_course?${filter_user}&${filter_courses}&${fields}`, {headers})
+        await axios.get(`${this.$store.getters.getApiBaseUrl}user_course?${filter_user}&${filter_courses}&${fields}`, {headers})
             .then(response => {
               this.courses = response.data.data;
             })
@@ -46,7 +46,6 @@ export default {
   mounted() {
     if (this.areUserInfosLoaded) this.getMarkedCourses()
   }
-
 }
 </script>
 

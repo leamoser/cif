@@ -1,5 +1,5 @@
 <template>
-  <router-link :to="courseUrl + course.id">
+  <router-link v-if="course" :to="courseLink">
     <div class="course_box">
       <h3 class="title">{{ course.title }}</h3>
       <Infobar :languages="course.languages" :chapter-count="chapterCount" />
@@ -32,6 +32,9 @@ export default{
     }
   },
   computed: {
+    courseLink(){
+      return this.course.id ? this.courseUrl + this.course.id : null
+    },
     chapterIDs(){
       let allChapters = [];
       this.course.chapter.forEach(details => {
@@ -70,7 +73,7 @@ export default{
       const filter_user = `filter[user_id][_eq]=${this.$store.getters.getUserId}`;
       const filter_chapter = `filter[chapter_id][_in]=${this.chapterIDs.toString()}`
       const fields = `fields=chapter_id`;
-      await axios.get(`${this.$store.state.apiBaseUrl}user_chapter?${filter_user}&${filter_chapter}&${fields}`, {headers})
+      await axios.get(`${this.$store.getters.getApiBaseUrl}user_chapter?${filter_user}&${filter_chapter}&${fields}`, {headers})
           .then(response => {
             if(response.data.data.length === 0){
               this.solvedChapters = []

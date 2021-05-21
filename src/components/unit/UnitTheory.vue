@@ -1,6 +1,6 @@
 <template>
-  <h2>{{unitContent.title}}</h2>
-  <div class="content gc" v-html="unitContent.theory"></div>
+  <h2 v-if="unitContent">{{unitContent.title}}</h2>
+  <div v-if="unitContent" class="content gc" v-html="unitContent.theory"></div>
 </template>
 <script>
 export default{
