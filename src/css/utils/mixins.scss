@@ -105,3 +105,18 @@ $breakpoint-large-desktop: 88em;
     width: 100%;
   }
 }
+
+//box shadow on hover
+@mixin shadow_hover() {
+  transition: 0.5s;
+  &:hover {
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 20px 30px;
+  }
+}
+//basic hover
+@mixin basic_hover{
+  transition: 0.5s;
+  &:hover{
+    @content
+  }
+}

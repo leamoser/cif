@@ -7,11 +7,7 @@
     </div>
   </router-link>
 </template>
-
-
 <script>
-import axios from "axios";
-
 export default{
   name: 'ChapterLink',
   data(){
@@ -32,7 +28,7 @@ export default{
     async getChapterById(id){
       const headers = { "Authorization": `Bearer ${this.$store.getters.getApiToken}` };
       const filter = 'fields=id,title,more_infos,niveau,editor_exercise,external_exercise,quiz,downloads,units'
-      await axios.get(`${this.$store.getters.getApiBaseUrl}chapter/${id}?${filter}`, {headers})
+      await this.$axios.get(`${this.$store.getters.getApiBaseUrl}chapter/${id}?${filter}`, {headers})
           .then(response => {
             this.chapter = response.data.data
           })
@@ -41,7 +37,7 @@ export default{
       const headers = { "Authorization": `Bearer ${this.$store.getters.getApiToken}` };
       const filter_user = `filter[user_id][_eq]=${this.$store.getters.getUserId}`;
       const filter_chapter = `filter[chapter_id][_eq]=${this.chapterID}`;
-      await axios.get(`${this.$store.getters.getApiBaseUrl}user_chapter?${filter_user}&${filter_chapter}`, {headers})
+      await this.$axios.get(`${this.$store.getters.getApiBaseUrl}user_chapter?${filter_user}&${filter_chapter}`, {headers})
           .then(response => {
             const isFinalized = !!response.data.data.length;
             if(isFinalized){
@@ -71,6 +67,9 @@ export default{
       border-radius: $btn-basic-radius;
       border: $bo-standard;
       margin-top: -1px;
+      @include basic_hover{
+        transform: translateX(20px);
+      }
       &.done{
         background-color: $co-akzent-light;
       }

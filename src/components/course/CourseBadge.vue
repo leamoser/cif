@@ -8,7 +8,6 @@
   </div>
 </template>
 <script>
-
 export default{
   name: 'courseBadge',
   props: {
@@ -62,7 +61,13 @@ div.badge_leiste{
   div.more{
     @include flex(row,center,flex-end);
     img{
+      transition: 0.5s;
       margin-left: 15px;
+    }
+  }
+  @include basic_hover{
+    div.more img{
+      margin-left: 5px;
     }
   }
 }

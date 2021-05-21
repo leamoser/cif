@@ -99,5 +99,6 @@ export default{
     height: auto;
     padding: $ga-inner;
     color: $co-bg;
+    @include shadow_hover;
   }
 </style>

@@ -31,15 +31,19 @@ export default{
   div{
     cursor: pointer;
     @include flex(row,center,flex-start);
-    padding: 15px $ga-around $ga-around $ga-around;
-  }
-  p{
-    a{
-      @include linkreset;
+    margin: 15px $ga-around $ga-around $ga-around;
+    p{
+      a{
+        @include linkreset;
+      }
+    }
+    img{
+      @include icon(180deg, $ic-m);
+      margin-right: 10px;
+    }
+    @include basic_hover{
+      transform: translateX(-20px);
     }
   }
-  img{
-    @include icon(180deg, $ic-m);
-    margin-right: 10px;
-  }
+
 </style>

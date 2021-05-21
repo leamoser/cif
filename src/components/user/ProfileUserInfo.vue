@@ -26,7 +26,6 @@
     </div>
   </div>
 </template>
-
 <script>
 import bcrypt from "bcryptjs";
 export default {
@@ -78,7 +77,6 @@ export default {
   }
 }
 </script>
-
 <style lang="scss" scoped>
 div.user_info{
   border: $bo-standard;
@@ -99,7 +97,13 @@ div.user_info{
     background-color: $co-akzent-light-50;
     padding: 20px 30px;
     border-bottom-left-radius: 30px;
+    @include basic_hover{
+      img{
+        @include icon(-20deg,$ic-s)
+      }
+    }
     img{
+      transition: 0.5s;
       @include icon(0,$ic-s)
     }
   }

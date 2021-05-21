@@ -13,7 +13,6 @@
   </div>
 </template>
 <script>
-import axios from "axios";
 export default{
   name: 'MarkCourse',
   props: {
@@ -38,7 +37,7 @@ export default{
       const headers = { "Authorization": `Bearer ${this.$store.getters.getApiToken}` };
       const filter_user = `filter[user_id][_eq]=${this.userID}`;
       const filter_course = `filter[course_id][_eq]=${this.courseID}`;
-      await axios.get(`${this.$store.getters.getApiBaseUrl}user_course?${filter_user}&${filter_course}`, {headers})
+      await this.$axios.get(`${this.$store.getters.getApiBaseUrl}user_course?${filter_user}&${filter_course}`, {headers})
           .then(response => {
             const isMarked = !!response.data.data.length;
             if(isMarked){
@@ -86,8 +85,13 @@ export default{
 <style lang="scss" scoped>
 div.mark_course{
   cursor: pointer;
-  padding: 0 $ga-around;
+  margin: 0 $ga-around;
   @include flex(row,center,flex-start);
+  @include basic_hover{
+    p{
+      margin-left: 15px;
+    }
+  }
   div.icon{
     width: 60px;
     height: 60px;
@@ -101,12 +105,13 @@ div.mark_course{
       &.active{
         opacity: 1;
       }
-      &:hover{
-        transform: scale(1.1);
+      @include basic_hover{
+        transform: scale(1.17);
       }
     }
   }
   p{
+    transition: 0.5s;
     margin-left: 20px;
   }
 }
