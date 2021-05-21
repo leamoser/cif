@@ -25,6 +25,9 @@ export default{
 <style lang="scss" scoped>
   a{
     @include linkreset;
+    @include basic_hover{
+      color: $co-akzent-light;
+    }
   }
   div{
     padding: $ga-around;

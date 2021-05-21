@@ -104,7 +104,7 @@ header {
           @include linkreset;
           font: $f-code-m;
           padding: 0 15px;
-          &:hover{
+          @include basic_hover{
             text-decoration: underline;
           }
         }
@@ -137,6 +137,9 @@ header {
       a:first-child{
         @include flex(row,center,center);
         p{
+          @include basic_hover{
+            text-decoration: underline;
+          }
           margin-left: 15px;
         }
       }
