@@ -94,7 +94,7 @@ export default {
 <style lang="scss" scoped>
 section{
   div.material{
-    padding: 0 $ga-around;
+    padding: $ga-around;
     @include grid(3);
     >*{
       background-color: $co-akzent-dark;

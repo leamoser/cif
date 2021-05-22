@@ -25,6 +25,7 @@ export default{
 <style lang="scss" scoped>
 a{
   @include linkreset;
+  @include shadow_hover;
   h3{
     padding-bottom: $ga-inner;
   }
