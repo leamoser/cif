@@ -1,6 +1,6 @@
 <template>
   <UserHeader/>
-  <header>
+  <header :class="{hidden: !showNav}">
     <div class="nav" @click="toggleNav" :class="{active: contentNavActive}" v-if="userIsLoggedIn">
       <div v-if="contentNavActive" class="nav_container">
         <router-link to="/">Home</router-link>
@@ -38,6 +38,8 @@ export default {
       contentNavActive: false,
       userNavActive: false,
       username: null,
+      showNav: true,
+      lastScrollPosition: 0
     }
   },
   computed: {
@@ -64,13 +66,25 @@ export default {
     },
     refreshUsername() {
       this.username = localStorage.getItem('username');
+    },
+    hideNav(){
+      const currentScrollPosition = window.pageYOffset || document.documentElement.scrollTop
+      if (currentScrollPosition < 0) {
+        return true
+      }
+      this.showNav = currentScrollPosition < this.lastScrollPosition
+      this.lastScrollPosition = currentScrollPosition
     }
   },
   mounted() {
     this.refreshUsername()
+    window.addEventListener('scroll', this.hideNav)
   },
   updated() {
     this.refreshUsername()
+  },
+  beforeUnmount () {
+    window.removeEventListener('scroll', this.hideNav)
   }
 }
 </script>
@@ -81,6 +95,11 @@ header {
   top: 0;
   right: 0;
   @include flex(row, center, flex-end);
+  transition: 0.5s;
+  transform: translateY(0vh);
+  &.hidden{
+    transform: translateY(-20vh);
+  }
   > * {
     cursor: pointer;
     height: 80px;
