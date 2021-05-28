@@ -85,6 +85,11 @@ export default {
   },
   beforeUnmount () {
     window.removeEventListener('scroll', this.hideNav)
+  },
+  watch: {
+    $route(from, to) {
+      document.title = from.meta.title || 'CIF*'
+    }
   }
 }
 </script>

@@ -14,7 +14,10 @@ const routes = [
   {
     path: '/',
     name: 'Home',
-    component: Home
+    component: Home,
+    meta:{
+      title: 'CIF* - Online Frontendentwicklung lernen'
+    }
   },
   {
     path: '/about',
@@ -22,52 +25,82 @@ const routes = [
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue'),
+    meta:{
+      title: 'CIF* - About'
+    }
   },
   {
     path: '/impressum/',
     name: 'Impressum',
-    component: Impressum
+    component: Impressum,
+    meta:{
+      title: 'CIF* - Impressum'
+    }
   },
   {
     path: '/user/',
     name: 'User',
-    component: User
+    component: User,
+    meta:{
+      title: 'CIF* - Profil'
+    }
   },
   {
     path: '/course/:id',
     name: 'Course',
-    component: Course
+    component: Course,
+    meta:{
+      title: 'CIF* - Kurs'
+    }
   },
   {
     path: '/chapter/:id',
     name: 'Chapter',
-    component: Chapter
+    component: Chapter,
+    meta:{
+      title: 'CIF* - Kapitel'
+    }
   },
   {
     path: '/editorexercise/:id',
     name: 'EditorExercise',
-    component: EditorExercise
+    component: EditorExercise,
+    meta:{
+      title: 'CIF* - Übung'
+    }
   },
   {
     path: '/externalexercise/:id',
     name: 'ExternalExercise',
-    component: ExternalExercise
+    component: ExternalExercise,
+    meta:{
+      title: 'CIF* - Übung'
+    }
   },
   {
     path: '/quiz/:id',
     name: 'Quiz',
-    component: Quiz
+    component: Quiz,
+    meta:{
+      title: 'CIF* - Quiz'
+    }
   },
   {
     path: '/login/',
     name: 'Login',
-    component: Login
+    component: Login,
+    meta:{
+      title: 'CIF* - Login'
+    }
   },
   {
     path: '/register/',
     name: 'Register',
-    component: Register
+    component: Register,
+    meta:{
+      title: 'CIF* - Registrieren'
+    }
   },
 ]
 
