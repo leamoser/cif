@@ -4,11 +4,14 @@
       <h3>Abschlussübung</h3>
       <p class="small">Teste dein Wissen am Ende der Lektion.</p>
     </div>
+    <MaterialBadge linktext="zur Übung" />
   </router-link>
 </template>
 <script>
+import MaterialBadge from "./MaterialBadge";
 export default{
   name: 'ChapterMaterialEditor',
+  components: {MaterialBadge},
   props:{
     exerciseID: {
       type: Number,

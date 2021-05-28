@@ -42,7 +42,7 @@ export default{
       margin-right: 10px;
     }
     @include basic_hover{
-      transform: translateX(-20px);
+      transform: translateX(-10px);
     }
   }
 

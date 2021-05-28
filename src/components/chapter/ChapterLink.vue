@@ -71,7 +71,7 @@ export default{
       border: $bo-standard;
       margin-top: -1px;
       @include basic_hover{
-        transform: translateX(20px);
+        transform: translateX(10px);
       }
       &.done{
         background-color: $co-akzent-light;

@@ -101,6 +101,7 @@ section{
       padding: $ga-inner;
       color: $co-bg;
       min-height: 250px;
+      position: relative;
     }
   }
 }
