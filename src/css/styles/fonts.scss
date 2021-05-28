@@ -1,12 +1,15 @@
 //Logos & Introheader
 p.logo_big{
     font: $f-logo-l;
+    @include fontswap;
 }
 p.logo_small{
     font: $f-logo-s;
+    @include fontswap;
 }
 p.intro{
     font: $f-front-subline;
+    @include fontswap;
 }
 
 //Text
@@ -15,16 +18,21 @@ ul,
 li,
 label{
     font: $f-text-m;
+    @include fontswap;
     &.small{
         font: $f-text-s;
+        @include fontswap;
     }
     &.giant{
         font: $f-headline-m;
+        @include fontswap;
     }
     &.code{
         font: $f-code-m;
+        @include fontswap;
         &.small{
            font: $f-code-s;
+            @include fontswap;
         }
     }
 }
@@ -32,7 +40,9 @@ label{
 //Titel
 h2{
     font: $f-headline-m;
+    @include fontswap;
 }
 h3{
     font: $f-headline-s;
+    @include fontswap;
 }
