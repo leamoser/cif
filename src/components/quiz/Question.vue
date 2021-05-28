@@ -5,7 +5,7 @@
       <img v-if="imageLink" :src="imageLink" alt="Bild für Frage">
       <form v-if="answers" @submit.prevent="checkSolution">
         <Answer v-for="(answer,index) in answers" :key="index" :answer="answer" :question-slug="questionSlug" />
-        <button><p class="code">Antwort prüfen</p></button>
+        <button><p class="code small">Antwort prüfen</p></button>
       </form>
     </div>
     <div v-if="isCorrect !== undefined" class="explanation" :class="{'correct': isCorrect}">
@@ -83,6 +83,9 @@ export default{
     @include grid(2);
     &:not(:last-of-type){
       margin-bottom: $ga-inner;
+    }
+    &:last-of-type{
+      margin-bottom: $ga-top-l;
     }
     img{
       max-width: 100%;

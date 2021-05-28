@@ -4,6 +4,7 @@
   <div class="unit" v-if="quiz">
     <h2 v-if="quizName">{{quizName}}</h2>
     <Question v-if="quizQuestions" v-for="(question, index) in quizQuestions" :key="index" :question="question" />
+    <a @click="backlink"><button class="finalize_quiz"><p class="code small">Quiz abschliessen</p></button></a>
   </div>
 </template>
 
@@ -30,6 +31,9 @@ export default {
     },
     quizQuestions(){
       return this.quiz.questions || null
+    },
+    backlink(){
+      return this.$router.go(-1) || null
     }
   },
   methods: {
@@ -59,5 +63,14 @@ export default {
     border-bottom: $bo-standard;
     min-height: 90vh;
     overflow: hidden;
+    button.finalize_quiz{
+      background-color: $co-akzent-light;
+      padding: $btn-big;
+      border-top-left-radius: $btn-big-radius;
+      border: $bo-standard;
+      position: absolute;
+      right: -1px;
+      border: -1px;
+    }
   }
 </style>
