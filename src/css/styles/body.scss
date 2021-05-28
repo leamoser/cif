@@ -2,6 +2,11 @@
 section.mainsection{
   min-height: 80vh;
 }
+//contentpages
+section.contentpage{
+  padding: $ga-around;
+  //@include content;
+}
 //quiz
 div.evaluated{
   div{

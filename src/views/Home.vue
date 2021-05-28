@@ -24,7 +24,7 @@ export default {
     return{
       bigText: 'Programmieren lernen kann auch Spass machen. Mit CIF* spielerisch erfolge feiern und besser werden.',
       title: 'Alle angebotenen Kurse',
-      desc: 'Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.'
+      desc: 'Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.',
     }
   },
   computed: {

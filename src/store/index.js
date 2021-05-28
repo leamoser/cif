@@ -1,6 +1,5 @@
 import { createStore } from 'vuex'
 import axios from "axios";
-import api from "./modules/api";
 
 export default createStore({
   state: {
@@ -17,8 +16,8 @@ export default createStore({
     appClaim: '* Code is fun',
 
     //KURSE
-    allCourses: {},
-    unitsById: {},
+    allCourses: null,
+    unitsById: null,
     activeCourse: {
       id: 1,
       title: ''
@@ -30,7 +29,10 @@ export default createStore({
 
     //USER
     userIsLoggedIn: false,
-    userInfos: {}
+    userInfos: null,
+
+    //CONTENTPAGES
+    allContentPages: null
 
   },
 
@@ -45,7 +47,6 @@ export default createStore({
     getApiAssetUrl: state => {
       return state.apiAssetUrl || null
     },
-
     //BASIC
     getAppName: state => {
       return state.appName || null
@@ -56,7 +57,6 @@ export default createStore({
     getAppClaim: state => {
       return state.appClaim || null
     },
-
     //USER
     areUserInfosLoaded: state => {
       if(state?.userInfos?.id){
@@ -80,7 +80,6 @@ export default createStore({
     getUserSolvedChapterUser: state => {
       return state.userInfos.solved_chapters || null
     },
-
     //COURSES
     getActiveCourseId: state => {
       return state.activeCourse.id || null
@@ -90,8 +89,16 @@ export default createStore({
     },
     getAllCourses: state => {
       return state.allCourses || null
+    },
+    //CONTENTPAGES
+    getAllContentPages: state => {
+      return state.allContentPages || null
+    },
+    getContentPageByPageslug: (state) => (pageslug) => {
+      if(state.allContentPages){
+        return state.allContentPages.filter(page => page.page === pageslug)
+      }
     }
-
   },
 
   mutations: {
@@ -122,6 +129,10 @@ export default createStore({
     },
     CLEAR_USER_INFORMATION(state){
       state.userInfos = {}
+    },
+    //CONTENTPAGES
+    GET_ALL_CONTENT_PAGES(state, allContentPages){
+      state.allContentPages = allContentPages
     }
   },
 
@@ -175,8 +186,14 @@ export default createStore({
     },
     clearUserInfo({commit}){
       commit('CLEAR_USER_INFORMATION');
+    },
+    //CONTENTPAGES
+    getAllContentPages({ commit }){
+      const headers = { "Authorization": `Bearer ${this.state.apiToken}` };
+      axios.get(`${this.state.apiBaseUrl}pages`, {headers})
+          .then(response => {
+            commit('GET_ALL_CONTENT_PAGES', response.data.data)
+          })
     }
-  },
-
-  modules: {}
+  }
 })
