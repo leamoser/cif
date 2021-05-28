@@ -21,7 +21,7 @@ export default{
 div.niveau{
   width: 32px;
   height: 20px;
-  margin: 0 10px;
+  margin: 0 15px 0 10px;
   @include flex(row,flex-end,space-between);
   *{
     width: 5px;
