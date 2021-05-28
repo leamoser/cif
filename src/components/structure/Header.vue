@@ -92,7 +92,6 @@ header {
     padding: 35px;
     border: $bo-standard;
   }
-
   div.nav {
     @include flex(row, center, flex-end);
     width: 102px;
@@ -120,7 +119,6 @@ header {
       background-color: $co-akzent-light-50;
     }
   }
-
   div.user {
     img {
       @include icon(0, $ic-s);
@@ -152,30 +150,5 @@ header {
       }
     }
   }
-  div.nav_container{
-
-  }
-  /*div.nav_container {
-    position: fixed;
-    top: -1px;
-    left: -1px;
-    padding: 29px 35px;
-    text-align: right;
-    border: $bo-standard;
-    min-width: 60%;
-    border-bottom-right-radius: 40px;
-    > * {
-      font: $f-code-m;
-      color: inherit;
-      text-decoration: none;
-      &:not(:last-of-type) {
-        margin-right: 20px;
-      }
-      &:hover {
-        text-decoration: underline;
-      }
-    }
-  }*/
-
 }
 </style>

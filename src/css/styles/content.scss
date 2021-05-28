@@ -18,6 +18,11 @@ div.gc{
       font: $f-text-m;
       @include content;
     }
+    p{
+      &:not(:last-of-type){
+        margin-bottom: 10px;
+      }
+    }
   }
   &.content-small{
     p,
@@ -30,6 +35,6 @@ div.gc{
     margin: 40px 0 20px 0;
   }
   h3{
-    margin: 15px 0 5px 0;
+    margin: 15px 0 10px 0;
   }
 }

@@ -1,6 +1,9 @@
 <template>
   <footer v-if="appClaim">
-    <p>Evtl. Footernavi</p>
+    <div class="footer_nav">
+      <p><router-link to="/impressum">Impressum</router-link></p>
+      <p><router-link to="/about">About</router-link></p>
+    </div>
     <p>{{appClaim}}</p>
   </footer>
 </template>
@@ -19,5 +22,17 @@ export default{
     margin-top: $ga-top-s;
     padding: $ga-around;
     @include flex(row,center,space-between);
+    div.footer_nav{
+      @include flex(row,center,flex-start);
+      *{
+        @include linkreset;
+        @include basic_hover{
+          text-decoration: underline;
+        }
+        &:not(:last-of-type){
+          margin-right: 30px;
+        }
+      }
+    }
   }
 </style>
