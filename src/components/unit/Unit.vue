@@ -58,7 +58,7 @@ export default{
       return this.activeUnit?.type || null
     },
     isLastUnit(){
-      return this.numberOfUnits === this.unitPosition || null
+      return this.numberOfUnits === Math.trunc(this.unitPosition) || null
     },
     showPrevButton(){
       return this.unitPosition > 1 || null
