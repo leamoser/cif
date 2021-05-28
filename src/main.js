@@ -9,6 +9,7 @@ import slugify from "slugify-js"
 
 //styles
 import '/src/css/main.scss';
+
 //config & mount
 const myapp = createApp(App);
 myapp.config.globalProperties.$axios = axios;

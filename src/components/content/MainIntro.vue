@@ -1,8 +1,8 @@
 <template>
   <div class="intro" id="main" v-if="appName && title">
-    <router-link to="/">
-      <p class="logo_small">{{appName}}</p>
-    </router-link>
+    <p class="logo_small">
+      <router-link to="/">{{appName}}</router-link>
+    </p>
     <p class="intro">{{title}}</p>
   </div>
 </template>
@@ -32,5 +32,8 @@ export default{
   div{
     padding: $ga-around;
     padding-bottom: 0;
+    p.logo_small{
+      width: auto;
+    }
   }
 </style>

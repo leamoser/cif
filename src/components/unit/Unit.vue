@@ -9,8 +9,8 @@
       <UnitEditorExercise v-if="activeUnitType === 'editor_exercise'" :unit-content="activeUnit" unit-type="internal" />
     </div>
     <div class="controls" v-if="numberOfUnits > 1">
-      <div id="prev" v-if="unitPosition > 1" @click="previousUnit"><img src="/img/webicons/arrow.svg"></div>
-      <div id="next" v-if="unitPosition <= numberOfUnits - 1" @click="nextUnit"><img src="/img/webicons/arrow.svg"></div>
+      <div id="prev" v-if="showPrevButton" @click="previousUnit"><img src="/img/webicons/arrow.svg"></div>
+      <div id="next" v-if="showNextButton" @click="nextUnit"><img src="/img/webicons/arrow.svg"></div>
     </div>
     <FinalizeChapter v-if="isLastUnit" :chapter-i-d="chapterID" :backlink="backlink" />
   </div>
@@ -41,7 +41,7 @@ export default{
   },
   watch: {
     unitPosition: function (){
-      this.$router.push({path: '/chapter/' + this.chapterID, query:{up: this.unitPosition}})
+      this.$router.push({path: '/chapter/' + this.chapterID, query:{up: this.unitPosition.toString()}})
     }
   },
   computed:{
@@ -58,7 +58,13 @@ export default{
       return this.activeUnit?.type || null
     },
     isLastUnit(){
-      return this.numberOfUnits == this.unitPosition;
+      return this.numberOfUnits === this.unitPosition || null
+    },
+    showPrevButton(){
+      return this.unitPosition > 1 || null
+    },
+    showNextButton(){
+      return this.unitPosition <= this.numberOfUnits - 1 || null
     }
   },
   methods: {

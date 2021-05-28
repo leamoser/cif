@@ -1,7 +1,6 @@
 <template>
   <UserHeader/>
   <header>
-
     <div class="nav" @click="toggleNav" :class="{active: contentNavActive}" v-if="userIsLoggedIn">
       <div v-if="contentNavActive" class="nav_container">
         <router-link to="/">Home</router-link>
@@ -10,7 +9,6 @@
       <img v-if="!contentNavActive" src="/img/webicons/burger.svg" alt="Burger-Navigation Icon">
       <img v-else src="/img/webicons/burgeractive.svg" alt="Burger-Navigation Icon Aktiv">
     </div>
-
     <div class="user loggedout nav" v-if="!userIsLoggedIn" @click="toggleUser" :class="{active: userNavActive}">
       <div v-if="userNavActive" class="nav_container">
         <router-link to="/login">Login</router-link>
@@ -18,7 +16,6 @@
       </div>
       <img src="/img/webicons/user.svg" alt="Icon User">
     </div>
-
     <div class="user loggedin usertoggle" v-if="userIsLoggedIn">
       <router-link to="/user">
         <img src="/img/webicons/user.svg" alt="Icon User">
@@ -28,7 +25,6 @@
         <p class="code small">Logout</p>
       </router-link>
     </div>
-
   </header>
 </template>
 <script>
