@@ -1,7 +1,8 @@
 <template>
   <section class="mainsection home" id="home">
     <FrontIntro />
-    <BigText :text="bigText" />
+    <HomeLoggedOut v-if="!loggedIn" />
+    <BigText v-if="loggedIn" :text="bigText" />
     <TitleDesc v-if="loggedIn" :title="title" :description="desc" />
     <CompleteCourselist v-if="loggedIn" />
   </section>
@@ -12,9 +13,11 @@ import FrontIntro from "@/components/content/FrontIntro.vue"
 import BigText from '@/components/content/BigText.vue'
 import TitleDesc from "../components/content/TitleDesc.vue"
 import CompleteCourselist from "../components/course/CompleteCourselist.vue";
+import HomeLoggedOut from "../components/content/HomeLoggedOut";
 export default {
   name: 'Home',
   components: {
+    HomeLoggedOut,
     BigText,
     FrontIntro,
     CompleteCourselist,

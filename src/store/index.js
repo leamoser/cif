@@ -190,7 +190,8 @@ export default createStore({
     //CONTENTPAGES
     getAllContentPages({ commit }){
       const headers = { "Authorization": `Bearer ${this.state.apiToken}` };
-      axios.get(`${this.state.apiBaseUrl}pages`, {headers})
+      const fields = 'fields=page,title,text,content,image'
+      axios.get(`${this.state.apiBaseUrl}pages?${fields}`, {headers})
           .then(response => {
             commit('GET_ALL_CONTENT_PAGES', response.data.data)
           })
