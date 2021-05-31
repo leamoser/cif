@@ -9,6 +9,7 @@ import Quiz from "../views/Quiz.vue";
 import Login from "../views/Login";
 import Register from "../views/Register";
 import Impressum from "../views/Impressum";
+import NotFound from "../views/NotFound";
 
 const routes = [
   {
@@ -102,6 +103,14 @@ const routes = [
       title: 'CIF* - Registrieren'
     }
   },
+  {
+    path: '/:pathMatch(.*)*',
+    name: 'NotFound',
+    component: NotFound,
+    meta: {
+      title: 'CIF* - Error 404'
+    }
+  }
 ]
 
 const router = createRouter({
