@@ -27,7 +27,7 @@ export default {
       return 'Abschlussquiz ' + this.$store.getters.getActiveChapterTitle || null
     },
     quizName(){
-      return this.quiz.quiz_name || null
+      return this.quiz.title || null
     },
     quizQuestions(){
       return this.quiz.questions || null
@@ -39,7 +39,7 @@ export default {
   methods: {
     async getQuiz(id){
       const headers = { "Authorization": `Bearer ${this.$store.getters.getApiToken}` };
-      const fields = '?fields=id, quiz_name,questions.quiz_question_id.question,questions.quiz_question_id.image,questions.quiz_question_id.explanation,questions.quiz_question_id.answers.quiz_question_answer_id.*'
+      const fields = '?fields=id,title,questions.quiz_question_id.question,questions.quiz_question_id.image,questions.quiz_question_id.explanation,questions.quiz_question_id.answers.quiz_question_answer_id.*'
       await axios.get(`${this.$store.getters.getApiBaseUrl}quiz/${id}${fields}`, {headers})
           .then(response => {
             this.quiz = response.data.data;
