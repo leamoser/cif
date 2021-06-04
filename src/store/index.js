@@ -69,7 +69,7 @@ export default createStore({
       return state.userIsLoggedIn || null
     },
     getUserId: state => {
-      return state.userInfos.id || null
+      return state?.userInfos?.id || null
     },
     getUserMarkedCourseUser: state => {
       return state.userInfos.marked_course || null
