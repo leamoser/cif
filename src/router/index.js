@@ -10,6 +10,8 @@ import Login from "../views/Login";
 import Register from "../views/Register";
 import Impressum from "../views/Impressum";
 import NotFound from "../views/NotFound";
+import About from "../views/About";
+const appName = 'CIF*'
 
 const routes = [
   {
@@ -17,18 +19,15 @@ const routes = [
     name: 'Home',
     component: Home,
     meta:{
-      title: 'CIF* - Online Frontendentwicklung lernen'
+      title: `${appName} - Online Frontendentwicklung lernen`
     }
   },
   {
     path: '/about',
     name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue'),
+    component: About,
     meta:{
-      title: 'CIF* - About'
+      title: `${appName} - About`
     }
   },
   {
@@ -36,7 +35,7 @@ const routes = [
     name: 'Impressum',
     component: Impressum,
     meta:{
-      title: 'CIF* - Impressum'
+      title: `${appName} - Impressum`
     }
   },
   {
@@ -44,7 +43,7 @@ const routes = [
     name: 'User',
     component: User,
     meta:{
-      title: 'CIF* - Profil'
+      title: `${appName} - Profil`
     }
   },
   {
@@ -52,7 +51,7 @@ const routes = [
     name: 'Course',
     component: Course,
     meta:{
-      title: 'CIF* - Kurs'
+      title: `${appName} - Kurs`
     }
   },
   {
@@ -60,7 +59,7 @@ const routes = [
     name: 'Chapter',
     component: Chapter,
     meta:{
-      title: 'CIF* - Kapitel'
+      title: `${appName} - Kapitel`
     }
   },
   {
@@ -68,7 +67,7 @@ const routes = [
     name: 'EditorExercise',
     component: EditorExercise,
     meta:{
-      title: 'CIF* - Übung'
+      title: `${appName} - Übung`
     }
   },
   {
@@ -76,7 +75,7 @@ const routes = [
     name: 'ExternalExercise',
     component: ExternalExercise,
     meta:{
-      title: 'CIF* - Übung'
+      title: `${appName} - Übung`
     }
   },
   {
@@ -84,7 +83,7 @@ const routes = [
     name: 'Quiz',
     component: Quiz,
     meta:{
-      title: 'CIF* - Quiz'
+      title: `${appName} - Quiz`
     }
   },
   {
@@ -92,7 +91,7 @@ const routes = [
     name: 'Login',
     component: Login,
     meta:{
-      title: 'CIF* - Login'
+      title: `${appName} - Login`
     }
   },
   {
@@ -100,7 +99,7 @@ const routes = [
     name: 'Register',
     component: Register,
     meta:{
-      title: 'CIF* - Registrieren'
+      title: `${appName} - Registrieren`
     }
   },
   {
@@ -108,7 +107,7 @@ const routes = [
     name: 'NotFound',
     component: NotFound,
     meta: {
-      title: 'CIF* - Error 404'
+      title: `${appName} - Error 404`
     }
   }
 ]

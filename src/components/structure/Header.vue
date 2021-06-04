@@ -88,7 +88,7 @@ export default {
   },
   watch: {
     $route(from, to) {
-      document.title = from.meta.title || 'CIF*'
+      document.title = from.meta.title || this.$store.getters.getAppName
     }
   }
 }

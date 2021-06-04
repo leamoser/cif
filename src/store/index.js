@@ -10,9 +10,7 @@ export default createStore({
     apiToken: process.env.VUE_APP_API_TOKEN,
     apiAssetUrl: process.env.VUE_APP_API_ASSETS_URL,
     //BASIC
-    appName: '...',
-    appSlogan: 'Lerne online die tollsten Frontend-Programmiersprachen.',
-    appClaim: '* Code is fun',
+    basesettings: null,
     //KURSE
     allCourses: null,
     unitsById: null,
@@ -44,13 +42,13 @@ export default createStore({
     },
     //BASIC
     getAppName: state => {
-      return state.appName || null
+      return state?.basesettings?.project_title || null
     },
     getAppSlogan: state => {
-      return state.appSlogan || null
+      return state?.basesettings.project_slogan || null
     },
     getAppClaim: state => {
-      return state.appClaim || null
+      return state?.basesettings?.project_claim || null
     },
     //USER
     areUserInfosLoaded: state => {
@@ -97,7 +95,7 @@ export default createStore({
       state.allCourses = allCourses
     },
     GET_SETTINGS(state, settings){
-      state.appName = settings.project_name
+      state.basesettings = settings
     },
     GET_ALL_UNITS_BY_CHAPTER_ID(state, unitsById){
       state.unitsById = unitsById
@@ -141,8 +139,7 @@ export default createStore({
     },
     getSettings({ commit }){
       const headers = { "Authorization": `Bearer ${this.state.apiToken}` };
-      const fields = `fields=project_name`
-      axios.get(`${this.state.apiAdminUrl}settings?${fields}`, { headers })
+      axios.get(`${this.state.apiBaseUrl}basesettings`, { headers })
           .then(response => {
             commit('GET_SETTINGS', response.data.data)
           })
