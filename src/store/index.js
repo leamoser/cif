@@ -9,12 +9,10 @@ export default createStore({
     apiAdminUrl: process.env.VUE_APP_API_BASE_URL,
     apiToken: process.env.VUE_APP_API_TOKEN,
     apiAssetUrl: process.env.VUE_APP_API_ASSETS_URL,
-
     //BASIC
-    appName: 'CIF*',
+    appName: '...',
     appSlogan: 'Lerne online die tollsten Frontend-Programmiersprachen.',
     appClaim: '* Code is fun',
-
     //KURSE
     allCourses: null,
     unitsById: null,
@@ -26,11 +24,11 @@ export default createStore({
       id: 1,
       title: ''
     },
-
     //USER
     userIsLoggedIn: false,
     userInfos: null,
-
+    //CONTENT
+    activeContentPage: null
   },
 
   getters: {
@@ -87,6 +85,10 @@ export default createStore({
     getAllCourses: state => {
       return state.allCourses || null
     },
+    //CONTENT
+    getContentPage: state => {
+      return state.activeContentPage || null
+    }
   },
 
   mutations: {
@@ -94,8 +96,14 @@ export default createStore({
     GET_ALL_COURSES(state, allCourses){
       state.allCourses = allCourses
     },
+    GET_SETTINGS(state, settings){
+      state.appName = settings.project_name
+    },
     GET_ALL_UNITS_BY_CHAPTER_ID(state, unitsById){
       state.unitsById = unitsById
+    },
+    GET_SINGLE_ITEM(state, content){
+      state.activeContentPage = content
     },
     CHANGE_ACTIVE_COURSE(state, course){
       state.activeCourse.id = course.id
@@ -123,25 +131,36 @@ export default createStore({
   actions: {
     //CONTENT
     getAllCourses({ commit }){
-      const headers = {
-        "Authorization": `Bearer ${this.state.apiToken}`
-      };
-      const filter = `?filter[status][_eq]=${this.state.standartStatus}`
-      const fields = `&fields=id,status,title,description,languages,chapter.chapter_id.id,chapter.chapter_id.status`
-      axios.get(`${this.state.apiBaseUrl}course${filter}${fields}`, { headers })
+      const headers = { "Authorization": `Bearer ${this.state.apiToken}` };
+      const filter = `filter[status][_eq]=${this.state.standartStatus}`
+      const fields = `fields=id,status,title,description,languages,chapter.chapter_id.id,chapter.chapter_id.status`
+      axios.get(`${this.state.apiBaseUrl}course?${filter}&${fields}`, { headers })
           .then(response => {
             commit('GET_ALL_COURSES', response.data.data)
           })
     },
+    getSettings({ commit }){
+      const headers = { "Authorization": `Bearer ${this.state.apiToken}` };
+      const fields = `fields=project_name`
+      axios.get(`${this.state.apiAdminUrl}settings?${fields}`, { headers })
+          .then(response => {
+            commit('GET_SETTINGS', response.data.data)
+          })
+    },
     getAllUnitsById({ commit }, chapterId){
-      const headers = {
-        "Authorization": `Bearer ${this.state.apiToken}`
-      };
-      const filter = `?filter[chapter_id][_eq]=${chapterId}`
-      const fields = `&fields=id,title,theory,editor_exercise,external_exercise,type`
-      axios.get(`${this.state.apiBaseUrl}unit${filter}${fields}`, { headers })
+      const headers = { "Authorization": `Bearer ${this.state.apiToken}` };
+      const filter = `filter[chapter_id][_eq]=${chapterId}`
+      const fields = `fields=id,title,theory,editor_exercise,external_exercise,type`
+      axios.get(`${this.state.apiBaseUrl}unit?${filter}&${fields}`, { headers })
           .then(response => {
             commit('GET_ALL_UNITS_BY_CHAPTER_ID', response.data.data)
+          })
+    },
+    getSingleItem({ commit }, pageslug){
+      const headers = { "Authorization": `Bearer ${this.state.apiToken}` };
+      axios.get(`${this.state.apiBaseUrl}${pageslug}`, { headers })
+          .then(response => {
+            commit('GET_SINGLE_ITEM', response.data.data)
           })
     },
     changeActiveCourse({commit}, course){
@@ -161,9 +180,9 @@ export default createStore({
       const headers = {
         "Authorization": `Bearer ${this.state.apiToken}`
       };
-      const filter = `?filter[username][_eq]=${username}`
-      const fields = `&fields=id,firstname,lastname,username,email,marked_course,solved_chapters,date_created`
-      axios.get(`${this.state.apiBaseUrl}user${filter}${fields}`, { headers })
+      const filter = `filter[username][_eq]=${username}`
+      const fields = `fields=id,firstname,lastname,username,email,marked_course,solved_chapters,date_created`
+      axios.get(`${this.state.apiBaseUrl}user?${filter}&${fields}`, { headers })
           .then(response => {
             commit('GET_USER_INFORMATION_BY_USERNAME', response.data.data[0])
           })

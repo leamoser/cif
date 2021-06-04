@@ -43,6 +43,7 @@ export default{
   mounted() {
     this.checkIfUserIsLoggedIn();
     this.getUserInformations();
+    this.$store.dispatch('getSettings');
   }
 }
 </script>
