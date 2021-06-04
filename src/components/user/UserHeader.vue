@@ -1,6 +1,5 @@
 <template>
   <div v-if="isVisible"></div>
-  <!--<pre>{{$store.state.allContentPages}}</pre>-->
 </template>
 
 <script>
@@ -43,7 +42,6 @@ export default{
   mounted() {
     this.checkIfUserIsLoggedIn();
     this.getUserInformations();
-    this.$store.dispatch('getAllContentPages');
   }
 }
 </script>

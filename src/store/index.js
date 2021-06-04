@@ -31,9 +31,6 @@ export default createStore({
     userIsLoggedIn: false,
     userInfos: null,
 
-    //CONTENTPAGES
-    allContentPages: null
-
   },
 
   getters: {
@@ -90,15 +87,6 @@ export default createStore({
     getAllCourses: state => {
       return state.allCourses || null
     },
-    //CONTENTPAGES
-    getAllContentPages: state => {
-      return state.allContentPages || null
-    },
-    getContentPageByPageslug: (state) => (pageslug) => {
-      if(state.allContentPages){
-        return state.allContentPages.filter(page => page.page === pageslug)
-      }
-    }
   },
 
   mutations: {
@@ -130,10 +118,6 @@ export default createStore({
     CLEAR_USER_INFORMATION(state){
       state.userInfos = {}
     },
-    //CONTENTPAGES
-    GET_ALL_CONTENT_PAGES(state, allContentPages){
-      state.allContentPages = allContentPages
-    }
   },
 
   actions: {
@@ -187,14 +171,5 @@ export default createStore({
     clearUserInfo({commit}){
       commit('CLEAR_USER_INFORMATION');
     },
-    //CONTENTPAGES
-    getAllContentPages({ commit }){
-      const headers = { "Authorization": `Bearer ${this.state.apiToken}` };
-      const fields = 'fields=page,title,text,content,image'
-      axios.get(`${this.state.apiBaseUrl}pages?${fields}`, {headers})
-          .then(response => {
-            commit('GET_ALL_CONTENT_PAGES', response.data.data)
-          })
-    }
   }
 })

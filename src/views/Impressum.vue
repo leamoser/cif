@@ -1,8 +1,8 @@
 <template>
-  <MainIntro :title="content[0].title" />
-  <section v-if="content" class="mainsection impressum contentpage" id="impressum">
+  <MainIntro :title="content" />
+  <!--<section v-if="content" class="mainsection impressum contentpage" id="impressum">
     <div class="content gc" v-if="content[0].content" v-html="content[0].content"></div>
-  </section>
+  </section>-->
 </template>
 
 <script>
@@ -12,7 +12,7 @@ export default {
   components: {MainIntro},
   computed: {
     content(){
-      return this.$store.getters.getContentPageByPageslug('impressum') || null
+      return 'impressum placeholder'
     }
   }
 }
