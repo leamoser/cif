@@ -52,7 +52,7 @@ export default{
       return this.units.length || null
     },
     activeUnit(){
-      return this.units[this.unitPosition - 1] || null
+      return this.units[this.unitPosition - 1].unit_id || null
     },
     activeUnitType(){
       return this.activeUnit?.type || null

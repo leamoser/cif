@@ -134,6 +134,7 @@ export default createStore({
       const fields = `fields=id,status,title,description,languages,chapter.chapter_id.id,chapter.chapter_id.status`
       axios.get(`${this.state.apiBaseUrl}course?${filter}&${fields}`, { headers })
           .then(response => {
+            console.log('Kurse:', response)
             commit('GET_ALL_COURSES', response.data.data)
           })
     },
@@ -147,8 +148,8 @@ export default createStore({
     getAllUnitsById({ commit }, chapterId){
       const headers = { "Authorization": `Bearer ${this.state.apiToken}` };
       const filter = `filter[chapter_id][_eq]=${chapterId}`
-      const fields = `fields=id,title,theory,editor_exercise,external_exercise,type`
-      axios.get(`${this.state.apiBaseUrl}unit?${filter}&${fields}`, { headers })
+      const fields = `fields=unit_id.id,unit_id.type,unit_id.theory,unit_id.external_exercise,unit_id.editor_exercise,unit_id.title`
+      axios.get(`${this.state.apiBaseUrl}chapter_unit?${filter}&${fields}`, { headers })
           .then(response => {
             commit('GET_ALL_UNITS_BY_CHAPTER_ID', response.data.data)
           })

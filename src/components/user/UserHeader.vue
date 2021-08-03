@@ -1,6 +1,6 @@
 <template>
   <div v-if="isVisible"></div>
-  <!--<pre>{{$store.state.basesettings}}</pre>-->
+  <pre>{{$store.state.unitsById}}</pre>
 </template>
 
 <script>
