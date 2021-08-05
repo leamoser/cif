@@ -37,7 +37,7 @@ export default{
     },
     imageLink(){
       if(this.question.quiz_question_id.image){
-        return this.$store.getters.getApiAssetUrl + this.question.quiz_question_id.image + '?access_token=' + this.$store.getters.getApiToken || null
+        return this.$store.getters.getApiAssetUrl + this.question.quiz_question_id.image || null
       }else{
         return null
       }
