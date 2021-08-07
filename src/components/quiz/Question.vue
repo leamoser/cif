@@ -13,13 +13,15 @@
       <p>{{questionExplanation}}</p>
     </div>
   </div>
+  <Error v-if="errorActive" :error_message="errorMessage" @remove="removeError" />
 </template>
 
 <script>
 import Answer from "./Answer";
+import Error from "../content/Error";
 export default{
   name: 'Question',
-  components: {Answer},
+  components: {Error, Answer},
   props: {
     question: {
       type: Object,
@@ -28,7 +30,9 @@ export default{
   },
   data(){
     return{
-      isCorrect: undefined
+      isCorrect: undefined,
+      errorActive: false,
+      errorMessage: 'Bitte gib eine Antwortoption ein.'
     }
   },
   computed:{
@@ -71,8 +75,11 @@ export default{
       if(checkedElement.length === 1){
         this.isCorrect = !!checkedElement[0].dataset.correct;
       }else{
-        alert('figg di gang weg');
+        this.errorActive = true
       }
+    },
+    removeError(){
+      this.errorActive = false
     }
   }
 }
