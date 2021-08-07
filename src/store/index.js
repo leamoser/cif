@@ -134,7 +134,6 @@ export default createStore({
       const fields = `fields=id,status,title,description,languages,chapter.chapter_id.id,chapter.chapter_id.status`
       axios.get(`${this.state.apiBaseUrl}course?${filter}&${fields}`, { headers })
           .then(response => {
-            console.log('Kurse:', response)
             commit('GET_ALL_COURSES', response.data.data)
           })
     },
