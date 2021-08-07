@@ -70,8 +70,11 @@ export default {
     },
     backlink(){
       let id = this.$store.getters.getActiveCourseId
-      if(id) return '/course/' + id
-      return false
+      if(id && id !== 89999999){
+        return '/course/' + id
+      } else {
+        return false
+      }
     }
   },
   methods: {

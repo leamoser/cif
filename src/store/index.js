@@ -15,11 +15,11 @@ export default createStore({
     allCourses: null,
     unitsById: null,
     activeCourse: {
-      id: 1,
+      id: 89999999,
       title: ''
     },
     activeChapter: {
-      id: 1,
+      id: 89999999,
       title: ''
     },
     //USER
