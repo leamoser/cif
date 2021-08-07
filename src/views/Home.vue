@@ -2,7 +2,7 @@
   <section class="mainsection home" id="home">
     <FrontIntro />
     <HomeLoggedOut v-if="!loggedIn" />
-    <BigText v-if="loggedIn" :text="bigText" />
+    <!--<BigText v-if="loggedIn" :text="bigText" />-->
     <TitleDesc v-if="loggedIn" :title="title" :description="desc" />
     <CompleteCourselist v-if="loggedIn" />
   </section>
