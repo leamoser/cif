@@ -4,7 +4,7 @@
       <h3>Abschlussquiz</h3>
       <p class="small">Stelle dein Wissen auf die Probe und absolviede das Abschlussquiz zum Kapitel.</p>
     </div>
-    <MaterialBadge linktext="Zum Quiz" />
+    <MaterialBadge :materialInfo="materialInfo" linktext="Zum Quiz" />
   </router-link>
 </template>
 <script>
@@ -21,6 +21,18 @@ export default{
   computed: {
     url(){
       return this.quizID ? '/quiz/' + this.quizID : null
+    },
+    userID(){
+      return this.$store.getters.getUserId || null;
+    },
+    materialInfo(){
+      return {
+        type: 'quiz',
+        table: 'user_quiz',
+        otherId: this.quizID,
+        otherIdName: 'quiz_id',
+        userId: this.userID
+      }
     }
   }
 }

@@ -4,7 +4,7 @@
       <h3>Abschlussübung</h3>
       <p class="small">Teste dein Wissen am Ende der Lektion.</p>
     </div>
-    <MaterialBadge linktext="zur Übung" />
+    <MaterialBadge :materialInfo="materialInfo" linktext="zur Übung" />
   </router-link>
 </template>
 <script>
@@ -21,6 +21,18 @@ export default{
   computed: {
     url(){
       return this.exerciseID ? '/editorexercise/' + this.exerciseID : null
+    },
+    userID(){
+      return this.$store.getters.getUserId || null;
+    },
+    materialInfo(){
+      return {
+        type: 'editor_exercise',
+        table: 'user_editor_exercise',
+        otherId: this.exerciseID,
+        otherIdName: 'editor_exercise_id',
+        userId: this.userID
+      }
     }
   }
 }

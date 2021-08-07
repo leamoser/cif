@@ -1,5 +1,7 @@
 <template>
-  <div class="badge_leiste">
+  <div class="badge_leiste" v-if="materialInfo && linktext">
+    <div v-if="solved" class="badge"><p class="code small">done</p></div>
+    <div v-else></div>
     <div class="more">
       <p class="code small">{{linktext}}</p>
       <img src="/img/webicons/go_light.svg" alt="Icon Weiter" />
@@ -7,13 +9,41 @@
   </div>
 </template>
 <script>
+import axios from "axios";
 export default {
   name: 'MaterialBadge',
   props: {
     linktext: {
       type: String,
       required: true
+    },
+    materialInfo: {
+      type: Object,
+      required: true
     }
+  },
+  data(){
+    return{
+      solved: false
+    }
+  },
+  methods: {
+    async isSolved(){
+      const headers = { "Authorization": `Bearer ${this.$store.getters.getApiToken}` };
+      const filter_1 = `filter[user_id][_eq]=${this.materialInfo.userId}`;
+      const filter_2 = `filter[${this.materialInfo.otherIdName}][_eq]=${this.materialInfo.otherId}`;
+      await axios.get(`${this.$store.getters.getApiBaseUrl}${this.materialInfo.table}?${filter_1}&${filter_2}`, {headers})
+          .then(response => {
+            if(response.data.data.length !== 0){
+              this.solved = true
+            }
+          })
+    }
+  },
+  mounted() {
+    this.$nextTick(function () {
+      this.isSolved()
+    })
   }
 }
 </script>
@@ -23,7 +53,13 @@ div.badge_leiste{
   bottom: $ga-inner;
   right: $ga-inner;
   padding-top: $ga-inner;
-  @include flex(row,center,flex-end);
+  @include flex(row,center,space-between);
+  width: calc( 100% - calc( 2 * #{$ga-inner} ) );
+  div.badge{
+    background-color: $co-pos;
+    padding: $btn-small;
+    border-radius: $btn-small-radius;
+  }
   div.more{
     @include flex(row,center,flex-end);
     img{

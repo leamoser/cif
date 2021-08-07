@@ -178,7 +178,7 @@ export default createStore({
         "Authorization": `Bearer ${this.state.apiToken}`
       };
       const filter = `filter[username][_eq]=${username}`
-      const fields = `fields=id,firstname,lastname,username,email,marked_course,solved_chapters,date_created`
+      const fields = `fields=id,firstname,lastname,username,email,marked_course,solved_chapters,solved_quizzes,solved_editor_exercises,solved_external_exercises,date_created`
       axios.get(`${this.state.apiBaseUrl}user?${filter}&${fields}`, { headers })
           .then(response => {
             commit('GET_USER_INFORMATION_BY_USERNAME', response.data.data[0])

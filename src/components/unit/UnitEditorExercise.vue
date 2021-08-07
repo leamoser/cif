@@ -36,7 +36,7 @@ export default{
       const fields = 'fields[]=id,title,code_start,code_end,hints.hint_id.description,baselanguage,output'
       await axios.get(`${this.$store.getters.getApiBaseUrl}editor_exercise/${id}?${fields}`, {headers})
           .then(response => {
-            console.log(response)
+            //console.log(response)
             this.editorExercise = response.data.data
           })
     }
