@@ -74,14 +74,12 @@ div.unit {
   h2 {
     margin-bottom: $ga-top-s;
   }
-
   padding: $ga-top-l $ga-around;
   position: relative;
   border-top: $bo-standard;
   border-bottom: $bo-standard;
   min-height: 90vh;
   overflow: hidden;
-
   button.finalize_quiz {
     background-color: $co-akzent-light;
     padding: $btn-big;
