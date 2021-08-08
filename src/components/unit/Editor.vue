@@ -5,15 +5,20 @@
     </div>
     <div class="output_container">
       <div class="toggle" v-if="isBoth">
-        <button id="compile_toggle" @click="toggle='compile'" :class="{active:toggle==='compile'}">Kompilierter Code
+        <button id="compile_toggle" @click="toggle='compile'" :class="{active:toggle==='compile'}">
+          <p class="code">Kompilierter Code</p>
         </button>
-        <button id="console_toggle" @click="toggle='console'" :class="{active:toggle==='console'}">Konsole</button>
+        <button id="console_toggle" @click="toggle='console'" :class="{active:toggle==='console'}">
+          <p class="code">Konsole</p>
+        </button>
       </div>
       <div class="output">
         <div id="compile" v-if="toggle==='compile' || isCompile">
           <div v-html="codeEdited"></div>
         </div>
-        <pre id="console" v-if="toggle==='console' || isConsole"></pre>
+        <div id="console_ct" v-if="toggle==='console' || isConsole">
+          <pre id="console"></pre>
+        </div>
       </div>
     </div>
   </section>
@@ -130,47 +135,48 @@ export default {
 
 <style lang="scss" scoped>
 section.editorcontainer {
-  display: flex;
-  flex-direction: row;
+  @include flex(row,center,center);
+  &>*{
+    width: 100%;
+  }
 }
-
-section.editorcontainer > * {
-  width: 100%;
-}
-
 /*editor*/
 #editor {
   height: 50vh;
+  font: $f-code-s;
 }
-
 /*output*/
 .output_container {
-  border: 1px solid black;
-}
-
-div.toggle {
-  display: flex;
-  flex-direction: row;
-  border-bottom: 1px solid black;
-}
-
-div.toggle > * {
-  cursor: pointer;
-  border: none;
-  width: 50%;
-  padding: 10px 0;
-}
-
-div.toggle > *:not(.active) {
-  filter: brightness(50%);
-}
-
-div.toggle > *:first-of-type {
-  background-color: #77c3c6;
-  border-right: 1px solid black;
-}
-
-div.toggle > *:last-of-type {
-  background-color: lightpink;
+  border: $bo-standard;
+  div.output{
+    div#compile{
+      height: calc( 50vh - 2px );
+      padding: $ga-inner;
+    }
+    div#console_ct{
+      padding: $ga-inner;
+      background-color: $co-font;
+      height: calc( 50vh - 2px );
+      color: $co-bg;
+      pre#console{
+        font: $f-code-s;
+      }
+    }
+  }
+  div.toggle {
+    @include flex(row,center,center);
+    border: $bo-standard;
+    margin-bottom: $ga-inner;
+    &>*{
+      cursor: pointer;
+      border: none;
+      width: 50%;
+      padding: 10px 0;
+      background-color: $co-akzent-light-50;
+      &:not(.active){
+        filter: brightness(50%);
+      }
+    }
+  }
 }
 </style>
