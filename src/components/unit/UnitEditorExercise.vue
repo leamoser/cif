@@ -3,7 +3,6 @@
     <h2 v-if="unitType === 'internal'">{{unitContent.title}}</h2>
     <h2 v-else>{{editorExercise.title}}</h2>
     <div v-if="unitContent?.theory || unitType === 'internal'" class="content gc" v-html="unitContent?.theory"></div>
-    <!--<div class="editor" id="editor"><pre>{{editorExercise.code_start}}</pre></div>-->
     <Editor v-if="editorExercise" :editorExercise="editorExercise" />
   </div>
 </template>
