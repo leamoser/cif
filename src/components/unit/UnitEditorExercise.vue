@@ -1,16 +1,18 @@
 <template>
   <div v-if="editorExercise" class="unit_editor_exercise">
-    <mark>EDITOR EXERCISE</mark>
     <h2 v-if="unitType === 'internal'">{{unitContent.title}}</h2>
     <h2 v-else>{{editorExercise.title}}</h2>
     <div v-if="unitContent?.theory || unitType === 'internal'" class="content gc" v-html="unitContent?.theory"></div>
-    <div class="editor" id="editor"><pre>{{editorExercise.code_start}}</pre></div>
+    <!--<div class="editor" id="editor"><pre>{{editorExercise.code_start}}</pre></div>-->
+    <Editor v-if="editorExercise" :editorExercise="editorExercise" />
   </div>
 </template>
 <script>
 import axios from "axios";
+import Editor from "./Editor";
 export default{
   name: 'UnitEditorExercise',
+  components: {Editor},
   props: {
     unitContent: {
       type: Object,
@@ -36,7 +38,6 @@ export default{
       const fields = 'fields[]=id,title,code_start,code_end,hints.hint_id.description,baselanguage,output'
       await axios.get(`${this.$store.getters.getApiBaseUrl}editor_exercise/${id}?${fields}`, {headers})
           .then(response => {
-            //console.log(response)
             this.editorExercise = response.data.data
           })
     }
