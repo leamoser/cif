@@ -38,7 +38,7 @@ export default{
       }
     }
     img{
-      @include icon(180deg, $ic-m);
+      @include icon(180deg, $ic-s);
       margin-right: 10px;
     }
     @include basic_hover{

@@ -1,3 +1,4 @@
+//baseresets
 *{
     margin: 0 0;
     padding: 0 0;
@@ -18,4 +19,8 @@ span.log-string{
 span.log-boolean{
     //color: #a9cbff;
     color: #5e81ac;
+}
+//button behaviour
+button{
+    cursor: pointer;
 }

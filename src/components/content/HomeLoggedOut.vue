@@ -1,15 +1,22 @@
 <template>
-  <big-text text="Logge dich bitte ein, um die Plattform nutzen zu können. Klicke dazu auf den pinken Button oben rechts." />
+  <a class="btn" href="https://www.lea-moser.ch">
+    <p class="code small">weiter</p>
+    <img src="/img/webicons/arrow.svg" alt="Icon für nebis" />
+  </a>
 </template>
 
 <script>
-import BigText from "./BigText";
 export default {
   name: "HomeLoggedOut",
-  components: {BigText}
 }
 </script>
 
 <style lang="scss" scoped>
-
+ a.btn{
+   @include linkreset();
+   @include button();
+   img{
+     @include icon(0, $ic-s)
+   }
+ }
 </style>

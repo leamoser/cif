@@ -76,7 +76,6 @@ $breakpoint-large-desktop: 88em;
     grid-template-columns: repeat(1, 1fr);
   }
 }
-
 //flex
 @mixin flex($direction,$align,$justify){
   display: flex;
@@ -84,20 +83,31 @@ $breakpoint-large-desktop: 88em;
   align-items: $align;
   justify-content: $justify;
 }
-
+//button
+@mixin button(){
+  @include flex(row,center,center);
+  &>*{
+    @include flex(column,center,center);
+    min-height: 45px;
+    padding-right: 20px;
+    padding-left: 20px;
+    border: $bo-standard;
+  }
+  &>*:last-of-type{
+    margin-left: -1px;
+  }
+}
 //icons
 @mixin icon($rotate,$iconsize){
   transform: rotate($rotate);
   width: $iconsize;
   height: auto;
 }
-
 //reset link
 @mixin linkreset(){
   color: inherit;
   text-decoration: none;
 }
-
 //content width
 @mixin content(){
   width: 50%;
@@ -105,7 +115,6 @@ $breakpoint-large-desktop: 88em;
     width: 100%;
   }
 }
-
 //box shadow on hover
 @mixin shadow_hover() {
   transition: 0.5s;

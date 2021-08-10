@@ -101,7 +101,7 @@ div.mark_course{
     border-radius: 500px;
     img{
       transition: 0.5s;
-      @include icon(0,$ic-m);
+      @include icon(0,$ic-s);
       &.active{
         opacity: 1;
       }
