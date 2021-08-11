@@ -18,4 +18,15 @@ export default{
 }
 </script>
 <style lang="scss" scoped>
+footer{
+  @include flex(row,center,space-between);
+  padding: $ga-around;
+  div.footer_nav{
+    p a{
+      @include linkreset();
+    }
+    @include flex(row,center,flex-start);
+    gap: 15px;
+  }
+}
 </style>
