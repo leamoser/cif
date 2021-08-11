@@ -55,6 +55,11 @@ export default {
   methods: {
     toggleNav() {
       this.navActive = this.navActive === false;
+      if(this.navActive){
+        this.disableScrolling()
+      }else{
+        this.enableScrolling()
+      }
     },
     logOutUser() {
       localStorage.clear();
@@ -63,6 +68,12 @@ export default {
     },
     refreshUsername() {
       this.username = localStorage.getItem('username');
+    },
+    disableScrolling() {
+      console.log('scrolling disabled')
+    },
+    enableScrolling() {
+      console.log('scrolling enabled')
     }
   },
   updated() {
@@ -72,7 +83,7 @@ export default {
     $route(from, to) {
       document.title = from.meta.title || this.$store.getters.getAppName
       this.navActive = false
-      console.log('route changed')
+      this.enableScrolling()
     }
   }
 }
