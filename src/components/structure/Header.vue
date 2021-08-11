@@ -70,10 +70,10 @@ export default {
       this.username = localStorage.getItem('username');
     },
     disableScrolling() {
-      console.log('scrolling disabled')
+      document.body.style.overflow = 'hidden';
     },
     enableScrolling() {
-      console.log('scrolling enabled')
+      document.body.style.overflow = 'scroll';
     }
   },
   updated() {
