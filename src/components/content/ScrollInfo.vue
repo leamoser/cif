@@ -35,6 +35,7 @@ div{
   img{
     cursor: pointer;
     margin-top: 5px;
+    margin-bottom: -9px;
     @include icon(90deg,20px);
   }
 }

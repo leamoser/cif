@@ -53,7 +53,7 @@ section{
     margin-bottom: $ga-around;
     height: calc( 100vh - calc( #{$ga-around} * 2 ) );
     &.intro_minimized{
-      height: calc( 60vh - calc( #{$ga-around} * 2 ) );
+      height: calc( 70vh - calc( #{$ga-around} * 2 ) );
     }
     position: relative;
     div#imagecontainer{
@@ -63,9 +63,6 @@ section{
       right: 0;
       top: 0;
       @include flex(column,center,center);
-      img{
-
-      }
     }
   }
   padding: $ga-around;
