@@ -77,7 +77,6 @@ export default {
       return this.chapterIDs.length || null
     },
     courseStatus() {
-      console.log(this.solvedChapterCount)
       if (!this.chapterCountLoaded) return null
       if (!this.solvedChapterCount) return this.chapterBadged["open"]
       else if (this.solvedChapterCount === this.chapterCount) return this.chapterBadged["done"]
