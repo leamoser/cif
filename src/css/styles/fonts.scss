@@ -13,7 +13,8 @@ p.big{
 p,
 ul,
 li,
-label{
+label,
+button{
     font: $f-text-m;
     &.small{
         font: $f-text-s;
@@ -22,6 +23,9 @@ label{
         font: $f-code-m;
         &.small{
            font: $f-code-s;
+        }
+        &.big{
+            font: $f-code-l;
         }
     }
 }

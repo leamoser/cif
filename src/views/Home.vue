@@ -50,6 +50,7 @@ export default {
 <style lang="scss" scoped>
 section{
   div#intro{
+    margin-bottom: $ga-around;
     height: calc( 100vh - calc( #{$ga-around} * 2 ) );
     &.intro_minimized{
       height: calc( 60vh - calc( #{$ga-around} * 2 ) );

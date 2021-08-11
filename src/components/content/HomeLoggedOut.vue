@@ -6,10 +6,10 @@
     </div>
     <div class="buttonbox">
       <router-link to="/login">
-        <button class="btn"><p class="code small">einloggen</p></button>
+        <button class="btn code small">einloggen</button>
       </router-link>
       <router-link to="/register">
-        <button class="btn"><p class="code small">registrieren</p></button>
+        <button class="btn code small">registrieren</button>
       </router-link>
     </div>
   </div>

@@ -1,63 +1,60 @@
 <template>
   <UserHeader/>
-  <header :class="{hidden: !showNav}">
-    <div class="nav" @click="toggleNav" :class="{active: contentNavActive}" v-if="userIsLoggedIn">
-      <div v-if="contentNavActive" class="nav_container">
-        <router-link to="/">Home</router-link>
-        <router-link to="/about">About</router-link>
-      </div>
-      <img v-if="!contentNavActive" src="/img/webicons/burger.svg" alt="Burger-Navigation Icon">
-      <img v-else src="/img/webicons/burgeractive.svg" alt="Burger-Navigation Icon Aktiv">
-    </div>
-    <div class="user loggedout nav" v-if="!userIsLoggedIn" @click="toggleUser" :class="{active: userNavActive}">
-      <div v-if="userNavActive" class="nav_container">
-        <router-link to="/login">Login</router-link>
-        <router-link to="/register">Registrieren</router-link>
-      </div>
-      <img src="/img/webicons/user.svg" alt="Icon User">
-    </div>
-    <div class="user loggedin usertoggle" v-if="userIsLoggedIn">
-      <router-link to="/user">
-        <img src="/img/webicons/user.svg" alt="Icon User">
-        <p class="code small">{{ usernameRefreshed }}</p>
+  <header>
+    <div class="burgercontainer">
+      <router-link class="useranzeige" v-if="userIsLoggedIn" to="/user">
+        <button class=" btn small code">logged in as {{ usernameRefreshed }}</button>
       </router-link>
-      <router-link v-if="userIsLoggedIn" to="/" @click="logOutUser">
-        <p class="code small">Logout</p>
-      </router-link>
+      <div @click="toggleNav">
+        <img alt="burger" v-if="!navActive" src="/img/webicons/burger.svg">
+        <img alt="burger" v-if="navActive" src="/img/webicons/burgeractive.svg">
+      </div>
+    </div>
+    <div class="navigationcontainer" :class="{'inactive':!navActive}">
+      <img alt="icon menu" src="/img/webicons/computer_menu.svg">
+      <nav>
+        <router-link v-if="userIsLoggedIn" to="/user"><p class="code big">Dein Profil</p></router-link>
+        <router-link to="/"><p class="code big">Home</p></router-link>
+        <router-link to="/about"><p class="code big">About</p></router-link>
+        <router-link to="/impressum"><p class="code big">Impressum</p></router-link>
+      </nav>
+      <div class="buttonbox">
+        <router-link v-if="!userIsLoggedIn" to="/login">
+          <button class="btn code small">einloggen</button>
+        </router-link>
+        <router-link v-if="!userIsLoggedIn" to="/register">
+          <button class="btn code small">registrieren</button>
+        </router-link>
+        <router-link v-if="userIsLoggedIn" to="/" @click="logOutUser">
+          <button class="btn code small">Logout</button>
+        </router-link>
+      </div>
     </div>
   </header>
 </template>
 <script>
 import UserHeader from "../user/UserHeader";
+
 export default {
   name: 'Header',
   components: {UserHeader},
   data() {
     return {
-      tagForRouter: 'li',
-      contentNavActive: false,
-      userNavActive: false,
-      username: null,
-      showNav: true,
-      lastScrollPosition: 0
+      navActive: false,
+      username: null
     }
   },
   computed: {
     usernameRefreshed() {
       return this.username || null
     },
-    userIsLoggedIn(){
+    userIsLoggedIn() {
       return this.$store.state.userIsLoggedIn || null
     }
   },
   methods: {
     toggleNav() {
-      this.contentNavActive = !this.contentNavActive;
-      this.userNavActive = false;
-    },
-    toggleUser() {
-      this.userNavActive = !this.userNavActive;
-      this.contentNavActive = false;
+      this.navActive = this.navActive === false;
     },
     logOutUser() {
       localStorage.clear();
@@ -66,32 +63,85 @@ export default {
     },
     refreshUsername() {
       this.username = localStorage.getItem('username');
-    },
-    hideNav(){
-      const currentScrollPosition = window.pageYOffset || document.documentElement.scrollTop
-      if (currentScrollPosition < 0) {
-        return true
-      }
-      this.showNav = currentScrollPosition < this.lastScrollPosition
-      this.lastScrollPosition = currentScrollPosition
     }
-  },
-  mounted() {
-    this.refreshUsername()
-    window.addEventListener('scroll', this.hideNav)
   },
   updated() {
     this.refreshUsername()
   },
-  beforeUnmount () {
-    window.removeEventListener('scroll', this.hideNav)
-  },
   watch: {
     $route(from, to) {
       document.title = from.meta.title || this.$store.getters.getAppName
+      this.navActive = false
+      console.log('route changed')
     }
   }
 }
 </script>
 <style lang="scss" scoped>
+header {
+  position: absolute;
+  right: $ga-around;
+  top: calc(#{$ga-around} + 10px);
+
+  div.burgercontainer {
+    z-index: 5;
+    @include flex(row, center, flex-end);
+    gap: 10px;
+
+    img {
+      z-index: 20;
+      cursor: pointer;
+      position: relative;
+      @include icon(0, 50px);
+    }
+
+    .useranzeige {
+      background-color: $co-bg;
+      z-index: 20;
+    }
+  }
+
+  div.navigationcontainer {
+    position: fixed;
+    z-index: 4;
+    width: 80vw;
+    height: 100vh;
+    top: 0;
+    right: 0;
+    @include flex(column, center, center);
+
+    img {
+      max-width: 250px;
+    }
+
+    nav {
+      margin: $ga-around 0;
+      @include flex(row, center, center);
+      gap: 60px;
+
+      a {
+        @include linkreset();
+      }
+    }
+
+    div.buttonbox {
+      @include flex(row, center, center);
+      gap: 15px;
+
+      & > * {
+        display: block;
+      }
+    }
+
+    border-left: $bo-standard;
+    background-color: $co-akzent;
+    transition: 0.5s;
+    transform: translateX(0vw);
+
+    &.inactive {
+      transform: translateX(100vw);
+    }
+  }
+
+}
 </style>
