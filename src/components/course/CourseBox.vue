@@ -1,23 +1,28 @@
 <template>
-  <router-link v-if="course && solvedChapters" :to="courseLink">
+  <router-link v-if="course" :to="courseLink">
     <div class="course_box" :class="{'sml': !loggedIn}">
       <div class="box_content">
         <h3 class="title">{{ course.title }}</h3>
-        <Infobar :languages="course.languages" :chapter-count="chapterCount" />
+        <Infobar :languages="course.languages" :chapter-count="chapterCount"/>
         <div class="content-small gc" v-html="course.description"></div>
       </div>
-      <CourseBadge v-if="loggedIn && chapterDetailsLoaded" :chapter-details="chapterDetails" />
+      <div class="badge_leiste" v-if="loggedIn && courseStatus">
+        <div class="badge" :class="courseStatus.badgetext"><p class="code small">{{ courseStatus.badgetext }}</p></div>
+        <div class="more">
+          <p class="code small">{{ courseStatus.more }}</p>
+          <img src="/img/webicons/go_dark.svg" alt="Icon weiter"/>
+        </div>
+      </div>
     </div>
   </router-link>
 </template>
 <script>
 import Infobar from "./Infobar.vue";
 import axios from "axios";
-import CourseBadge from "./CourseBadge";
-export default{
+
+export default {
   name: 'courseBox',
   components: {
-    CourseBadge,
     Infobar
   },
   props: {
@@ -26,90 +31,132 @@ export default{
       required: true
     }
   },
-  data(){
-    return{
+  data() {
+    return {
       courseUrl: '/course/',
       solvedChapters: null,
-      solvedChapterCount: null
+      solvedChapterCount: null,
+      chapterCountLoaded: false,
+      dataloaded: false,
+      chapterBadged: {
+        open: {
+          badgetext: "open",
+          more: 'ansehen',
+          value: 0
+        },
+        inProgress: {
+          badgetext: 'in progress',
+          more: 'weiter',
+          value: 0
+        },
+        done: {
+          badgetext: 'done',
+          more: 'nochmals',
+          value: 0
+        },
+      }
     }
   },
   computed: {
-    loggedIn(){
+    loggedIn() {
       return this.$store.getters.isUserLoggedIn;
     },
-    courseLink(){
+    courseLink() {
       return this.course.id ? this.courseUrl + this.course.id : null
     },
-    chapterIDs(){
+    chapterIDs() {
       let allChapters = [];
       this.course.chapter.forEach(details => {
-        if(details?.chapter_id?.status === 'published') {
+        if (details?.chapter_id?.status === 'published') {
           allChapters.push(details.chapter_id.id)
         }
       })
       return allChapters
     },
-    chapterCount(){
+    chapterCount() {
       return this.chapterIDs.length || null
     },
-    chapterDetails(){
-      return {
-        solvedChapters: this.solvedChapters,
-        solvedChapterCount: this.solvedChapterCount,
-        chapterCount: this.chapterCount,
-        chapterIDs: this.chapterIDs
-      }
-    },
-    chapterDetailsLoaded(){
-      let states = [];
-      Object.values(this.chapterDetails).forEach(val => {
-        states.push(val);
-      })
-      if(states.includes(null)){
-        return false
-      }else{
-        return true
-      }
+    courseStatus() {
+      console.log(this.solvedChapterCount)
+      if (!this.chapterCountLoaded) return null
+      if (!this.solvedChapterCount) return this.chapterBadged["open"]
+      else if (this.solvedChapterCount === this.chapterCount) return this.chapterBadged["done"]
+      else if (this.solvedChapterCount === 0) return this.chapterBadged["open"]
+      return this.chapterBadged["inProgress"]
     }
   },
   methods: {
-    async getFinishedChapters(){
-      const headers = { "Authorization": `Bearer ${this.$store.getters.getApiToken}` };
-      const filter_user = `filter[user_id][_eq]=${this.$store.getters.getUserId}`;
-      const filter_chapter = `filter[chapter_id][_in]=${this.chapterIDs.toString()}`
-      const fields = `fields=chapter_id`;
-      await axios.get(`${this.$store.getters.getApiBaseUrl}user_chapter?${filter_user}&${filter_chapter}&${fields}`, {headers})
-          .then(response => {
-            if(response.data.data.length === 0){
-              this.solvedChapters = []
-              this.solvedChapterCount = 0
-            }else{
+    async getFinishedChapters(id) {
+        const headers = {"Authorization": `Bearer ${this.$store.getters.getApiToken}`};
+        const filter_user = `filter[user_id][_eq]=${id}`;
+        const filter_chapter = `filter[chapter_id][_in]=${this.chapterIDs.toString()}`
+        const fields = `fields=chapter_id`;
+        await axios.get(`${this.$store.getters.getApiBaseUrl}user_chapter?${filter_user}&${filter_chapter}&${fields}`, {headers})
+            .then((response) => {
+              this.chapterCountLoaded = true
               this.solvedChapters = response.data.data
               this.solvedChapterCount = response.data.data.length
-            }
-          })
-    }
+            })
+    },
   },
   mounted() {
-    this.getFinishedChapters();
+    const userid = localStorage.getItem('userid');
+    if(userid) this.getFinishedChapters(userid);
   }
+
 }
 </script>
 <style lang="scss" scoped>
-a{
+a {
   @include linkreset();
-  div.course_box{
+
+  div.course_box {
     position: relative;
     padding: $ga-inner;
     height: 400px;
-    &.sml{
+
+    &.sml {
       height: 350px;
     }
+
     background-color: $co-akzent;
-    @include flex(column,flex-start,space-between);
-    div.box_content{
-      div{
+    @include flex(column, flex-start, space-between);
+
+    div.box_content {
+      div {
         margin-top: 15px;
+      }
+    }
+  }
+
+  div.badge_leiste {
+    @include flex(row, center, space-between);
+    width: 100%;
+
+    div.badge {
+      color: $co-bg;
+      padding: 4px 15px 7px 14px;
+      border-radius: 50px;
+
+      &.done {
+        background-color: $co-pos;
+      }
+
+      &.progress {
+        background-color: $co-neutral;
+      }
+
+      &.open {
+        background-color: $co-neg;
+      }
+    }
+
+    div.more {
+      @include flex(row, center, flex-end);
+      gap: 10px;
+
+      img {
+        @include icon(0, 12px)
       }
     }
   }

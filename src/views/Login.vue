@@ -72,6 +72,7 @@ export default {
                   this.$store.dispatch('setUserActive');
                   localStorage.setItem('username', response.data.data[0].username);
                   localStorage.setItem('token', response.data.data[0].token);
+                  localStorage.setItem('userid', response.data.data[0].id)
                   for (const key in this.user) {
                     this.user[key] = '';
                   }
