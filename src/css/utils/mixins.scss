@@ -89,6 +89,21 @@ $breakpoint-large-desktop: 88em;
   width: $iconsize;
   height: auto;
 }
+@mixin btnicon($rotate,$sidepadding,$toppadding){
+  border: $bo-standard;
+  transform: rotate($rotate);
+  height: 43px;
+  padding-left: $sidepadding;
+  padding-right: $sidepadding;
+  padding-top: calc( #{$toppadding} + 2px );
+  padding-bottom: $toppadding;
+  &.right{
+    margin-left: -1px;
+  }
+  &.left{
+    margin-right: -1px;
+  }
+}
 //reset link
 @mixin linkreset(){
   color: inherit;

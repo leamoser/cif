@@ -1,3 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="32.67" height="44.169" viewBox="0 0 32.67 44.169">
-    <path id="Pfad_10" d="M-1068.5,1426.6l12.5,29.679,19.209,5.279v-13.973l-8.247-3.793v6.384l-6.02-4.135,1.719,6.519-6.661,1.486-10.853-28.922,13.658-6.427,14.575,26.276" transform="translate(1068.961 -1418.048)" fill="none" stroke="#222" stroke-width="1"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="24.043" height="31.55" viewBox="0 0 24.043 31.55">
+    <g id="Gruppe_208" transform="translate(683.296 1139.381) rotate(-150)">
+        <rect id="Rechteck_87" width="9.305" height="19.42" transform="translate(1138.5 632.889)" fill="none" stroke="#222" stroke-width="0.822"/>
+        <path id="Pfad_1193" d="M1138.5,632.889l4.653-10.607,4.653,10.607Z" transform="translate(0 0)" fill="none" stroke="#222" stroke-miterlimit="1" stroke-width="0.822"/>
+        <path id="Pfad_1194" d="M1147.078,628.944l1.182,1.178,1.182-1.178" transform="translate(-5.107 -3.967)" fill="none" stroke="#222" stroke-miterlimit="1" stroke-width="0.822"/>
+    </g>
 </svg>

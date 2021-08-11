@@ -1,14 +1,15 @@
 <template>
   <div class="user_info" v-if="user">
-    <div class="edit_toggle" @click="makeProfileEditable" v-if="!profileEditMode">
-      <img src="/img/webicons/edit.svg" alt="Icon Edit">
-    </div>
     <div class="user_info_view" v-if="!profileEditMode">
-      <h2>Du</h2>
+      <h2>Das bist du</h2>
       <p>Name: {{fullName}}</p>
       <p>Username: {{user.username}}</p>
       <p>Mail: {{user.email}}</p>
       <p>Passwort: *********</p>
+    </div>
+    <div class="btn-dbl" @click="makeProfileEditable" v-if="!profileEditMode">
+      <p class="code small">Profil bearbeiten</p>
+      <img class="right" src="/img/webicons/edit.svg" alt="Icon Edit">
     </div>
     <div class="user_info_edit" v-if="profileEditMode">
       <h2>Du</h2>
@@ -21,7 +22,7 @@
         <input type="email" id="new_email" name="new_email" v-model="newUser.email"><br>
         <label for="new_password">Neues Passwort (optional)</label>
         <input type="password" id="new_password" name="new_password" v-model="newUser.password"><br>
-        <button class="btn"><p class="code">Profil speichern</p></button>
+        <button class="btn"><p class="code small">Profil speichern</p></button>
       </form>
     </div>
   </div>
@@ -80,5 +81,13 @@ export default {
 <style lang="scss" scoped>
 div.user_info{
   @include flex(column,flex-start,center);
+  div.user_info_view{
+    p{
+      margin-top: 5px;
+    }
+  }
+  div.btn-dbl{
+    margin-top: $ga-inner;
+  }
 }
 </style>
