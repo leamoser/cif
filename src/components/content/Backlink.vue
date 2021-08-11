@@ -28,22 +28,4 @@ export default{
 }
 </script>
 <style lang="scss" scoped>
-  div{
-    cursor: pointer;
-    @include flex(row,center,flex-start);
-    margin: 15px $ga-around $ga-around $ga-around;
-    p{
-      a{
-        @include linkreset;
-      }
-    }
-    img{
-      @include icon(180deg, $ic-s);
-      margin-right: 10px;
-    }
-    @include basic_hover{
-      transform: translateX(-10px);
-    }
-  }
-
 </style>

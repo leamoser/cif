@@ -49,11 +49,4 @@ export default{
 </script>
 
 <style lang="scss" scoped>
-div.userstate{
-  padding: 10px;
-  position: absolute;
-  z-index: 3;
-  top: 0;
-  left: 0;
-}
 </style>

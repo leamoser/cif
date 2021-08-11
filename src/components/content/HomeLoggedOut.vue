@@ -12,11 +12,4 @@ export default {
 </script>
 
 <style lang="scss" scoped>
- a.btn{
-   @include linkreset();
-   @include button();
-   img{
-     @include icon(0, $ic-s)
-   }
- }
 </style>

@@ -52,13 +52,4 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-  div.profilestats{
-    padding: $ga-around;
-    display: grid;
-    grid-gap: $ga-inner;
-    grid-template-columns: 2fr 5fr 5fr;
-    >*{
-      width: 100%;
-    }
-  }
 </style>

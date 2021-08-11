@@ -134,49 +134,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-section.editorcontainer {
-  @include flex(row,center,center);
-  &>*{
-    width: 100%;
-  }
-}
 /*editor*/
 #editor {
   height: 50vh;
-  font: $f-code-s;
-}
-/*output*/
-.output_container {
-  border: $bo-standard;
-  div.output{
-    div#compile{
-      height: calc( 50vh - 2px );
-      padding: $ga-inner;
-    }
-    div#console_ct{
-      padding: $ga-inner;
-      background-color: $co-font;
-      height: calc( 50vh - 2px );
-      color: $co-bg;
-      pre#console{
-        font: $f-code-s;
-      }
-    }
-  }
-  div.toggle {
-    @include flex(row,center,center);
-    border: $bo-standard;
-    margin-bottom: $ga-inner;
-    &>*{
-      cursor: pointer;
-      border: none;
-      width: 50%;
-      padding: 10px 0;
-      background-color: $co-akzent-light-50;
-      &:not(.active){
-        filter: brightness(50%);
-      }
-    }
-  }
 }
 </style>

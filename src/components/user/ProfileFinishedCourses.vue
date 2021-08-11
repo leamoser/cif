@@ -20,7 +20,4 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-div{
-  padding: $ga-inner $ga-around;
-}
 </style>

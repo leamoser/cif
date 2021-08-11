@@ -20,13 +20,4 @@ export default{
 }
 </script>
 <style lang="scss" scoped>
-  div{
-    padding: $ga-around;
-    h2{
-      margin-bottom: 7px;
-    }
-    p{
-      @include content();
-    }
-  }
 </style>

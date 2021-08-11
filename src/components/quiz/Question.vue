@@ -86,38 +86,4 @@ export default{
 </script>
 
 <style lang="scss" scoped>
-  div.question_box{
-    @include grid(2);
-    &:not(:last-of-type){
-      margin-bottom: $ga-inner;
-    }
-    &:last-of-type{
-      margin-bottom: $ga-top-l;
-    }
-    img{
-      max-width: 100%;
-    }
-    div.question{
-      border: $bo-standard;
-      padding: $ga-inner;
-      button{
-        margin-top: 20px;
-        background-color: $co-akzent-light-50;
-        border: $bo-standard;
-        padding: $btn-basic;
-        border-radius: $btn-basic-radius;
-      }
-    }
-    div.explanation{
-      border: $bo-standard;
-      padding: $ga-inner;
-      border-radius: 500px;
-      @include flex(column,center,center);
-      text-align: center;
-      background-color: $co-neg;
-      &.correct{
-        background-color: $co-pos;
-      }
-    }
-  }
 </style>

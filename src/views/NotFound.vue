@@ -18,11 +18,4 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-button{
-  background-color: $co-akzent-light-50;
-  padding: $btn-basic;
-  border-radius: $btn-basic-radius;
-  border: $bo-standard;
-  margin-left: $ga-around;
-}
 </style>

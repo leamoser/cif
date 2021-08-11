@@ -70,24 +70,4 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-div.unit {
-  h2 {
-    margin-bottom: $ga-top-s;
-  }
-  padding: $ga-top-l $ga-around;
-  position: relative;
-  border-top: $bo-standard;
-  border-bottom: $bo-standard;
-  min-height: 90vh;
-  overflow: hidden;
-  button.finalize_quiz {
-    background-color: $co-akzent-light;
-    padding: $btn-big;
-    border-top-left-radius: $btn-big-radius;
-    border: $bo-standard;
-    position: absolute;
-    right: -1px;
-    border: -1px;
-  }
-}
 </style>

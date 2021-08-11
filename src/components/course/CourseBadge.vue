@@ -41,34 +41,4 @@ export default{
 }
 </script>
 <style lang="scss" scoped>
-div.badge_leiste{
-  padding-top: $ga-inner;
-  @include flex(row,center,space-between);
-  div.badge{
-    padding: $btn-small;
-    border: $bo-standard;
-    border-radius: $btn-small-radius;
-    &.open{
-      background-color: $co-neg;
-    }
-    &.progress{
-      background-color: $co-akzent-dark;
-    }
-    &.done{
-      background-color: $co-pos;
-    }
-  }
-  div.more{
-    @include flex(row,center,flex-end);
-    img{
-      transition: 0.5s;
-      margin-left: 15px;
-    }
-  }
-  @include basic_hover{
-    div.more img{
-      margin-left: 5px;
-    }
-  }
-}
 </style>

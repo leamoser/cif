@@ -91,14 +91,4 @@ export default{
 }
 </script>
 <style lang="scss" scoped>
-  a{
-    @include linkreset;
-  }
-  div.course_box{
-    background-color: $co-font;
-    height: auto;
-    padding: $ga-inner;
-    color: $co-bg;
-    @include shadow_hover;
-  }
 </style>

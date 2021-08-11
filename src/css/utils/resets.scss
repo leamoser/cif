@@ -7,6 +7,10 @@
 :focus{
     outline: none;
 }
+//button behaviour
+button{
+    cursor: pointer;
+}
 //editor presets
 span.log-number{
     //color: #c9baf3;
@@ -19,8 +23,4 @@ span.log-string{
 span.log-boolean{
     //color: #a9cbff;
     color: #5e81ac;
-}
-//button behaviour
-button{
-    cursor: pointer;
 }

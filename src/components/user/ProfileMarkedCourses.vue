@@ -50,8 +50,4 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-div.marked_courses{
-  padding: $ga-inner $ga-around;
-  @include grid(3);
-}
 </style>

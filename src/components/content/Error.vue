@@ -28,24 +28,4 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  div.errormessage{
-    bottom: 0px;
-    left: 0px;
-    position: fixed;
-    width: 100vw;
-    padding: $ga-inner;
-    z-index: 2;
-    background-color: $co-bg;
-    border-top: $bo-standard;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    button{
-      background-color: $co-akzent-light-50;
-      border: $bo-standard;
-      padding: $btn-small;
-      border-radius: $btn-small-radius;
-    }
-  }
 </style>

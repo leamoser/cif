@@ -48,29 +48,4 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-div.badge_leiste{
-  position: absolute;
-  bottom: $ga-inner;
-  right: $ga-inner;
-  padding-top: $ga-inner;
-  @include flex(row,center,space-between);
-  width: calc( 100% - calc( 2 * #{$ga-inner} ) );
-  div.badge{
-    background-color: $co-pos;
-    padding: $btn-small;
-    border-radius: $btn-small-radius;
-  }
-  div.more{
-    @include flex(row,center,flex-end);
-    img{
-      transition: 0.5s;
-      margin-left: 15px;
-    }
-  }
-  @include basic_hover{
-    div.more img{
-      margin-left: 5px;
-    }
-  }
-}
 </style>

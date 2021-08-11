@@ -83,36 +83,4 @@ export default{
 }
 </script>
 <style lang="scss" scoped>
-div.mark_course{
-  cursor: pointer;
-  margin: 0 $ga-around;
-  @include flex(row,center,flex-start);
-  @include basic_hover{
-    p{
-      margin-left: 15px;
-    }
-  }
-  div.icon{
-    width: 60px;
-    height: 60px;
-    @include flex(column,center,center);
-    background-color: $co-akzent-light-50;
-    border: $bo-standard;
-    border-radius: 500px;
-    img{
-      transition: 0.5s;
-      @include icon(0,$ic-s);
-      &.active{
-        opacity: 1;
-      }
-      @include basic_hover{
-        transform: scale(1.17);
-      }
-    }
-  }
-  p{
-    transition: 0.5s;
-    margin-left: 20px;
-  }
-}
 </style>

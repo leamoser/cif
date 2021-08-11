@@ -87,49 +87,4 @@ export default{
 </script>
 
 <style lang="scss" scoped>
-div.unit_container{
-  padding: 100px $ga-around;
-  position: relative;
-  border-top: $bo-standard;
-  border-bottom: $bo-standard;
-  min-height: 90vh;
-  overflow: hidden;
-  .identifier{
-    position: absolute;
-    top: -1px;
-    right: -1px;
-    background-color: $co-akzent-dark;
-    color: $co-bg;
-    padding: $btn-big;
-    border: $bo-standard;
-    border-bottom-left-radius: $btn-big-radius;
-  }
-  .controls{
-    cursor: pointer;
-    position: absolute;
-    width: 100%;
-    bottom: -1px;
-    left: -1px;
-    div{
-      background-color: $co-akzent-light-50;
-      padding: $btn-big;
-      border: $bo-standard;
-      &#next{
-        float: right;
-        margin-right: -2px;
-        border-top-left-radius: $btn-big-radius;
-        img{
-          @include icon(0deg,$ic-m);
-        }
-      }
-      &#prev{
-        float: left;
-        border-top-right-radius: $btn-big-radius;
-        img{
-          @include icon(180deg,$ic-m);
-        }
-      }
-    }
-  }
-}
 </style>

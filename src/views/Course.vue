@@ -67,7 +67,4 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-  div.add_infos{
-    padding: 0 $ga-around $ga-around $ga-around;
-  }
 </style>

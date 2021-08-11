@@ -18,21 +18,4 @@ export default{
 }
 </script>
 <style lang="scss" scoped>
-  footer{
-    margin-top: $ga-top-s;
-    padding: $ga-around;
-    @include flex(row,center,space-between);
-    div.footer_nav{
-      @include flex(row,center,flex-start);
-      *{
-        @include linkreset;
-        @include basic_hover{
-          text-decoration: underline;
-        }
-        &:not(:last-of-type){
-          margin-right: 30px;
-        }
-      }
-    }
-  }
 </style>

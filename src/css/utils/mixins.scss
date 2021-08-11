@@ -83,20 +83,6 @@ $breakpoint-large-desktop: 88em;
   align-items: $align;
   justify-content: $justify;
 }
-//button
-@mixin button(){
-  @include flex(row,center,center);
-  &>*{
-    @include flex(column,center,center);
-    min-height: 45px;
-    padding-right: 20px;
-    padding-left: 20px;
-    border: $bo-standard;
-  }
-  &>*:last-of-type{
-    margin-left: -1px;
-  }
-}
 //icons
 @mixin icon($rotate,$iconsize){
   transform: rotate($rotate);
@@ -113,19 +99,5 @@ $breakpoint-large-desktop: 88em;
   width: 50%;
   @include tablet-down {
     width: 100%;
-  }
-}
-//box shadow on hover
-@mixin shadow_hover() {
-  transition: 0.5s;
-  &:hover {
-    box-shadow: rgba(0, 0, 0, 0.2) 0px 20px 30px;
-  }
-}
-//basic hover
-@mixin basic_hover{
-  transition: 0.5s;
-  &:hover{
-    @content
   }
 }

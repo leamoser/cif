@@ -23,17 +23,4 @@ export default{
 }
 </script>
 <style lang="scss" scoped>
-  a{
-    @include linkreset;
-    @include basic_hover{
-      color: $co-akzent-light;
-    }
-  }
-  div{
-    padding: $ga-around;
-    padding-bottom: 0;
-    p.logo_small{
-      width: auto;
-    }
-  }
 </style>

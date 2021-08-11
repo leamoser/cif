@@ -59,34 +59,4 @@ export default{
 }
 </script>
 <style lang="scss" scoped>
-  a{
-    @include linkreset;
-    div.chapter_link {
-      @include flex(row,center,flex-start);
-      position: relative;
-      background-color: $co-akzent-light-50;
-      padding: $btn-basic;
-      height: 65px;
-      border-radius: $btn-basic-radius;
-      border: $bo-standard;
-      margin-top: -1px;
-      @include basic_hover{
-        transform: translateX(10px);
-      }
-      &.done{
-        background-color: $co-akzent-light;
-      }
-      div.badge{
-        background-color: $co-pos;
-        padding:$btn-small;
-        border-radius: $btn-small-radius;
-        border: $bo-standard;
-        margin-right: 15px;
-      }
-      img{
-        position: absolute;
-        right: 15px;
-      }
-    }
-  }
 </style>

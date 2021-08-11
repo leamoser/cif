@@ -56,21 +56,4 @@ export default{
 }
 </script>
 <style lang="scss" scoped>
-  div.download{
-    margin-bottom: 10px;
-    a{
-      @include linkreset;
-    }
-    div{
-      margin: 5px 0;
-      @include flex(row,center,space-between);
-      background-color: $co-akzent-light-50;
-      padding: $btn-basic;
-      border-radius: $btn-basic-radius;
-      border: $bo-standard;
-      p{
-        color: $co-font;
-      }
-    }
-  }
 </style>

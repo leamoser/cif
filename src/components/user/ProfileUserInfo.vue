@@ -78,34 +78,4 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-div.user_info{
-  border: $bo-standard;
-  padding: $ga-inner;
-  position: relative;
-  h2{
-    margin-bottom: $ga-inner;
-  }
-  p:not(:last-of-type){
-    margin-bottom: 10px;
-  }
-  div.edit_toggle{
-    cursor: pointer;
-    position: absolute;
-    top: -1px;
-    right: -1px;
-    border: $bo-standard;
-    background-color: $co-akzent-light-50;
-    padding: 20px 30px;
-    border-bottom-left-radius: 30px;
-    @include basic_hover{
-      img{
-        @include icon(-20deg,$ic-s)
-      }
-    }
-    img{
-      transition: 0.5s;
-      @include icon(0,$ic-s)
-    }
-  }
-}
 </style>

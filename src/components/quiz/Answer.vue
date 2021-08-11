@@ -32,13 +32,4 @@ export default{
 }
 </script>
 <style lang="scss" scoped>
-div{
-  padding: 5px 0;
-  input{
-    margin-right: 10px;
-  }
-  label{
-    padding-right: 50px;
-  }
-}
 </style>

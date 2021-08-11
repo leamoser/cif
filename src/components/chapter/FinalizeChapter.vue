@@ -73,17 +73,4 @@ export default{
 }
 </script>
 <style lang="scss" scoped>
-div.finish_unit{
-  cursor: pointer;
-  position: absolute;
-  right: -1px;
-  bottom: -1px;
-  padding: $btn-big;
-  border-top-left-radius: $btn-big-radius;
-  border: $bo-standard;
-  background-color: $co-akzent-light;
-  a{
-    @include linkreset
-  }
-}
 </style>

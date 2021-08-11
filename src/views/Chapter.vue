@@ -95,17 +95,4 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-section{
-  div.material{
-    padding: $ga-around;
-    @include grid(3);
-    >*{
-      background-color: $co-akzent-dark;
-      padding: $ga-inner;
-      color: $co-bg;
-      min-height: 250px;
-      position: relative;
-    }
-  }
-}
 </style>

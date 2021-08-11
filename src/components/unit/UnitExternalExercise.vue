@@ -61,10 +61,4 @@ export default{
 }
 </script>
 <style lang="scss" scoped>
-h2{
-  margin-bottom: $ga-top-s;
-}
-h3{
-  margin: 20px 0 5px 0;
-}
 </style>

@@ -33,19 +33,6 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-a{
-  @include linkreset;
-  div {
-    margin: $ga-inner 0;
-    @include flex(row, center, space-between);
-    background-color: $co-akzent-light-50;
-    padding: $btn-basic;
-    border-radius: $btn-basic-radius;
-    border: $bo-standard;
-    @include content;
-  }
-}
-
 </style>
 
 

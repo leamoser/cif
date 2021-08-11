@@ -12,19 +12,4 @@ export default{
 </script>
 
 <style lang="scss" scoped>
-  div{
-    margin-top: $ga-around;
-    p{
-      display: inline;
-    }
-    >a{
-      @include linkreset;
-      &:hover{
-        text-decoration: underline;
-      }
-      &.router-link-active{
-        display: none;
-      }
-    }
-  }
 </style>
