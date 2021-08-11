@@ -6,7 +6,6 @@
       <div id="imagecontainer"><img v-if="introImageSrc" :src="introImageSrc" /></div>
       <ScrollInfo :title="titleScrollink" />
     </div>
-    <TitleDesc v-if="loggedIn" :title="title" />
     <CompleteCourselist />
   </section>
 </template>
@@ -27,11 +26,6 @@ export default {
     FrontIntro,
     CompleteCourselist,
     TitleDesc
-  },
-  data(){
-    return{
-      title: 'lea'
-    }
   },
   computed: {
     loggedIn(){
