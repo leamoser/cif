@@ -1,9 +1,9 @@
 <template>
-  <div class="badge_leiste" v-if="chapterDetails && courseStatus">
+  <div class="badge_leiste" v-if="courseStatus">
     <div class="badge" :class="courseStatus.badgetext"><p class="code small">{{courseStatus?.badgetext}}</p></div>
     <div class="more">
       <p class="code small">{{courseStatus?.more}}</p>
-      <img src="/img/webicons/go_light.svg" alt="Icon Weiter" />
+      <img src="/img/webicons/go_dark.svg" alt="Icon weiter" />
     </div>
   </div>
 </template>
@@ -41,4 +41,26 @@ export default{
 }
 </script>
 <style lang="scss" scoped>
+div.badge_leiste{
+  @include flex(row,center,space-between);
+  width: 100%;
+  div.badge{
+    color: $co-bg;
+    padding: 4px 15px 7px 14px;
+    border-radius: 50px;
+    &.done{
+      background-color: $co-pos;
+    }
+    &.progress{
+      background-color: $co-neutral;
+    }
+    &.open{
+      background-color: $co-neg;
+    }
+  }
+  div.more{
+    @include flex(row,center,flex-end);
+    gap: 10px;
+  }
+}
 </style>

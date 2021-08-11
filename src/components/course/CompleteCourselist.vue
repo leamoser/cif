@@ -23,4 +23,7 @@ export default{
 </script>
 
 <style lang="scss" scoped>
+  div.course_list{
+    @include grid(3)
+  }
 </style>

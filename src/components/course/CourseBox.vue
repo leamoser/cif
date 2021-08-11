@@ -1,9 +1,11 @@
 <template>
   <router-link v-if="course && solvedChapters" :to="courseLink">
-    <div class="course_box">
-      <h3 class="title">{{ course.title }}</h3>
-      <Infobar :languages="course.languages" :chapter-count="chapterCount" />
-      <div class="content-small gc" v-html="course.description"></div>
+    <div class="course_box" :class="{'sml': !loggedIn}">
+      <div class="box_content">
+        <h3 class="title">{{ course.title }}</h3>
+        <Infobar :languages="course.languages" :chapter-count="chapterCount" />
+        <div class="content-small gc" v-html="course.description"></div>
+      </div>
       <CourseBadge v-if="loggedIn && chapterDetailsLoaded" :chapter-details="chapterDetails" />
     </div>
   </router-link>
@@ -94,4 +96,23 @@ export default{
 }
 </script>
 <style lang="scss" scoped>
+a{
+  @include linkreset();
+  div.course_box{
+    position: relative;
+    padding: $ga-inner;
+    height: 400px;
+    &.sml{
+      height: 350px;
+    }
+    background-color: $co-akzent;
+    @include flex(column,flex-start,space-between);
+    div.box_content{
+      div{
+        margin-top: 15px;
+      }
+    }
+  }
+}
+
 </style>

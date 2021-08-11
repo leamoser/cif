@@ -4,7 +4,7 @@
       <FrontIntro />
       <HomeLoggedOut v-if="!loggedIn" />
       <div id="imagecontainer"><img v-if="introImageSrc" :src="introImageSrc" /></div>
-      <ScrollInfo title="für mehr Infos scrollen" />
+      <ScrollInfo :title="titleScrollink" />
     </div>
     <TitleDesc v-if="loggedIn" :title="title" />
     <CompleteCourselist />
@@ -30,7 +30,7 @@ export default {
   },
   data(){
     return{
-      title: 'Alle angebotenen Kurse',
+      title: 'lea'
     }
   },
   computed: {
@@ -42,6 +42,13 @@ export default {
         return '/img/webicons/computer_heart.svg'
       }else{
         return '/img/webicons/computer_code.svg'
+      }
+    },
+    titleScrollink(){
+      if(this.loggedIn){
+        return 'alle Kurse entdecken'
+      }else{
+        return 'für mehr Infos scrollen'
       }
     }
   }
