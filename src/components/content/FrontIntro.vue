@@ -1,7 +1,7 @@
 <template>
-  <div class="intro" id="front" v-if="appName && appSlogan">
-    <p class="logo_big">{{appName}}</p>
-    <p class="intro">{{appSlogan}}</p>
+  <div v-if="appName && appSlogan">
+    <p class="logo_big">{{ appName }}</p>
+    <p class="big">{{ appSlogan }}</p>
   </div>
 </template>
 <script>
@@ -18,4 +18,13 @@ export default{
 }
 </script>
 <style lang="scss" scoped>
+div{
+  margin-bottom: $ga-around;
+  p.logo_big{
+    margin-bottom: 20px;
+  }
+  p.big{
+    @include content();
+  }
+}
 </style>

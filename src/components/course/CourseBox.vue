@@ -1,10 +1,10 @@
 <template>
-  <router-link v-if="course" :to="courseLink">
+  <router-link v-if="course && solvedChapters" :to="courseLink">
     <div class="course_box">
       <h3 class="title">{{ course.title }}</h3>
       <Infobar :languages="course.languages" :chapter-count="chapterCount" />
       <div class="content-small gc" v-html="course.description"></div>
-      <CourseBadge v-if="chapterDetailsLoaded" :chapter-details="chapterDetails" />
+      <CourseBadge v-if="loggedIn && chapterDetailsLoaded" :chapter-details="chapterDetails" />
     </div>
   </router-link>
 </template>
@@ -32,6 +32,9 @@ export default{
     }
   },
   computed: {
+    loggedIn(){
+      return this.$store.getters.isUserLoggedIn;
+    },
     courseLink(){
       return this.course.id ? this.courseUrl + this.course.id : null
     },

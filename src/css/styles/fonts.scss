@@ -5,7 +5,7 @@ p.logo_big{
 p.logo_small{
     font: $f-logo-s;
 }
-p.intro{
+p.big{
     font: $f-front-subline;
 }
 
@@ -18,9 +18,6 @@ label{
     &.small{
         font: $f-text-s;
     }
-    &.giant{
-        font: $f-headline-m;
-    }
     &.code{
         font: $f-code-m;
         &.small{
@@ -29,7 +26,6 @@ label{
     }
 }
 
-//Titel
 h2{
     font: $f-headline-m;
 }

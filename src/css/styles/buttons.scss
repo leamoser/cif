@@ -1,0 +1,9 @@
+//basic button
+button.btn{
+  p{
+    line-height: 100%;
+  }
+  background-color: $co-bg;
+  padding: 10px 16px 13px 16px;
+  border: $bo-standard;
+}

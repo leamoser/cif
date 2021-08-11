@@ -3,7 +3,7 @@
     <p class="logo_small">
       <router-link to="/">{{appName}}</router-link>
     </p>
-    <p class="intro">{{title}}</p>
+    <p class="big">{{title}}</p>
   </div>
 </template>
 <script>

@@ -1,0 +1,40 @@
+//generated content with v-html
+div.gc{
+  a{
+    @include linkreset;
+  }
+  ul,
+  ol{
+    padding: 10px;
+    padding-left: 20px;
+    li{
+      padding: 2px 0;
+    }
+  }
+  &.content{
+    p,
+    ul li,
+    ol li{
+      font: $f-text-m;
+      @include content;
+    }
+    p{
+      &:not(:last-of-type){
+        margin-bottom: 10px;
+      }
+    }
+  }
+  &.content-small{
+    p,
+    ul li,
+    ol li{
+      font: $f-text-s;
+    }
+  }
+  h2{
+    margin: 40px 0 20px 0;
+  }
+  h3{
+    margin: 15px 0 10px 0;
+  }
+}
