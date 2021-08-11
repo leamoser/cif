@@ -104,7 +104,7 @@ section.formcontainer {
   div#imagecontainer {
     height: 100%;
     width: 30%;
-    position: absolute;
+    position: fixed;
     right: $ga-around;
     top: 0;
     @include flex(column, center, center);

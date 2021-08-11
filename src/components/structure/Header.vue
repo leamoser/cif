@@ -95,19 +95,16 @@ header {
   position: absolute;
   right: $ga-around;
   top: calc(#{$ga-around} + 10px);
-
   div.burgercontainer {
     z-index: 5;
     @include flex(row, center, flex-end);
     gap: 10px;
-
     img {
       z-index: 20;
       cursor: pointer;
       position: relative;
       @include icon(0, 50px);
     }
-
     .useranzeige {
       background-color: $co-bg;
       z-index: 20;
@@ -122,16 +119,13 @@ header {
     top: 0;
     right: 0;
     @include flex(column, center, center);
-
     img {
-      max-width: 250px;
+      max-width: 300px;
     }
-
     nav {
       margin: $ga-around 0;
       @include flex(row, center, center);
       gap: 60px;
-
       a {
         @include linkreset();
       }
@@ -140,17 +134,14 @@ header {
     div.buttonbox {
       @include flex(row, center, center);
       gap: 15px;
-
       & > * {
         display: block;
       }
     }
-
     border-left: $bo-standard;
     background-color: $co-akzent;
     transition: 0.5s;
     transform: translateX(0vw);
-
     &.inactive {
       transform: translateX(100vw);
     }

@@ -156,20 +156,17 @@ export default {
 section.formcontainer {
   position: relative;
   min-height: 89vh;
-
   div.msg {
     padding: $ga-around;
   }
-
   form {
     margin: $ga-around;
     @include content();
   }
-
   div#imagecontainer {
     height: 100%;
     width: 30%;
-    position: absolute;
+    position: fixed;
     right: $ga-around;
     top: 0;
     @include flex(column, center, center);
