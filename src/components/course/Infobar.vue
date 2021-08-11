@@ -21,4 +21,7 @@ export default{
 }
 </script>
 <style lang="scss" scoped>
+p{
+  margin-top: 3px;
+}
 </style>

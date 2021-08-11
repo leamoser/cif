@@ -61,6 +61,9 @@ div.badge_leiste{
   div.more{
     @include flex(row,center,flex-end);
     gap: 10px;
+  img{
+    @include icon(0, 12px)
+  }
   }
 }
 </style>
