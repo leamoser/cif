@@ -1,13 +1,11 @@
 <template>
   <MainIntro :title="pageTitle" v-if="user" />
-    <div class="profilestats">
+    <div class="profileinfos">
       <ProfileImage />
       <ProfileUserInfo />
-      <ProfileUserStats />
     </div>
     <ProfileMarkedCourses v-if="user" />
 </template>
-
 <script>
 import MainIntro from "../components/content/MainIntro";
 import ProfileImage from "../components/user/ProfileImage";
@@ -52,4 +50,10 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+div.profileinfos{
+  @include grid(2);
+  &>*{
+    width: 100%;
+  }
+}
 </style>

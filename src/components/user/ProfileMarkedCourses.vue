@@ -4,7 +4,6 @@
     <CourseBox v-if="courses" v-for="course in courses" :key="course?.course_id?.id" :course="course?.course_id" />
   </div>
 </template>
-
 <script>
 import TitleDesc from "../content/TitleDesc";
 import axios from "axios";
@@ -50,4 +49,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+div.marked_courses{
+  padding: $ga-around;
+  @include grid(3)
+}
 </style>

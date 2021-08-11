@@ -21,7 +21,7 @@
         <input type="email" id="new_email" name="new_email" v-model="newUser.email"><br>
         <label for="new_password">Neues Passwort (optional)</label>
         <input type="password" id="new_password" name="new_password" v-model="newUser.password"><br>
-        <button><p class="code">Profil speichern</p></button>
+        <button class="btn"><p class="code">Profil speichern</p></button>
       </form>
     </div>
   </div>
@@ -78,4 +78,7 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+div.user_info{
+  @include flex(column,flex-start,center);
+}
 </style>
