@@ -18,8 +18,11 @@ form.user_form{
   }
 }
 div.msg{
-  border: $bo-standard;
+  margin: 0 $ga-around;
+  @include content();
+  padding: $ga-inner;
   background-color: $co-neg;
+  color: $co-bg;
   &.success{
     background-color: $co-pos;
   }

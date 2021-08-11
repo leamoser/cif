@@ -1,7 +1,7 @@
 <template>
-  <div class="title_desc" v-if="title && description">
-    <h2>{{title}}</h2>
-    <p v-if="description">{{description}}</p>
+  <div class="title_desc">
+    <h2 v-if="title">{{ title }}</h2>
+    <p v-if="description">{{ description }}</p>
   </div>
 </template>
 <script>
@@ -20,4 +20,10 @@ export default{
 }
 </script>
 <style lang="scss" scoped>
+div{
+  padding: $ga-around;
+  p{
+    @include content();
+  }
+}
 </style>

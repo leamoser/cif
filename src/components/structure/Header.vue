@@ -65,6 +65,8 @@ export default {
       localStorage.clear();
       this.$store.dispatch('setUserInactive');
       this.$store.dispatch('clearUserInfo');
+      this.navActive = false
+      this.enableScrolling()
     },
     refreshUsername() {
       this.username = localStorage.getItem('username');

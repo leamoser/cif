@@ -12,4 +12,14 @@ export default{
 </script>
 
 <style lang="scss" scoped>
+div{
+  padding: $ga-around;
+  a{
+    @include linkreset();
+    &.router-link-active{
+      display: none;
+    }
+  }
+}
+
 </style>
