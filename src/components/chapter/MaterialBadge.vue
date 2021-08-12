@@ -1,6 +1,6 @@
 <template>
   <div class="badge_leiste" v-if="materialInfo && linktext">
-    <div v-if="solved" class="badge"><p class="code small">done</p></div>
+    <div v-if="solved" class="badge done"><p class="code small">done</p></div>
     <div v-else></div>
     <div class="more">
       <p class="code small">{{linktext}}</p>
@@ -48,4 +48,15 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+div.badge_leiste{
+  width: 100%;
+  @include flex(row,center,space-between);
+  div.more{
+    @include flex(row,center,flex-end);
+    gap: 10px;
+    img{
+      @include icon(0, 12px)
+    }
+  }
+}
 </style>

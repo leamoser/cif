@@ -1,6 +1,6 @@
 <template>
   <router-link v-if="course" :to="courseLink" :class="{'disabled': !loggedIn}">
-    <div class="course_box" :class="{'sml': !loggedIn}">
+    <div class="box" :class="{'sml': !loggedIn}">
       <div class="box_content">
         <h3 class="title">{{ course.title }}</h3>
         <Infobar :languages="course.languages" :chapter-count="chapterCount"/>
@@ -127,14 +127,7 @@ a {
       overflow: hidden;
     }
   }
-  div.course_box {
-    position: relative;
-    padding: $ga-inner;
-    height: 400px;
-    &.sml {
-      height: 350px;
-    }
-    background-color: $co-akzent;
+  div.box {
     @include flex(column, flex-start, space-between);
     div.box_content {
       div {
@@ -142,7 +135,6 @@ a {
       }
     }
   }
-
   div.badge_leiste {
     @include flex(row, center, space-between);
     width: 100%;

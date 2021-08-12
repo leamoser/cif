@@ -1,5 +1,5 @@
 <template>
-  <div class="downloads" v-if="downloads">
+  <div class="box mat" v-if="downloads">
     <h3>Downloads</h3>
     <Download v-for="download in downloads" :download-combo-i-d="download" />
   </div>

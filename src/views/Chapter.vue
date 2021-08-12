@@ -1,7 +1,9 @@
 <template>
-  <section v-if="chapter" class="mainsection chapter" id="chapter">
+  <section v-if="chapter" id="chapter">
     <MainIntro :title="chapter.title" />
-    <Backlink v-if="backlink" :link-u-r-l="backlink" linktext="Zurück zur Kursübersicht" />
+    <div class="linkleiste">
+      <Backlink v-if="backlink" :link-u-r-l="backlink" linktext="Zurück zur Kursübersicht" />
+    </div>
     <Unit :chapter-i-d="chapterID" :backlink="backlink" />
     <div class="material_container">
       <TitleDesc :title="material_title" />
@@ -93,5 +95,17 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-
+section#chapter{
+  div.linkleiste{
+    padding: 0 $ga-around;
+    @include flex(row,center,flex-start);
+  }
+  div.material_container{
+    div.material{
+      padding: 0 $ga-around;
+      margin-bottom: $ga-around;
+      @include grid(3);
+    }
+  }
+}
 </style>

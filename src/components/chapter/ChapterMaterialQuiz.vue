@@ -1,10 +1,12 @@
 <template>
   <router-link v-if="quizID && url" :to="url">
-    <div class="quiz">
-      <h3>Abschlussquiz</h3>
-      <p class="small">Stelle dein Wissen auf die Probe und absolviede das Abschlussquiz zum Kapitel.</p>
+    <div class="box mat">
+      <div class="quiz">
+        <h3>Abschlussquiz</h3>
+        <p class="small">Stelle dein Wissen auf die Probe und absolviede das Abschlussquiz zum Kapitel.</p>
+      </div>
+      <MaterialBadge :materialInfo="materialInfo" linktext="Zum Quiz" />
     </div>
-    <MaterialBadge :materialInfo="materialInfo" linktext="Zum Quiz" />
   </router-link>
 </template>
 <script>
@@ -38,4 +40,10 @@ export default{
 }
 </script>
 <style lang="scss" scoped>
+a{
+  @include linkreset();
+  div.box{
+    @include flex(column,flex-start,space-between);
+  }
+}
 </style>

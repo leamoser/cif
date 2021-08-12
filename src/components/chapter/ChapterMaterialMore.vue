@@ -1,5 +1,5 @@
 <template>
-  <div class="more_infos">
+  <div class="box mat">
     <h3>Zusätzliche Infos</h3>
     <div class="content-small gc" v-html="content">
     </div>

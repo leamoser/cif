@@ -1,0 +1,15 @@
+//boxen
+div.box{
+  position: relative;
+  background-color: $co-akzent;
+  padding: $ga-inner;
+  min-height: 400px;
+  &.sml {
+    min-height: 350px;
+  }
+  &.mat{
+    h3{
+      margin-bottom: 10px;
+    }
+  }
+}

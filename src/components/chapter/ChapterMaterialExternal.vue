@@ -1,10 +1,12 @@
 <template>
   <router-link v-if="exerciseID && url" :to="url">
-    <div class="external_exercise">
-      <h3>Abschlussübung</h3>
-      <p class="small">Teste dein Wissen am Ende der Lektion.</p>
+    <div class="box mat">
+      <div class="external_exercise">
+        <h3>Abschlussübung</h3>
+        <p class="small">Teste dein Wissen am Ende der Lektion.</p>
+      </div>
+      <MaterialBadge :materialInfo="materialInfo" linktext="Zur Übung" />
     </div>
-    <MaterialBadge :materialInfo="materialInfo" linktext="Zur Übung" />
   </router-link>
 </template>
 <script>
@@ -38,4 +40,10 @@ export default{
 }
 </script>
 <style lang="scss" scoped>
+a{
+  @include linkreset();
+  div.box{
+    @include flex(column,flex-start,space-between);
+  }
+}
 </style>
