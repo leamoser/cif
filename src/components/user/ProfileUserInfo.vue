@@ -88,6 +88,9 @@ div.user_info{
   }
   div.btn-dbl{
     margin-top: $ga-inner;
+    &>img{
+      @include btnicon(0,10px,4px)
+    }
   }
 }
 </style>

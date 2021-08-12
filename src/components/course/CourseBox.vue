@@ -131,14 +131,11 @@ a {
     position: relative;
     padding: $ga-inner;
     height: 400px;
-
     &.sml {
       height: 350px;
     }
-
     background-color: $co-akzent;
     @include flex(column, flex-start, space-between);
-
     div.box_content {
       div {
         margin-top: 15px;
@@ -149,29 +146,9 @@ a {
   div.badge_leiste {
     @include flex(row, center, space-between);
     width: 100%;
-
-    div.badge {
-      color: $co-bg;
-      padding: 4px 15px 7px 14px;
-      border-radius: 50px;
-
-      &.done {
-        background-color: $co-pos;
-      }
-
-      &.progress {
-        background-color: $co-neutral;
-      }
-
-      &.open {
-        background-color: $co-neg;
-      }
-    }
-
     div.more {
       @include flex(row, center, flex-end);
       gap: 10px;
-
       img {
         @include icon(0, 12px)
       }

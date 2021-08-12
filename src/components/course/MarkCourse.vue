@@ -1,15 +1,11 @@
 <template>
-  <div class="mark_course" v-if="!courseActive" @click="addCourseToList">
-    <div class="icon">
-      <img src="/img/webicons/heartEmpty.svg" alt="Icon Kurs Markieren">
-    </div>
-    <p class="code">Kurs für dich markieren</p>
+  <div class="btn-dbl" v-if="!courseActive" @click="addCourseToList">
+    <img class="left" src="/img/webicons/heartEmpty.svg" alt="Icon Kurs Markieren">
+    <p class="code small">Kurs für dich markieren</p>
   </div>
-  <div class="mark_course" v-else @click="removeCourseFromList">
-    <div class="icon">
-      <img src="/img/webicons/heart.svg" alt="Icon Kurs Markieren">
-    </div>
-    <p class="code">Kurs aus Merkliste entfernen</p>
+  <div class="btn-dbl" v-else @click="removeCourseFromList">
+    <img class="left" src="/img/webicons/heart.svg" alt="Icon Kurs Markieren">
+    <p class="code small">Kurs aus Merkliste entfernen</p>
   </div>
 </template>
 <script>
@@ -83,4 +79,9 @@ export default{
 }
 </script>
 <style lang="scss" scoped>
+div.btn-dbl{
+  img{
+    @include btnicon(0,8px,7px);
+  }
+}
 </style>

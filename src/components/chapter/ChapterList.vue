@@ -25,4 +25,7 @@ export default{
 }
 </script>
 <style lang="scss" scoped>
+div.chapter_list{
+  padding: 0 $ga-around;
+}
 </style>

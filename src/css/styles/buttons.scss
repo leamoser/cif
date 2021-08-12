@@ -9,6 +9,7 @@ div.btn{
   padding: 10px 16px 13px 16px;
   border: $bo-standard;
 }
+//imagebutton
 div.btn-dbl{
   cursor: pointer;
   p{
@@ -20,7 +21,19 @@ div.btn-dbl{
     padding: 10px 16px 13px 16px;
     border: $bo-standard;
   }
-  &>img{
-    @include btnicon(0,10px,4px)
+}
+//badges
+div.badge {
+  color: $co-bg;
+  padding: 4px 15px 7px 14px;
+  border-radius: 50px;
+  &.done {
+    background-color: $co-pos;
+  }
+  &.progress {
+    background-color: $co-neutral;
+  }
+  &.open {
+    background-color: $co-neg;
   }
 }

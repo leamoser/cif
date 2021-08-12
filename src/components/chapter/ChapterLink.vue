@@ -2,7 +2,7 @@
   <router-link v-if="chapter" :to="{path: chapterURL + chapterID, query: {up: 1}}">
     <div class="chapter_link" :class="{done: chapterFinalized}">
       <ShowNiveau :niveau-i-d="chapter.niveau" />
-      <div v-if="chapterFinalized" class="badge"><p class="code">done</p></div>
+      <div v-if="chapterFinalized" class="badge done"><p class="code small">done</p></div>
       <p class="code">{{chapter.title}}</p>
       <img src="/img/webicons/go_dark.svg" alt="Icon weiter">
     </div>
@@ -59,4 +59,21 @@ export default{
 }
 </script>
 <style lang="scss" scoped>
+a{
+  @include linkreset();
+  div.chapter_link{
+    margin-top: -1px;
+    position: relative;
+    padding: $ga-inner;
+    background-color: $co-akzent;
+    border: $bo-standard;
+    @include flex(row,center,flex-start);
+    gap: 15px;
+    img{
+      position: absolute;
+      @include icon(0,15px);
+      right: $ga-inner;
+    }
+  }
+}
 </style>

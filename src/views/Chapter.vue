@@ -15,7 +15,6 @@
     </div>
   </section>
 </template>
-
 <script>
 import axios from "axios";
 import MainIntro from "../components/content/MainIntro.vue";
@@ -93,6 +92,6 @@ export default {
   },
 }
 </script>
-
 <style lang="scss" scoped>
+
 </style>

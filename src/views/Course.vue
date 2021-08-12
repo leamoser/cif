@@ -1,12 +1,14 @@
 <template>
-  <section class="mainsection course" id="course" v-if="course">
+  <section id="course" v-if="course">
     <MainIntro :title="course.title"/>
-    <Backlink link-u-r-l="/" linktext="Zurück zur Startseite" />
     <div class="add_infos">
       <Infobar :course-i-d="course.id" :languages="course.languages" :chapter-count="allPublishedChapters.length" />
       <div class="content gc" v-html="course.description"></div>
     </div>
-    <MarkCourse :course-i-d="course.id" />
+    <div class="actions">
+      <Backlink link-u-r-l="/" linktext="Zurück zur Startseite" />
+      <MarkCourse :course-i-d="course.id" />
+    </div>
     <TitleDesc :title="chapterTitle" />
     <ChapterList :chapters-i-ds="allPublishedChapters" />
   </section>
@@ -67,4 +69,19 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+section#course{
+  div.add_infos{
+    padding: 0 $ga-around;
+    margin-top: calc( calc( #{$ga-around} / 1.5 ) * -1 );
+    div.content{
+      margin: $ga-around 0;
+    }
+  }
+  div.actions{
+    padding: 0 $ga-around;
+    @include flex(row,center,flex-start);
+    gap: 15px;
+    margin-bottom: 100px;
+  }
+}
 </style>
