@@ -1,18 +1,41 @@
 <template>
   <div class="unit_container" v-if="unitPosition && units && numberOfUnits && activeUnit && activeUnitType">
-    <div class="identifier">
-      <p class="code">{{unitPosition}} / {{numberOfUnits}}</p>
+
+    <div class="slide_fix">
+      <div class="btn-dbl">
+        <p class="code small">Slides anheften</p>
+        <img class="right" src="/img/webicons/pin.svg" alt="Icon Anheften">
+      </div>
     </div>
+
     <div class="unit">
       <UnitTheory v-if="activeUnitType === 'theory'" :unit-content="activeUnit"/>
       <UnitExternalExercise v-if="activeUnitType === 'external_exercise'" :unit-content="activeUnit" unit-type="internal" />
       <UnitEditorExercise v-if="activeUnitType === 'editor_exercise'" :unit-content="activeUnit" unit-type="internal" />
     </div>
-    <div class="controls" v-if="numberOfUnits > 1">
-      <div id="prev" v-if="showPrevButton" @click="previousUnit"><img src="/img/webicons/arrow.svg"></div>
-      <div id="next" v-if="showNextButton" @click="nextUnit"><img src="/img/webicons/arrow.svg"></div>
+
+    <div class="control_leiste">
+
+      <div class="btn-dbl prev" v-if="numberOfUnits > 1 && showPrevButton" @click="previousUnit">
+        <img class="left" src="/img/webicons/go_dark.svg">
+        <p class="code small">Vorheriger Slide</p>
+      </div>
+
+      <div class="btn identifier">
+        <p class="code small">{{unitPosition}} / {{numberOfUnits}}</p>
+      </div>
+
+      <div class="btn-dbl next" v-if="numberOfUnits > 1 && showNextButton" @click="nextUnit">
+        <p class="code small">nächster Slide</p>
+        <img class="right" src="/img/webicons/go_dark.svg">
+      </div>
+
+      <FinalizeChapter v-if="isLastUnit" :chapter-i-d="chapterID" :backlink="backlink" />
+
     </div>
-    <FinalizeChapter v-if="isLastUnit" :chapter-i-d="chapterID" :backlink="backlink" />
+
+
+
   </div>
 </template>
 
@@ -87,4 +110,45 @@ export default{
 </script>
 
 <style lang="scss" scoped>
+div.unit_container{
+  border-top: $bo-standard;
+  border-bottom: $bo-standard;
+  padding: $ga-around;
+  min-height: 100vh;
+  position: relative;
+  div.slide_fix{
+    div.btn-dbl{
+      position: absolute;
+      top: -1px;
+      right: -1px;
+      img{
+        @include btnicon(0,12px,8px);
+      }
+    }
+  }
+  div.control_leiste{
+    position: absolute;
+    bottom: -1px;
+    left: -1px;
+    width: 100%;
+    @include flex(row,center,center);
+    div.prev{
+      position: absolute;
+      left: 0;
+      img{
+        @include btnicon(180deg,12px,8px);
+      }
+    }
+    div.identifier{
+      width: auto;
+    }
+    div.next{
+      position: absolute;
+      right: -1px;
+      img{
+        @include btnicon(0,12px,8px);
+      }
+    }
+  }
+}
 </style>

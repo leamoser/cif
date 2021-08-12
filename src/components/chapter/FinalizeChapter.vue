@@ -1,11 +1,11 @@
 <template>
-  <div class="finish_unit" @click="finalizeChapter" v-if="!chapterFinalized">
+  <div class="btn-dbl finish_unit finish" @click="finalizeChapter" v-if="!chapterFinalized">
     <p class="code small">Kapitel abschliessen</p>
+    <img class="right" src="/img/webicons/finish.svg" alt="Icon Finish" />
   </div>
-  <div class="finish_unit" v-else>
-    <router-link :to="backlink">
-      <p class="code small">Zurück zur Übersicht</p>
-    </router-link>
+  <div class="btn-dbl finish_unit back" v-else>
+      <p class="code small"><router-link :to="backlink">Zurück zur Übersicht</router-link></p>
+      <img class="right" src="/img/webicons/home.svg" alt="Back Icon" />
   </div>
 </template>
 <script>
@@ -73,4 +73,21 @@ export default{
 }
 </script>
 <style lang="scss" scoped>
+div.finish_unit{
+  position: absolute;
+  right: -2px;
+}
+div.finish{
+  img{
+    @include btnicon(0,9px,8px);
+  }
+}
+div.back{
+  a{
+    @include linkreset();
+  }
+  img{
+    @include btnicon(0,8px,8px);
+  }
+}
 </style>

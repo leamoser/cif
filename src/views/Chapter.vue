@@ -98,6 +98,7 @@ export default {
 section#chapter{
   div.linkleiste{
     padding: 0 $ga-around;
+    margin-bottom: $ga-around;
     @include flex(row,center,flex-start);
   }
   div.material_container{
