@@ -1,5 +1,5 @@
 <template>
-  <router-link v-if="course" :to="courseLink">
+  <router-link v-if="course" :to="courseLink" :class="{'disabled': !loggedIn}">
     <div class="course_box" :class="{'sml': !loggedIn}">
       <div class="box_content">
         <h3 class="title">{{ course.title }}</h3>
@@ -19,7 +19,6 @@
 <script>
 import Infobar from "./Infobar.vue";
 import axios from "axios";
-
 export default {
   name: 'courseBox',
   components: {
@@ -108,7 +107,26 @@ export default {
 <style lang="scss" scoped>
 a {
   @include linkreset();
-
+  &.disabled{
+    position: relative;
+    &:active{
+      pointer-events: none;
+    }
+    &:focus::after{
+      content: 'Bitte logge dich ein oder registriere dich um die Kurse absolvieren zu können.';
+      position: absolute;
+      font: $f-code-s;
+      background-color: $co-bg;
+      display: block;
+      padding: 10px;
+      top: 90%;
+      left: 10px;
+      width: 95%;
+      border: $bo-standard;
+      z-index: 3;
+      overflow: hidden;
+    }
+  }
   div.course_box {
     position: relative;
     padding: $ga-inner;

@@ -4,7 +4,7 @@
     <div v-else></div>
     <div class="more">
       <p class="code small">{{linktext}}</p>
-      <img src="/img/webicons/go_light.svg" alt="Icon Weiter" />
+      <img src="/img/webicons/go_dark.svg" alt="Icon Weiter" />
     </div>
   </div>
 </template>
