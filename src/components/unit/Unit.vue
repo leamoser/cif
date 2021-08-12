@@ -15,13 +15,13 @@
     <div class="control_leiste">
       <div class="btn-dbl prev" v-if="numberOfUnits > 1 && showPrevButton" @click="previousUnit">
         <img class="left" src="/img/webicons/go_dark.svg">
-        <p class="code small">Vorheriger Slide</p>
+        <p class="code small">Vorheriger&nbsp;Slide</p>
       </div>
       <div class="btn identifier">
         <p class="code small">{{ unitPosition }} / {{ numberOfUnits }}</p>
       </div>
       <div class="btn-dbl next" v-if="numberOfUnits > 1 && showNextButton" @click="nextUnit">
-        <p class="code small">nächster Slide</p>
+        <p class="code small">nächster&nbsp;Slide</p>
         <img class="right" src="/img/webicons/go_dark.svg">
       </div>
       <FinalizeChapter v-if="isLastUnit" :chapter-i-d="chapterID" :backlink="backlink"/>
@@ -149,7 +149,6 @@ div.unit_container {
   }
 
   div.unit{
-    background-color: #a3be8c;
     max-height: 85vh;
     overflow: scroll;
     padding-bottom: 100px;

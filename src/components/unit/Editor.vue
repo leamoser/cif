@@ -22,9 +22,10 @@
       </div>
     </div>
   </section>
-  <button v-if="isConsole || isBoth" @click="compileConsole">Compile Console</button>
+  <div class="compiler">
+    <button class="btn code small" v-if="isConsole || isBoth" @click="compileConsole">Konsole kompilieren</button>
+  </div>
 </template>
-
 <script>
 import ace from 'ace-builds';
 ace.config.set(
@@ -70,6 +71,7 @@ export default {
       this.editor = ace.edit('editor')
       this.editor.setTheme('ace/theme/nord_dark')
       this.editor.session.setMode(`ace/mode/${this.language}`)
+      this.editor.session.setUseWrapMode(true)
       this.editor.commands.addCommand({
         name: 'myCommand',
         bindKey: {win: 'Ctrl-Shift-S', mac: 'Command-Shift-S'},
@@ -132,10 +134,58 @@ export default {
   }
 }
 </script>
-
 <style lang="scss" scoped>
-/*editor*/
-#editor {
-  height: 50vh;
+section.editorcontainer {
+  position: relative;
+  @include flex(row,center,center);
+  &>*{
+    width: 100%;
+  }
+  #editor {
+    height: 50vh;
+    font: $f-code-s;
+  }
+  .output_container {
+    border: $bo-standard;
+    overflow: scroll;
+    background-color: $co-font;
+    div.output{
+      div#compile{
+        height: calc( 50vh - 2px );
+        padding: $ga-inner;
+        background-color: $co-bg;
+      }
+      div#console_ct{
+        padding: $ga-inner;
+        background-color: $co-font;
+        height: calc( 50vh - 2px );
+        color: $co-bg;
+        pre#console{
+          font: $f-code-s;
+        }
+      }
+    }
+    div.toggle {
+      @include flex(row,center,center);
+      border: $bo-standard;
+      margin-bottom: $ga-inner;
+      &>*{
+        cursor: pointer;
+        border: none;
+        width: 50%;
+        padding: 10px 0;
+        background-color: $co-akzent;
+        &:not(.active){
+          filter: brightness(50%);
+        }
+      }
+    }
+  }
+}
+div.compiler{
+  @include flex(row,center,center);
+  position: relative;
+  margin-top: -20px;
+  z-index: 3;
 }
 </style>

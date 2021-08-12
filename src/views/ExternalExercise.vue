@@ -1,6 +1,6 @@
 <template>
   <MainIntro :title="title" />
-  <Backlink linktext="Zurück zum Kapitel" />
+  <Backlink linktext="Zurück&nbsp;zum&nbsp;Kapitel" />
   <div class="unit">
     <UnitExternalExercise v-if="externalexerciseID" unit-type="external" :exercise-i-d="externalexerciseID" />
     <div @click="markExerciseSolved">

@@ -1,6 +1,6 @@
 <template>
   <MainIntro :title="title"/>
-  <Backlink linktext="Zurück zum Kapitel"/>
+  <Backlink linktext="Zurück&nbsp;zum&nbsp;Kapitel"/>
   <div class="unit" v-if="quiz">
     <h2 v-if="quizName">{{ quizName }}</h2>
     <Question v-if="quizQuestions" v-for="(question, index) in quizQuestions" :key="index" :question="question"/>

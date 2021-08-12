@@ -6,7 +6,7 @@
       <div class="content gc" v-html="course.description"></div>
     </div>
     <div class="actions">
-      <Backlink link-u-r-l="/" linktext="Zurück zur Startseite" />
+      <Backlink link-u-r-l="/" linktext="Zurück&nbsp;zur&nbsp;Startseite" />
       <MarkCourse :course-i-d="course.id" />
     </div>
     <TitleDesc :title="chapterTitle" />

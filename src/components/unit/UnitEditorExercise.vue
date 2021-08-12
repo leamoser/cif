@@ -2,7 +2,16 @@
   <div v-if="editorExercise" class="unit_editor_exercise">
     <h2 v-if="unitType === 'internal'">{{unitContent.title}}</h2>
     <h2 v-else>{{editorExercise.title}}</h2>
-    <div v-if="unitContent?.theory || unitType === 'internal'" class="content gc" v-html="unitContent?.theory"></div>
+    <div v-if="unitContent.theory || unitType === 'internal'" class="content gc" v-html="unitContent.theory"></div>
+    <div class="addon_leiste">
+      <div v-if="hints" v-for="(hint, index) in hints" :key="index" class="hint" @click="showHint(hint)" :class="{'enabled':hintIndex===index }">
+        <img src="/img/webicons/hint.svg" alt="Icon Hint" />
+        <p class="code small">{{ index + 1 }}</p>
+      </div>
+      <div class="solution_toggle" @click="showSolution">
+        <img src="/img/webicons/solution.svg" alt="Icon Lösung" />
+      </div>
+    </div>
     <Editor v-if="editorExercise" :editorExercise="editorExercise" />
   </div>
 </template>
@@ -28,7 +37,17 @@ export default{
   },
   data(){
     return{
-      editorExercise: null
+      editorExercise: null,
+      hasHints: false,
+      hintIndex: null
+    }
+  },
+  computed: {
+    hints(){
+      return this.editorExercise.hints || null
+    },
+    solutions(){
+      return this.editorExercise.code_end || null
     }
   },
   methods: {
@@ -39,6 +58,19 @@ export default{
           .then(response => {
             this.editorExercise = response.data.data
           })
+          .then(() => {
+            if(this.hints.length != 0){
+              this.hasHints = true
+              this.hintIndex = 0
+            }
+          })
+    },
+    showHint(hint){
+      alert(hint.hint_id.description);
+      this.hintIndex += 1;
+    },
+    showSolution(){
+      //do
     }
   },
   mounted() {
@@ -51,4 +83,45 @@ export default{
 }
 </script>
 <style lang="scss" scoped>
+div.unit_editor_exercise{
+  h2{
+    margin-bottom: $ga-inner;
+  }
+  div.content{
+    margin-bottom: $ga-inner;
+  }
+  div.addon_leiste{
+    position: absolute;
+    width: calc( 100% - calc( #{$ga-around} * 2 ) );
+    @include flex(row,center,flex-end);
+    gap: 15px;
+    div.hint,
+    div.solution_toggle{
+      z-index: 5;
+      border: $bo-standard;
+      background-color: $co-bg;
+      margin-top: -30px;
+      height: 60px;
+      width: 60px;
+      @include flex(row,center,center);
+    }
+    div.hint{
+      pointer-events: none;
+      img,p{
+        opacity: 0.3;
+      }
+      &.enabled{
+        cursor: pointer;
+        pointer-events: all;
+        img,p{
+          opacity: 1;
+        }
+      }
+      gap: 4px;
+    }
+    div.solution_toggle{
+      cursor: pointer;
+    }
+  }
+}
 </style>

@@ -8,7 +8,7 @@
       <p>Passwort: *********</p>
     </div>
     <div class="btn-dbl" @click="makeProfileEditable" v-if="!profileEditMode">
-      <p class="code small">Profil bearbeiten</p>
+      <p class="code small">Profil&nbsp;bearbeiten</p>
       <img class="right" src="/img/webicons/edit.svg" alt="Icon Edit">
     </div>
     <div class="user_info_edit" v-if="profileEditMode">

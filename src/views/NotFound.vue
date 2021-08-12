@@ -3,7 +3,7 @@
     <MainIntro title="Error 404" />
     <TitleDesc title="Seite nicht gefunden" description="Diese Seite existiert leider nicht mehr oder hat noch nie existiert." />
     <router-link :to="{name: 'Home'}">
-      <button><p class="code small">Zurück zur Startseite</p></button>
+      <button><p class="code small">Zurück&nbsp;zur&nbsp;Startseite</p></button>
     </router-link>
   </section>
 </template>

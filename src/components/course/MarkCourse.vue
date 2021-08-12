@@ -1,11 +1,11 @@
 <template>
   <div class="btn-dbl" v-if="!courseActive" @click="addCourseToList">
     <img class="left" src="/img/webicons/heartEmpty.svg" alt="Icon Kurs Markieren">
-    <p class="code small">Kurs für dich markieren</p>
+    <p class="code small">Kurs&nbsp;für&nbsp;dich&nbsp;markieren</p>
   </div>
   <div class="btn-dbl" v-else @click="removeCourseFromList">
     <img class="left" src="/img/webicons/heart.svg" alt="Icon Kurs Markieren">
-    <p class="code small">Kurs aus Merkliste entfernen</p>
+    <p class="code small">Kurs&nbsp;aus&nbsp;Merkliste&nbsp;entfernen</p>
   </div>
 </template>
 <script>

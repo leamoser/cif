@@ -4,7 +4,7 @@
     <img class="right" src="/img/webicons/finish.svg" alt="Icon Finish" />
   </div>
   <div class="btn-dbl finish_unit back" v-else>
-      <p class="code small"><router-link :to="backlink">Zurück zur Übersicht</router-link></p>
+      <p class="code small"><router-link :to="backlink">Zurück&nbsp;zur&nbsp;Übersicht</router-link></p>
       <img class="right" src="/img/webicons/home.svg" alt="Back Icon" />
   </div>
 </template>
