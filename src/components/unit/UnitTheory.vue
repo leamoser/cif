@@ -14,4 +14,7 @@ export default{
 }
 </script>
 <style lang="scss" scoped>
+h2{
+  margin-bottom: $ga-inner;
+}
 </style>

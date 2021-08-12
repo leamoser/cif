@@ -27,13 +27,14 @@
       <FinalizeChapter v-if="isLastUnit" :chapter-i-d="chapterID" :backlink="backlink"/>
     </div>
   </div>
+  <hr id="scrollposition">
 </template>
+
 <script>
 import UnitTheory from "./UnitTheory.vue";
 import UnitExternalExercise from "./UnitExternalExercise.vue";
 import UnitEditorExercise from "./UnitEditorExercise.vue";
 import FinalizeChapter from "../chapter/FinalizeChapter";
-
 export default {
   name: 'Unit',
   components: {FinalizeChapter, UnitEditorExercise, UnitExternalExercise, UnitTheory},
@@ -85,6 +86,7 @@ export default {
     },
     pin() {
       if (this.slideFixed) {
+        document.querySelector('#scrollposition').scrollIntoView(false);
         this.$injection.disableScrolling();
         return {
           src: '/img/webicons/pin_active.svg',
@@ -120,54 +122,70 @@ export default {
   }
 }
 </script>
+
 <style lang="scss" scoped>
+hr#scrollposition{
+  visibility: hidden;
+  border: 0px solid transparent;
+  position: absolute;
+  margin-top: $ga-around;
+}
 div.unit_container {
   border-top: $bo-standard;
   border-bottom: $bo-standard;
   padding: $ga-around;
   min-height: calc(100vh - calc(#{$ga-around} * 2));
   position: relative;
-
+  overflow: hidden;
   div.slide_fix {
     div.btn-dbl {
       position: absolute;
       top: -1px;
       right: -1px;
-
       img {
         @include btnicon(0, 12px, 8px);
       }
     }
   }
 
-  div.control_leiste {
-    position: absolute;
-    bottom: -1px;
-    left: -1px;
-    width: 100%;
-    @include flex(row, center, center);
+  div.unit{
+    background-color: #a3be8c;
+    max-height: 85vh;
+    overflow: scroll;
+    padding-bottom: 100px;
+  }
 
+  div.control_leiste {
+    height: auto;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: rgb(255,255,255);
+    background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 37%);
+    @include flex(row, center, center);
     div.prev {
       position: absolute;
-      left: 0;
-
+      left: -1px;
+      bottom: -1px;
       img {
         @include btnicon(180deg, 12px, 8px);
       }
     }
-
     div.identifier {
       width: auto;
+      margin-bottom: -1px;
     }
-
     div.next {
       position: absolute;
       right: -1px;
-
       img {
         @include btnicon(0, 12px, 8px);
       }
     }
   }
+
+
+
 }
 </style>

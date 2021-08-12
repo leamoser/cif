@@ -1,11 +1,15 @@
 <template>
   <div v-if="externalExercise" class="unit_external_exercise">
-    <h2 v-if="unitType === 'internal'">{{unitContent?.title}}</h2>
-    <h2 v-else>{{externalExercise.title}}</h2>
-    <div v-if="unitContent?.theory" class="content gc" v-html="unitContent?.theory"></div>
-    <h3>Übungsanleitung</h3>
-    <div class="content gc" v-html="externalExercise?.instructions"></div>
-    <DownloadExternalExercise :title="externalExercise?.title" :download="download" />
+    <div class="einleitung">
+      <h2 v-if="unitType === 'internal'">{{unitContent?.title}}</h2>
+      <h2 v-else>{{externalExercise.title}}</h2>
+      <div v-if="unitContent?.theory" class="content gc" v-html="unitContent?.theory"></div>
+    </div>
+    <div class="uebung">
+      <h3>Übungsanleitung</h3>
+      <div class="content gc" v-html="externalExercise?.instructions"></div>
+      <DownloadExternalExercise :title="externalExercise?.title" :download="download" />
+    </div>
   </div>
 </template>
 <script>
@@ -61,4 +65,14 @@ export default{
 }
 </script>
 <style lang="scss" scoped>
+div.unit_external_exercise{
+  div.einleitung{
+    margin-bottom: $ga-inner;
+  }
+  div.uebung{
+    div.content{
+      margin-bottom: $ga-inner;
+    }
+  }
+}
 </style>

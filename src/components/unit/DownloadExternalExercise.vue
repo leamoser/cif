@@ -1,15 +1,20 @@
 <template>
   <a v-if="download.file" class="download_btn" :href="downloadlink" target="_blank" download>
-    <div>
-      <p class="code">{{ title }} - Übungsfiles downloaden</p>
-      <img src="/img/webicons/download.svg" alt="Icon Download">
+
+    <div class="btn-dbl">
+      <p class="code small">{{ title }} - Übungsfiles downloaden</p>
+      <img class="right" src="/img/webicons/download.svg" alt="Icon Download">
     </div>
+
   </a>
+
   <a class="download_btn" v-else :href="download.url" target="_blank" download>
-    <div>
-      <p class="code">{{ title }} - Übungsfiles downloaden</p>
-      <img src="/img/webicons/download.svg" alt="Icon Download">
+
+    <div class="btn-dbl">
+      <p class="code small">{{ title }} - Übungsfiles downloaden</p>
+      <img class="right" src="/img/webicons/download.svg" alt="Icon Download">
     </div>
+
   </a>
 </template>
 <script>
@@ -33,6 +38,15 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+a{
+  @include linkreset();
+  div.btn-dbl{
+   @include flex(row,center,flex-start);
+    img{
+      @include btnicon(0,8px,7px);
+    }
+  }
+}
 </style>
 
 
