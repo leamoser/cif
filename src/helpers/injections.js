@@ -1,6 +1,8 @@
 export const injections = {
-    //example
-    sum: (x,y) => {
-        return x + y;
-    }
+    disableScrolling: () => {
+        document.body.style.overflow = 'hidden';
+    },
+    enableScrolling: () => {
+        document.body.style.overflow = 'scroll';
+    },
 }

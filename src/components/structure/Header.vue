@@ -56,9 +56,9 @@ export default {
     toggleNav() {
       this.navActive = this.navActive === false;
       if(this.navActive){
-        this.disableScrolling()
+        this.$injection.disableScrolling();
       }else{
-        this.enableScrolling()
+        this.$injection.enableScrolling();
       }
     },
     logOutUser() {
@@ -66,17 +66,11 @@ export default {
       this.$store.dispatch('setUserInactive');
       this.$store.dispatch('clearUserInfo');
       this.navActive = false
-      this.enableScrolling()
+      this.$injection.enableScrolling();
     },
     refreshUsername() {
       this.username = localStorage.getItem('username');
     },
-    disableScrolling() {
-      document.body.style.overflow = 'hidden';
-    },
-    enableScrolling() {
-      document.body.style.overflow = 'scroll';
-    }
   },
   updated() {
     this.refreshUsername()
@@ -85,7 +79,7 @@ export default {
     $route(from, to) {
       document.title = from.meta.title || this.$store.getters.getAppName
       this.navActive = false
-      this.enableScrolling()
+      this.$injection.enableScrolling();
     }
   }
 }
