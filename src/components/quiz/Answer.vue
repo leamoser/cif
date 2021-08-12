@@ -4,7 +4,6 @@
     <label :for="answerSlug" :data-correct="isCorrect">{{questionAnswer}}</label>
   </div>
 </template>
-
 <script>
 export default{
   name: 'Answer',
@@ -32,4 +31,13 @@ export default{
 }
 </script>
 <style lang="scss" scoped>
+div.answer{
+  margin-bottom: 7px;
+  &:last-of-type{
+    margin-bottom: $ga-inner;
+  }
+  label{
+    margin-left: 4px;
+  }
+}
 </style>

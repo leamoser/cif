@@ -5,7 +5,7 @@
         <h3>Abschlussquiz</h3>
         <p class="small">Stelle dein Wissen auf die Probe und absolviede das Abschlussquiz zum Kapitel.</p>
       </div>
-      <MaterialBadge :materialInfo="materialInfo" linktext="Zum Quiz" />
+      <MaterialBadge :materialInfo="materialInfo" linktext="Zum Quiz"/>
     </div>
   </router-link>
 </template>

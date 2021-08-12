@@ -1,15 +1,18 @@
 <template>
   <MainIntro :title="title"/>
-  <Backlink linktext="Zurück&nbsp;zum&nbsp;Kapitel"/>
+  <div class="backlink_ct">
+    <Backlink linktext="Zurück&nbsp;zum&nbsp;Kapitel"/>
+  </div>
   <div class="unit" v-if="quiz">
     <h2 v-if="quizName">{{ quizName }}</h2>
-    <Question v-if="quizQuestions" v-for="(question, index) in quizQuestions" :key="index" :question="question"/>
-    <div @click="markQuizSolved">
-      <button class="finalize_quiz"><p class="code small">Quiz abschliessen</p></button>
+    <Question v-if="quizQuestions" v-for="(question, index) in quizQuestions" :key="index" :question="question"
+              :indexNr="index"/>
+    <div class="btn-dbl" @click="markQuizSolved">
+      <p class="code small">Quiz abschliessen</p>
+      <img class="right" src="/img/webicons/finish.svg" alt="Icon Abschliessen"/>
     </div>
   </div>
 </template>
-
 <script>
 import Backlink from "../components/content/Backlink.vue";
 import MainIntro from "../components/content/MainIntro.vue";
@@ -68,6 +71,31 @@ export default {
   }
 }
 </script>
-
 <style lang="scss" scoped>
+div.backlink_ct {
+  padding: 0 $ga-around;
+}
+
+div.unit {
+  position: relative;
+  overflow: hidden;
+  border-top: $bo-standard;
+  border-bottom: $bo-standard;
+  padding: $ga-around;
+  margin-top: $ga-around;
+
+  h2 {
+    margin-bottom: $ga-around;
+  }
+
+  div.btn-dbl {
+    position: absolute;
+    right: -1px;
+    bottom: -1px;
+    @include flex(row, center, flex-start);
+    img {
+      @include btnicon(0, 10px, 7px);
+    }
+  }
+}
 </style>

@@ -1,11 +1,11 @@
 <template>
   <div v-if="question" class="question_box">
     <div class="question" :class="{'evaluated': isCorrect !== undefined}">
-      <h3>{{questionTitle}}</h3>
+      <h3>{{ indexNr + 1 }}. {{questionTitle}}</h3>
       <img v-if="imageLink" :src="imageLink" alt="Bild für Frage">
       <form v-if="answers" @submit.prevent="checkSolution">
         <Answer v-for="(answer,index) in answers" :key="index" :answer="answer" :question-slug="questionSlug" />
-        <button><p class="code small">Antwort prüfen</p></button>
+        <button class="btn code small">Antwort prüfen</button>
       </form>
     </div>
     <div v-if="isCorrect !== undefined" class="explanation" :class="{'correct': isCorrect}">
@@ -15,7 +15,6 @@
   </div>
   <Error v-if="errorActive" :error_message="errorMessage" @remove="removeError" />
 </template>
-
 <script>
 import Answer from "./Answer";
 import Error from "../content/Error";
@@ -25,6 +24,10 @@ export default{
   props: {
     question: {
       type: Object,
+      required: true
+    },
+    indexNr: {
+      type: Number,
       required: true
     }
   },
@@ -51,9 +54,9 @@ export default{
     },
     explanationIdentifier(){
       if(this.isCorrect){
-        return 'korrekt'
+        return 'Korrekt!'
       }else{
-        return 'leider falsch'
+        return 'Leider falsch.'
       }
     },
     answers(){
@@ -84,6 +87,34 @@ export default{
   }
 }
 </script>
-
 <style lang="scss" scoped>
+div.question_box{
+  img{
+    width: 100%;
+  }
+  @include grid(2);
+  margin-bottom: $ga-around;
+  div.question{
+    border: $bo-standard;
+    padding: $ga-inner;
+    h3{
+      margin-bottom: $ga-inner;
+    }
+    img{
+      background-color: $co-font;
+      max-height: 400px;
+      object-fit: contain;
+      margin-bottom: $ga-inner;
+    }
+  }
+  div.explanation{
+    @include flex(column,flex-start,center);
+    border: $bo-standard;
+    padding: $ga-inner;
+    background-color: $co-neg;
+    &.correct{
+      background-color: $co-pos;
+    }
+  }
+}
 </style>

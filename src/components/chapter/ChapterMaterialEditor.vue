@@ -5,7 +5,7 @@
         <h3>Abschlussübung</h3>
         <p class="small">Teste dein Wissen am Ende der Lektion.</p>
       </div>
-      <MaterialBadge :materialInfo="materialInfo" linktext="zur Übung" />
+      <MaterialBadge :materialInfo="materialInfo" linktext="zur Übung"/>
     </div>
   </router-link>
 </template>

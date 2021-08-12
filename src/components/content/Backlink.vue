@@ -1,6 +1,6 @@
 <template>
   <div class="btn-dbl">
-    <img class="left" src="/img/webicons/go_dark.svg">
+    <img class="left" src="/img/webicons/go_dark.svg" alt="Icon Go">
     <p class="code small">
       <router-link v-if="linkURL" :to="linkURL">{{ linktext }}</router-link>
       <a v-else @click="backlink">{{ linktext }}</a>
@@ -29,6 +29,7 @@ export default{
 </script>
 <style lang="scss" scoped>
 div.btn-dbl{
+  @include flex(row,center,flex-start);
   img{
     @include btnicon(180deg,14px,7px);
   }
