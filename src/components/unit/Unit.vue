@@ -1,50 +1,40 @@
 <template>
   <div class="unit_container" v-if="unitPosition && units && numberOfUnits && activeUnit && activeUnitType">
-
     <div class="slide_fix">
-      <div class="btn-dbl">
-        <p class="code small">Slides anheften</p>
-        <img class="right" src="/img/webicons/pin.svg" alt="Icon Anheften">
+      <div class="btn-dbl" @click="toggleSlide">
+        <p class="code small">{{ pin.text }}</p>
+        <img class="right" :src="pin.src" alt="Icon Anheften">
       </div>
     </div>
-
     <div class="unit">
       <UnitTheory v-if="activeUnitType === 'theory'" :unit-content="activeUnit"/>
-      <UnitExternalExercise v-if="activeUnitType === 'external_exercise'" :unit-content="activeUnit" unit-type="internal" />
-      <UnitEditorExercise v-if="activeUnitType === 'editor_exercise'" :unit-content="activeUnit" unit-type="internal" />
+      <UnitExternalExercise v-if="activeUnitType === 'external_exercise'" :unit-content="activeUnit"
+                            unit-type="internal"/>
+      <UnitEditorExercise v-if="activeUnitType === 'editor_exercise'" :unit-content="activeUnit" unit-type="internal"/>
     </div>
-
     <div class="control_leiste">
-
       <div class="btn-dbl prev" v-if="numberOfUnits > 1 && showPrevButton" @click="previousUnit">
         <img class="left" src="/img/webicons/go_dark.svg">
         <p class="code small">Vorheriger Slide</p>
       </div>
-
       <div class="btn identifier">
-        <p class="code small">{{unitPosition}} / {{numberOfUnits}}</p>
+        <p class="code small">{{ unitPosition }} / {{ numberOfUnits }}</p>
       </div>
-
       <div class="btn-dbl next" v-if="numberOfUnits > 1 && showNextButton" @click="nextUnit">
         <p class="code small">nächster Slide</p>
         <img class="right" src="/img/webicons/go_dark.svg">
       </div>
-
-      <FinalizeChapter v-if="isLastUnit" :chapter-i-d="chapterID" :backlink="backlink" />
-
+      <FinalizeChapter v-if="isLastUnit" :chapter-i-d="chapterID" :backlink="backlink"/>
     </div>
-
-
-
   </div>
 </template>
-
 <script>
 import UnitTheory from "./UnitTheory.vue";
 import UnitExternalExercise from "./UnitExternalExercise.vue";
 import UnitEditorExercise from "./UnitEditorExercise.vue";
 import FinalizeChapter from "../chapter/FinalizeChapter";
-export default{
+
+export default {
   name: 'Unit',
   components: {FinalizeChapter, UnitEditorExercise, UnitExternalExercise, UnitTheory},
   props: {
@@ -57,50 +47,72 @@ export default{
       required: true
     }
   },
-  data(){
-    return{
-      unitPosition: 1
+  data() {
+    return {
+      unitPosition: 1,
+      slideFixed: false
     }
   },
   watch: {
-    unitPosition: function (){
-      this.$router.push({path: '/chapter/' + this.chapterID, query:{up: this.unitPosition.toString()}})
+    unitPosition: function () {
+      this.$router.push({path: '/chapter/' + this.chapterID, query: {up: this.unitPosition.toString()}})
+    },
+    $route(from, to) {
+      this.slideFixed = false
     }
   },
-  computed:{
-    units(){
+  computed: {
+    units() {
       return this.$store.state.unitsById || null
     },
-    numberOfUnits(){
+    numberOfUnits() {
       return this.units.length || null
     },
-    activeUnit(){
+    activeUnit() {
       return this.units[this.unitPosition - 1].unit_id || null
     },
-    activeUnitType(){
+    activeUnitType() {
       return this.activeUnit?.type || null
     },
-    isLastUnit(){
+    isLastUnit() {
       return this.numberOfUnits === Math.trunc(this.unitPosition) || null
     },
-    showPrevButton(){
+    showPrevButton() {
       return this.unitPosition > 1 || null
     },
-    showNextButton(){
+    showNextButton() {
       return this.unitPosition <= this.numberOfUnits - 1 || null
+    },
+    pin() {
+      if (this.slideFixed) {
+        this.$injection.disableScrolling();
+        return {
+          src: '/img/webicons/pin_active.svg',
+          text: 'Slide lösen'
+        }
+      } else {
+        this.$injection.enableScrolling();
+        return {
+          src: '/img/webicons/pin.svg',
+          text: 'Slide fixieren'
+        }
+      }
     }
   },
   methods: {
-    nextUnit(){
-      if(this.unitPosition <= this.numberOfUnits - 1){
+    nextUnit() {
+      if (this.unitPosition <= this.numberOfUnits - 1) {
         this.unitPosition++
       }
     },
-    previousUnit(){
-      if(this.unitPosition > 1){
+    previousUnit() {
+      if (this.unitPosition > 1) {
         this.unitPosition--
       }
     },
+    toggleSlide() {
+      this.slideFixed = this.slideFixed !== true;
+    }
   },
   mounted() {
     this.$store.dispatch('getAllUnitsById', this.chapterID);
@@ -108,45 +120,52 @@ export default{
   }
 }
 </script>
-
 <style lang="scss" scoped>
-div.unit_container{
+div.unit_container {
   border-top: $bo-standard;
   border-bottom: $bo-standard;
   padding: $ga-around;
-  min-height: 100vh;
+  min-height: calc(100vh - calc(#{$ga-around} * 2));
   position: relative;
-  div.slide_fix{
-    div.btn-dbl{
+
+  div.slide_fix {
+    div.btn-dbl {
       position: absolute;
       top: -1px;
       right: -1px;
-      img{
-        @include btnicon(0,12px,8px);
+
+      img {
+        @include btnicon(0, 12px, 8px);
       }
     }
   }
-  div.control_leiste{
+
+  div.control_leiste {
     position: absolute;
     bottom: -1px;
     left: -1px;
     width: 100%;
-    @include flex(row,center,center);
-    div.prev{
+    @include flex(row, center, center);
+
+    div.prev {
       position: absolute;
       left: 0;
-      img{
-        @include btnicon(180deg,12px,8px);
+
+      img {
+        @include btnicon(180deg, 12px, 8px);
       }
     }
-    div.identifier{
+
+    div.identifier {
       width: auto;
     }
-    div.next{
+
+    div.next {
       position: absolute;
       right: -1px;
-      img{
-        @include btnicon(0,12px,8px);
+
+      img {
+        @include btnicon(0, 12px, 8px);
       }
     }
   }
