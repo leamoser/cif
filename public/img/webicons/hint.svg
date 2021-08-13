@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="20.848" height="37.991" viewBox="0 0 20.848 37.991">
+    <g id="Gruppe_187" transform="translate(-954.171 -625.827)">
+        <path id="Pfad_585" d="M973.384,644.811h0a1.923,1.923,0,0,0-1.923,1.923v-.641a1.922,1.922,0,0,0-1.923-1.923h0a1.923,1.923,0,0,1-3.845,0h0a1.923,1.923,0,0,0-1.923,1.923V636.8a1.922,1.922,0,1,0-3.845,0v13.878a1.7,1.7,0,0,0-1.7-1.7h-.442a1.7,1.7,0,0,0-1.7,1.7v3.585h-.015v7.761a4.979,4.979,0,0,0,4.9,5.057h9.447a4.97,4.97,0,0,0,4.891-4.827c0-.046.006-.093.006-.14V646.733A1.922,1.922,0,0,0,973.384,644.811Z" transform="translate(-0.788 -3.763)" fill="none" stroke="#222" stroke-miterlimit="10" stroke-width="1"/>
+        <line id="Linie_21" y2="3.845" transform="translate(961.06 625.827)" fill="none" stroke="#222" stroke-miterlimit="10" stroke-width="1"/>
+        <line id="Linie_22" x2="1.923" y2="3.33" transform="translate(957.616 626.75)" fill="none" stroke="#222" stroke-miterlimit="10" stroke-width="1"/>
+        <line id="Linie_23" x2="3.33" y2="1.923" transform="translate(955.094 629.271)" fill="none" stroke="#222" stroke-miterlimit="10" stroke-width="1"/>
+        <line id="Linie_24" x2="3.845" transform="translate(954.171 632.716)" fill="none" stroke="#222" stroke-miterlimit="10" stroke-width="1"/>
+    </g>
+</svg>

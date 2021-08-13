@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="48.207" height="46.854" viewBox="0 0 48.207 46.854">
+    <g id="Rechteck_95" transform="translate(6.104 17.854)" fill="#fff" stroke="#222" stroke-width="1">
+        <rect width="36" height="29" stroke="none"/>
+        <rect x="0.5" y="0.5" width="35" height="28" fill="none"/>
+    </g>
+    <g id="Gruppe_265" transform="translate(-641.146 -99.146)">
+        <line id="Linie_56" y1="24" x2="24" transform="translate(641.5 99.5)" fill="none" stroke="#222" stroke-width="1"/>
+        <line id="Linie_57" y1="24" x2="24" transform="translate(689 99.5) rotate(90)" fill="none" stroke="#222" stroke-width="1"/>
+    </g>
+</svg>
