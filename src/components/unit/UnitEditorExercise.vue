@@ -2,7 +2,7 @@
   <div v-if="editorExercise" class="unit_editor_exercise">
     <h2 v-if="unitType === 'internal'">{{unitContent.title}}</h2>
     <h2 v-else>{{editorExercise.title}}</h2>
-    <div v-if="unitContent.theory || unitType === 'internal'" class="content gc" v-html="unitContent.theory"></div>
+    <div v-if="unitContent?.theory && unitType === 'internal'" class="content gc" v-html="unitContent?.theory"></div>
     <div class="addon_leiste">
       <div v-if="hints" v-for="(hint, index) in hints" :key="index" class="hint" @click="showHint(hint)" :class="{'enabled':hintIndex===index }">
         <img src="/img/webicons/hint.svg" alt="Icon Hint" />
