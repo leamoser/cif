@@ -106,6 +106,7 @@ export default {
 </script>
 <style lang="scss" scoped>
 a {
+  @include shadow();
   @include linkreset();
   &.disabled{
     position: relative;
@@ -140,10 +141,19 @@ a {
     width: 100%;
     div.more {
       @include flex(row, center, flex-end);
+      @include basic_hover{
+        transform: translateX(4px);
+        p{
+          transform: translateX(4px);
+        }
+      }
       gap: 10px;
       img {
         @include icon(0, 12px)
       }
+    }
+    div.badge{
+      @include shadow();
     }
   }
 }

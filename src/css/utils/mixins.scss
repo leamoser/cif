@@ -1,9 +1,9 @@
+/*************BASE*****************/
 //breakpoints
 $breakpoint-phone: 48em;
 $breakpoint-tablet: 62em;
 $breakpoint-desktop: 76em;
 $breakpoint-large-desktop: 88em;
-
 //mobile & so
 @mixin mobile-down {
   @media (max-width: $breakpoint-phone) {
@@ -61,6 +61,7 @@ $breakpoint-large-desktop: 88em;
     padding: 0 1rem;
   }
 }
+/*************STRUCTURE*****************/
 //grid
 @mixin grid($columns){
   display: grid;
@@ -83,12 +84,14 @@ $breakpoint-large-desktop: 88em;
   align-items: $align;
   justify-content: $justify;
 }
-//icons
+/*************ICONS*****************/
+//icons normal
 @mixin icon($rotate,$iconsize){
   transform: rotate($rotate);
   width: $iconsize;
   height: auto;
 }
+//buttons mit icons
 @mixin btnicon($rotate,$sidepadding,$toppadding){
   border: $bo-standard;
   transform: rotate($rotate);
@@ -104,6 +107,7 @@ $breakpoint-large-desktop: 88em;
     margin-right: -1px;
   }
 }
+/*************CONTENT*****************/
 //reset link
 @mixin linkreset(){
   color: inherit;
@@ -114,5 +118,22 @@ $breakpoint-large-desktop: 88em;
   width: 50%;
   @include tablet-down {
     width: 100%;
+  }
+}
+
+/*************ANIMATIONS*****************/
+@mixin shadow() {
+  transition: 0.5s;
+  &:hover {
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+  }
+}
+@mixin basic_hover{
+  transition: 0.5s;
+  *{
+    transition: 0.5s;
+  }
+  &:hover{
+    @content
   }
 }

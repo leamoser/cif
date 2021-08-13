@@ -29,6 +29,9 @@ div{
   bottom: 0;
   width: 100%;
   @include flex(column,center,center);
+  @include basic_hover{
+    transform: translateY(4px);
+  }
   p{
     cursor: pointer;
   }

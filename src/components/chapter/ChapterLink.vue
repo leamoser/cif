@@ -69,6 +69,12 @@ a{
     border: $bo-standard;
     @include flex(row,center,flex-start);
     gap: 15px;
+    @include basic_hover{
+      transform: translateX(10px);
+      img{
+        transform: translateX(10px);
+      }
+    }
     img{
       position: absolute;
       @include icon(0,15px);
