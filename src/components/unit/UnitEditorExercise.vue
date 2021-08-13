@@ -11,6 +11,7 @@
       <div class="solution_toggle" @click="showSolution">
         <img src="/img/webicons/solution.svg" alt="Icon Lösung" />
       </div>
+      <Solution v-if="solutionActive" :solution="solutions" :language="editorExercise.baselanguage" @close="closeSolution"/>
     </div>
     <Editor v-if="editorExercise" :editorExercise="editorExercise" />
   </div>
@@ -18,9 +19,10 @@
 <script>
 import axios from "axios";
 import Editor from "./Editor";
+import Solution from "./Solution";
 export default{
   name: 'UnitEditorExercise',
-  components: {Editor},
+  components: {Solution, Editor},
   props: {
     unitContent: {
       type: Object,
@@ -39,7 +41,8 @@ export default{
     return{
       editorExercise: null,
       hasHints: false,
-      hintIndex: null
+      hintIndex: null,
+      solutionActive: false
     }
   },
   computed: {
@@ -70,7 +73,10 @@ export default{
       this.hintIndex += 1;
     },
     showSolution(){
-      //do
+      this.solutionActive = true
+    },
+    closeSolution(){
+      this.solutionActive = false
     }
   },
   mounted() {
