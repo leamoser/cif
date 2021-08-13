@@ -6,8 +6,8 @@
   <div class="unit" v-if="quiz">
     <h2 v-if="quizName">{{ quizName }}</h2>
     <Question v-if="quizQuestions" v-for="(question, index) in quizQuestions" :key="index" :question="question"
-              :indexNr="index"/>
-    <div class="btn-dbl" @click="markQuizSolved">
+              :indexNr="index" @answer-given="newSolve"/>
+    <div class="btn-dbl" @click="markQuizSolved" v-if="lengthSolvedQuestions === numberOfQuestions">
       <p class="code small">Quiz abschliessen</p>
       <img class="right" src="/img/webicons/finish.svg" alt="Icon Abschliessen"/>
     </div>
@@ -25,7 +25,9 @@ export default {
   data() {
     return {
       quizID: this.$route.params.id,
-      quiz: null
+      quiz: null,
+      solvedQuestions: [],
+      lengthSolvedQuestions: 0
     }
   },
   computed: {
@@ -39,8 +41,11 @@ export default {
       return this.quiz.questions || null
     },
     userID() {
-      return this.$store.getters.getUserId || null;
+      return this.$store.getters.getUserId || null
     },
+    numberOfQuestions(){
+      return this.quiz.questions.length || null
+    }
   },
   methods: {
     async getQuiz(id) {
@@ -64,6 +69,11 @@ export default {
           .then(() => {
             this.$router.go(-1)
           })
+    },
+    newSolve(index){
+      this.solvedQuestions.push(index)
+      let set = new Set(this.solvedQuestions)
+      this.lengthSolvedQuestions = set.size
     }
   },
   mounted() {
@@ -75,7 +85,6 @@ export default {
 div.backlink_ct {
   padding: 0 $ga-around;
 }
-
 div.unit {
   position: relative;
   overflow: hidden;
@@ -83,11 +92,9 @@ div.unit {
   border-bottom: $bo-standard;
   padding: $ga-around;
   margin-top: $ga-around;
-
   h2 {
     margin-bottom: $ga-around;
   }
-
   div.btn-dbl {
     position: absolute;
     right: -1px;

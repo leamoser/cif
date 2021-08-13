@@ -4,7 +4,7 @@
       <h3>{{ indexNr + 1 }}. {{questionTitle}}</h3>
       <img v-if="imageLink" :src="imageLink" alt="Bild für Frage">
       <form v-if="answers" @submit.prevent="checkSolution">
-        <Answer v-for="(answer,index) in answers" :key="index" :answer="answer" :question-slug="questionSlug" />
+        <Answer v-for="(answer,index) in answers" :key="index" :answer="answer" :question-slug="questionSlug" :indexNr="indexNr" />
         <button class="btn code small">Antwort prüfen</button>
       </form>
     </div>
@@ -21,6 +21,7 @@ import Error from "../content/Error";
 export default{
   name: 'Question',
   components: {Error, Answer},
+  emits: ['answerGiven'],
   props: {
     question: {
       type: Object,
@@ -74,15 +75,19 @@ export default{
   methods: {
     checkSolution(){
       let search = `input[name='${this.questionSlug}']:checked`
-      let checkedElement = document.querySelectorAll(search);
+      let checkedElement = document.querySelectorAll(search)
       if(checkedElement.length === 1){
-        this.isCorrect = !!checkedElement[0].dataset.correct;
+        let index = checkedElement[0].dataset.index
+        this.isCorrect = !!checkedElement[0].dataset.correct
+        this.$emit('answerGiven', index)
       }else{
         this.errorActive = true
+        this.$injection.disableScrolling();
       }
     },
     removeError(){
       this.errorActive = false
+      this.$injection.enableScrolling();
     }
   }
 }

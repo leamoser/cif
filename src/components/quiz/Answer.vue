@@ -1,6 +1,6 @@
 <template>
   <div v-if="answer" class="answer">
-    <input type="radio" :id="answerSlug" :name="questionSlug" :value="answerSlug" :data-correct="isCorrect">
+    <input type="radio" :id="answerSlug" :name="questionSlug" :value="answerSlug" :data-correct="isCorrect" :data-index="indexNr">
     <label :for="answerSlug" :data-correct="isCorrect">{{questionAnswer}}</label>
   </div>
 </template>
@@ -14,6 +14,10 @@ export default{
     },
     questionSlug: {
       type: String,
+      required: true
+    },
+    indexNr: {
+      type: Number,
       required: true
     }
   },
