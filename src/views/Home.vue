@@ -6,6 +6,7 @@
       <div id="imagecontainer"><img v-if="introImageSrc" :src="introImageSrc" /></div>
       <ScrollInfo :title="titleScrollink" />
     </div>
+    <h2 v-if="!loggedIn">Alle angebotenen Kurse</h2>
     <CompleteCourselist />
   </section>
 </template>
@@ -67,5 +68,10 @@ section{
     }
   }
   padding: $ga-around;
+  h2{
+    text-align: center;
+    margin-top: $ga-top-l;
+    margin-bottom: $ga-around;
+  }
 }
 </style>
