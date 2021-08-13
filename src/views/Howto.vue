@@ -11,7 +11,7 @@
 <script>
 import MainIntro from "../components/content/MainIntro.vue";
 export default {
-  name: 'About',
+  name: 'Howto',
   components: {MainIntro},
   computed: {
     content(){
@@ -26,7 +26,7 @@ export default {
     },
   },
   mounted() {
-    this.$store.dispatch('getSingleItem', 'impressum')
+    this.$store.dispatch('getSingleItem', 'howto')
   }
 }
 </script>

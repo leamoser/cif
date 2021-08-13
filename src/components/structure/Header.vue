@@ -16,7 +16,7 @@
         <router-link v-if="userIsLoggedIn" to="/user"><p class="code big">Dein Profil</p></router-link>
         <router-link to="/"><p class="code big">Home</p></router-link>
         <router-link to="/about"><p class="code big">About</p></router-link>
-        <router-link to="/impressum"><p class="code big">Impressum</p></router-link>
+        <router-link to="/how-to"><p class="code big">How To</p></router-link>
       </nav>
       <div class="buttonbox">
         <router-link v-if="!userIsLoggedIn" to="/login">

@@ -41,4 +41,17 @@ div.gc{
 //contentpages
 section.contentpage{
   padding: $ga-around;
+  position: relative;
+  div.imgagecontainer{
+    position: fixed;
+    @include content();
+    height: 100%;
+    top: 0;
+    right: 0;
+    @include flex(column,center,center);
+    gap: $ga-around;
+    img{
+      width: 100%;
+    }
+  }
 }

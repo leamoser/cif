@@ -11,6 +11,7 @@ import Register from "../views/Register";
 import Impressum from "../views/Impressum";
 import NotFound from "../views/NotFound";
 import About from "../views/About";
+import Howto from "../views/Howto";
 const appName = 'CIF*'
 
 const routes = [
@@ -36,6 +37,14 @@ const routes = [
     component: Impressum,
     meta:{
       title: `${appName} - Impressum`
+    }
+  },
+  {
+    path: '/how-to/',
+    name: 'How To',
+    component: Howto,
+    meta:{
+      title: `${appName} - How To`
     }
   },
   {
