@@ -1,6 +1,11 @@
-# frontend
+<a href="https://www.code-is-fun.ch" target="_blank">
+    <img src="https://www.code-is-fun.ch/logo_pos.png" />
+</a>
 
-## Project setup
+# code is fun - learn coding online
+This Repository contains all files for the frontend of the learning plattform www.code-is-fun.ch. The project is built on Vue 3.  
+
+## Project setup (tbd.)
 ```
 npm install
 ```
@@ -14,6 +19,3 @@ npm run serve
 ```
 npm run build
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
