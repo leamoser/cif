@@ -174,9 +174,7 @@ export default createStore({
       commit('SET_USER_INACTIVE')
     },
     getUserInformationByUsername({commit}, username){
-      const headers = {
-        "Authorization": `Bearer ${this.state.apiToken}`
-      };
+      const headers = { "Authorization": `Bearer ${this.state.apiToken}` };
       const filter = `filter[username][_eq]=${username}`
       const fields = `fields=id,firstname,lastname,username,email,marked_course,solved_chapters,solved_quizzes,solved_editor_exercises,solved_external_exercises,date_created`
       axios.get(`${this.state.apiBaseUrl}user?${filter}&${fields}`, { headers })

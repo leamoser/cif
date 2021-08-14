@@ -85,7 +85,7 @@ export default {
   },
   methods: {
     async getFinishedChapters(id) {
-        const headers = {"Authorization": `Bearer ${this.$store.getters.getApiToken}`};
+      const headers = { "Authorization": `Bearer ${this.$store.getters.getApiToken}` };
         const filter_user = `filter[user_id][_eq]=${id}`;
         const filter_chapter = `filter[chapter_id][_in]=${this.chapterIDs.toString()}`
         const fields = `fields=chapter_id`;

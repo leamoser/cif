@@ -40,9 +40,7 @@ export default{
   },
   methods: {
     getDownloadInfos(id){
-      const headers = {
-        "Authorization": `Bearer ${this.$store.state.apiToken}`
-      };
+      const headers = { "Authorization": `Bearer ${this.$store.getters.getApiToken}` };
       const fields = '?fields=id,download_id.*'
       axios.get(`${this.$store.state.apiBaseUrl}chapter_download/${id}${fields}`, {headers})
           .then(response => {

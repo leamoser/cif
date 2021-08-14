@@ -138,8 +138,7 @@ export default {
     },
     async registerUser() {
       const user = this.getUserData()
-      console.log(user)
-      const headers = {"Authorization": `Bearer ${this.$store.getters.getApiToken}`};
+      const headers = { "Authorization": `Bearer ${this.$store.getters.getApiToken}` };
       await this.$axios.post(`${this.$store.getters.getApiBaseUrl}user`, user, {headers})
           .then((res) => {
             this.formSubmitted = true

@@ -32,7 +32,7 @@ export default {
   },
   methods: {
     async markExerciseSolved() {
-      const headers = {"Authorization": `Bearer ${this.$store.getters.getApiToken}`};
+      const headers = { "Authorization": `Bearer ${this.$store.getters.getApiToken}` };
       const content = {
         user_id: this.userID,
         external_exercise_id: this.externalexerciseID

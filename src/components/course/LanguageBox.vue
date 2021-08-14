@@ -19,7 +19,7 @@ export default {
   },
   methods: {
     async getLanguageByComboId(id) {
-      const headers = { "Authorization": `Bearer ${this.$store.getters.getApiToken}` };
+      const headers = { "Authorization": `Bearer ${process.env.VUE_APP_API_TOKEN}` }
       const fields = 'fields[]=language_id.*'
       await axios.get(`${this.$store.getters.getApiBaseUrl}course_language/${id}?${fields}`, {headers})
           .then(response => {

@@ -59,7 +59,7 @@ export default {
       return validUsername && validPasswort
     },
     async logIn() {
-      const headers = {"Authorization": `Bearer ${this.$store.getters.getApiToken}`};
+      const headers = { "Authorization": `Bearer ${this.$store.getters.getApiToken}` };
       const filter = `filter[username][_eq]=${this.user.username}`;
       const fields = `fields=id,username,password,token`;
       await this.$axios.get(`${this.$store.getters.getApiBaseUrl}user?${filter}&${fields}`, {headers})

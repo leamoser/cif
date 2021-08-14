@@ -31,7 +31,7 @@ export default {
   methods:{
     async getMarkedCourses(){
       if(this.$store.getters.getUserMarkedCourseUser && this.$store.getters.getUserMarkedCourseUser.length !== 0){
-        const headers = { "Authorization": `Bearer ${this.$store.getters.getApiToken}` }
+        const headers = { "Authorization": `Bearer ${this.$store.getters.getApiToken}` };
         const filter_user = `filter[user_id][_eq]=${this.$store.getters.getUserId}`;
         const filter_courses = `filter[id][_in]=${this.$store.getters.getUserMarkedCourseUser.toString()}`;
         const fields = `fields=course_id.id,course_id.status,course_id.title,course_id.description,course_id.languages,course_id.chapter.chapter_id.id,course_id.chapter.chapter_id.status`;
