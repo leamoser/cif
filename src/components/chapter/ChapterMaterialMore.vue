@@ -1,5 +1,5 @@
 <template>
-  <div class="box mat">
+  <div class="box mat materialmore nohover">
     <h3>Zusätzliche Infos</h3>
     <div class="content-small gc" v-html="content">
     </div>
@@ -17,5 +17,10 @@ export default{
   }
 }
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
+div.materialmore{
+  a{
+    @include basic_underline();
+  }
+}
 </style>

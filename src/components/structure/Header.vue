@@ -122,6 +122,7 @@ header {
       gap: 60px;
       a {
         @include linkreset();
+        @include basic_underline();
       }
     }
 

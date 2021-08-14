@@ -4,6 +4,9 @@ div.box{
   background-color: $co-akzent;
   padding: $ga-inner;
   min-height: 400px;
+  &:not(.nohover){
+    @include shadow();
+  }
   &.sml {
     min-height: 350px;
   }
@@ -11,5 +14,16 @@ div.box{
     h3{
       margin-bottom: 10px;
     }
+  }
+  div.more{
+    @include basic_hover{
+      transform: translateX(4px);
+      p{
+        transform: translateX(4px);
+      }
+    }
+  }
+  div.badge{
+    @include shadow();
   }
 }

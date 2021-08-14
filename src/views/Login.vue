@@ -99,6 +99,9 @@ section.formcontainer {
   form {
     margin: $ga-around;
     @include content();
+    button{
+      background-color: $co-akzent;
+    }
   }
 
   div#imagecontainer {

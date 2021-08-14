@@ -1,6 +1,6 @@
 //generated content with v-html
 div.gc{
-  a{
+  a {
     @include linkreset;
   }
   ul,
@@ -21,6 +21,12 @@ div.gc{
     p{
       &:not(:last-of-type){
         margin-bottom: 10px;
+      }
+    }
+    a{
+      background-color: $co-akzent;
+      @include basic_hover{
+        filter: grayscale(100%);
       }
     }
   }

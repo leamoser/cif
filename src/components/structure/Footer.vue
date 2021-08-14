@@ -30,6 +30,7 @@ footer{
   div.footer_nav{
     p a{
       @include linkreset();
+      @include basic_underline();
     }
     @include flex(row,center,flex-start);
     gap: 15px;

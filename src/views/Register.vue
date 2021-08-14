@@ -10,7 +10,7 @@
     <form v-if="!formSubmitted" @submit.prevent="handleForm" class="user_form">
       <div v-for="input in userForm" :key="input.name">
         <label :for="input.name">{{ input.placeholder }}<span :class="input.req">*</span></label>
-        <input :type="input.type" :id="input.name" name="firstname" :placeholder="input.placeholder"
+        <input :type="input.type" :id="input.name" name="firstname"
                v-model="input.value">
       </div>
       <button class="btn code small">Registrieren</button>
@@ -161,6 +161,9 @@ section.formcontainer {
   form {
     margin: $ga-around;
     @include content();
+    button{
+      background-color: $co-akzent;
+    }
   }
   div#imagecontainer {
     height: 100%;
