@@ -8,5 +8,8 @@ module.exports = {
                 `
             },
         }
+    },
+    devServer: {
+        proxy: 'https://www.code-is-fun.ch'
     }
 }
