@@ -11,6 +11,12 @@ div.gc{
       padding: 2px 0;
     }
   }
+  img{
+    max-width: 100%;
+    height: auto;
+    border: $bo-standard;
+    margin: $ga-inner 0;
+  }
   &.content{
     p,
     ul li,
@@ -24,7 +30,9 @@ div.gc{
       }
     }
     a{
-      background-color: $co-akzent;
+      //background-color: $co-akzent;
+      background: rgb(255,230,0);
+      background: linear-gradient(0deg, rgba(255,230,0,1) 0%, rgba(255,230,0,1) 35%, rgba(255,230,0,0) 35%);
       @include basic_hover{
         filter: grayscale(100%);
       }
