@@ -1,7 +1,9 @@
 /*************BASE*****************/
 //breakpoints
 $breakpoint-phone: 48em;
-$breakpoint-tablet: 62em;
+// $breakpoint-tablet: 62em;
+$breakpoint-tablet: 1000px;
+$breakpoint-small-desktop: 72em;
 $breakpoint-desktop: 76em;
 $breakpoint-large-desktop: 88em;
 //mobile & so
@@ -22,6 +24,16 @@ $breakpoint-large-desktop: 88em;
 }
 @mixin tablet-up {
   @media (min-width: $breakpoint-tablet) {
+    @content;
+  }
+}
+@mixin small-down {
+  @media (max-width: $breakpoint-small-desktop) {
+    @content;
+  }
+}
+@mixin small-up {
+  @media (min-width: $breakpoint-small-desktop) {
     @content;
   }
 }
@@ -70,7 +82,7 @@ $breakpoint-large-desktop: 88em;
   >*{
     width: 100%;
   }
-  @include tablet-down{
+  @include small-down{
     grid-template-columns: repeat(2, 1fr);
   }
   @include mobile-down{

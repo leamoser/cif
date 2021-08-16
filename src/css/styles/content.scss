@@ -56,6 +56,10 @@ div.gc{
 section.contentpage{
   padding: $ga-around;
   position: relative;
+  width: 90%;
+  @include tablet-down{
+    width: 100%;
+  }
   div.imgagecontainer{
     position: fixed;
     @include content();
@@ -63,7 +67,6 @@ section.contentpage{
     top: 0;
     right: 0;
     @include flex(column,center,center);
-    gap: $ga-around;
     img{
       width: 100%;
     }
