@@ -34,7 +34,7 @@ div.gc{
       background: rgb(255,230,0);
       background: linear-gradient(0deg, rgba(255,230,0,1) 0%, rgba(255,230,0,1) 35%, rgba(255,230,0,0) 35%);
       @include basic_hover{
-        filter: grayscale(100%);
+        filter: grayscale(80%);
       }
     }
   }

@@ -1,8 +1,9 @@
 <template>
-  <TitleDesc :title="title" :description="description" />
-  <div class="marked_courses" v-if="areUserInfosLoaded">
+  <TitleDesc :title="title" :description="description"/>
+  <div class="marked_courses" v-if="areUserInfosLoaded && courses">
     <CourseBox v-if="courses" v-for="course in courses" :key="course?.course_id?.id" :course="course?.course_id" />
   </div>
+  <TitleDesc :description="noCoursesDescription" v-else />
 </template>
 <script>
 import TitleDesc from "../content/TitleDesc";
@@ -14,13 +15,14 @@ export default {
   computed: {
     areUserInfosLoaded(){
       return this.$store.getters.areUserInfosLoaded
-    }
+    },
   },
   data(){
     return{
       title: 'Deine markierten Kurse',
       description: 'Deine markierten Kurse sind jene, die du mit einem Herz markiert hast. Sobald du das Herz entfernst, erscheint der Kurs hier nicht mehr.',
       courses: null,
+      noCoursesDescription: 'Du hast noch keine Kurse markiert. Sobald du das machst, erscheinen sie hier.'
     }
   },
   watch:{
