@@ -5,7 +5,7 @@
       <Backlink v-if="backlink" :link-u-r-l="backlink" linktext="Zurück&nbsp;zur&nbsp;Kursübersicht" />
     </div>
     <Unit :chapter-i-d="chapterID" :backlink="backlink" />
-    <div class="material_container">
+    <div class="material_container" v-if="hasDownloads || hasMoreInfos || hasEditorExercise || hasExternalExercise || hasQuiz">
       <TitleDesc :title="material_title" />
       <div class="material">
         <ChapterMaterialDownload v-if="hasDownloads" :downloads="chapter.downloads" />
