@@ -51,6 +51,7 @@ export default {
 <style lang="scss" scoped>
 div.backlink_ct {
   padding: 0 $ga-around;
+  @include flex(row,flex-start,flex-start);
 }
 div.unit {
   position: relative;

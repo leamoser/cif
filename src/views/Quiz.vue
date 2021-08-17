@@ -84,6 +84,7 @@ export default {
 <style lang="scss" scoped>
 div.backlink_ct {
   padding: 0 $ga-around;
+
 }
 div.unit {
   position: relative;

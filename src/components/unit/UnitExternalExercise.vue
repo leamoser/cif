@@ -8,7 +8,9 @@
     <div class="uebung">
       <h3>Übungsanleitung</h3>
       <div class="content gc" v-html="externalExercise?.instructions"></div>
-      <DownloadExternalExercise :title="externalExercise?.title" :download="download" />
+      <div id="download_ct">
+        <DownloadExternalExercise :title="externalExercise?.title" :download="download" />
+      </div>
     </div>
   </div>
 </template>
@@ -72,6 +74,9 @@ div.unit_external_exercise{
   div.uebung{
     div.content{
       margin-bottom: $ga-inner;
+    }
+    div#download_ct{
+      @include flex(row,flex-start,flex-start);
     }
   }
 }
