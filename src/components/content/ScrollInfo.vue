@@ -17,7 +17,7 @@ export default {
   },
   methods: {
     scrollDown(){
-      window.scrollBy(0,700);
+      window.scrollBy(0,750);
     }
   }
 }
