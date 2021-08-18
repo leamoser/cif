@@ -3,7 +3,8 @@ div.box{
   position: relative;
   background-color: $co-akzent;
   padding: $ga-inner;
-  min-height: 400px;
+  height: 400px;
+  overflow: hidden;
   &:not(.nohover){
     @include shadow();
   }

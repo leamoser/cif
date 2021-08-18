@@ -4,7 +4,7 @@
       <div class="box_content">
         <h3 class="title">{{ course.title }}</h3>
         <Infobar :languages="course.languages" :chapter-count="chapterCount"/>
-        <div class="content-small gc" v-html="course.description"></div>
+        <div class="content-small gc" v-html="courseDescription"></div>
       </div>
       <div class="badge_leiste" v-if="loggedIn && courseStatus">
         <div class="badge" :class="courseStatus.badgetext"><p class="code small">{{ courseStatus.badgetext }}</p></div>
@@ -81,6 +81,16 @@ export default {
       else if (this.solvedChapterCount === this.chapterCount) return this.chapterBadged["done"]
       else if (this.solvedChapterCount === 0) return this.chapterBadged["open"]
       return this.chapterBadged["inProgress"]
+    },
+    courseDescription(){
+      const charCount = 350;
+      if(this.course.description.length >= charCount){
+        let trimmed = this.course.description.substr(0,charCount);
+        trimmed = trimmed.substr(0, Math.min(trimmed.length, trimmed.lastIndexOf(" ")))
+        return `${trimmed}...</p>`
+      }else{
+        return this.course.description || null;
+      }
     }
   },
   methods: {
