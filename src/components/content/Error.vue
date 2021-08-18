@@ -40,10 +40,11 @@ div.error_container{
   pointer-events: none;
   z-index: 20;
   @include flex(column,center,center);
+  backdrop-filter: blur(6px);
   div.errormessage{
     width: 50%;
     height: auto;
-    background-color: $co-bg;
+    background-color: $co-akzent;
     border: $bo-standard;
     padding: $ga-inner;
     h3{
