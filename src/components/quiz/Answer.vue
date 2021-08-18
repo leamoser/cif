@@ -26,7 +26,7 @@ export default{
       return this.answer.quiz_question_answer_id.answer || null
     },
     answerSlug(){
-      return this.$slugify.slugify(this.questionAnswer) || null
+      return this.$slugify.slugify(this.questionAnswer) + `_${this.indexNr}` || null
     },
     isCorrect(){
       return this.answer.quiz_question_answer_id.is_correct || null
