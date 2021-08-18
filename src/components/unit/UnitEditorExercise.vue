@@ -62,7 +62,7 @@ export default{
             this.editorExercise = response.data.data
           })
           .then(() => {
-            if(this.hints.length != 0){
+            if(this.hints.length !== 0){
               this.hasHints = true
               this.hintIndex = 0
             }

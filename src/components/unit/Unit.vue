@@ -10,7 +10,7 @@
       <UnitTheory v-if="activeUnitType === 'theory'" :unit-content="activeUnit"/>
       <UnitExternalExercise v-if="activeUnitType === 'external_exercise'" :unit-content="activeUnit"
                             unit-type="internal"/>
-      <UnitEditorExercise v-if="activeUnitType === 'editor_exercise'" :unit-content="activeUnit" unit-type="internal"/>
+      <UnitEditorExercise :key="$route" v-if="activeUnitType === 'editor_exercise'" :unit-content="activeUnit" unit-type="internal"/>
     </div>
     <div class="control_leiste">
       <div class="btn-dbl prev" v-if="numberOfUnits > 1 && showPrevButton" @click="previousUnit">

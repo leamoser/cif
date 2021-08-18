@@ -124,14 +124,14 @@ export default {
         }
         logger.innerHTML += output + "<br>";
       }
-    },
+    }
   },
   mounted() {
     this.initEditor()
     this.watchEditor()
     this.setCorrectToggle()
     this.changeLog()
-  }
+  },
 }
 </script>
 <style lang="scss" scoped>
