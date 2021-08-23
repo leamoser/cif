@@ -11,5 +11,11 @@ module.exports = {
     },
     devServer: {
         proxy: 'https://www.code-is-fun.ch'
+    },
+    pwa: {
+        workboxOptions: {
+            skipWaiting: true,
+            clientsClaim: true,
+        }
     }
 }
