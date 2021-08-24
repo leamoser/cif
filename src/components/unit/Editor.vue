@@ -95,7 +95,7 @@ export default {
     watchEditor() {
       this.editor.on('change', () => {
         this.codeEdited = this.editor.getValue()
-        console.clear()
+        //console.clear()
       })
     },
     setCorrectToggle() {
@@ -112,7 +112,7 @@ export default {
         let output = "", arg, i;
         for (i = 0; i < arguments.length; i++) {
           arg = arguments[i];
-          if(arg){
+          if(arg !== undefined){
             output += "<span class=\"log-" + (typeof arg) + "\">";
             if ( typeof arg === "object" && typeof JSON === "object" && typeof JSON.stringify === "function") {
               output += JSON.stringify(arg);
