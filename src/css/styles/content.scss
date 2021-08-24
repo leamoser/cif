@@ -37,6 +37,24 @@ div.gc{
         filter: grayscale(80%);
       }
     }
+    /*div>div{
+      width: 60% !important;
+      @include tablet-down{
+        width: 100% !important;
+      }
+      margin: $ga-around 0;
+      z-index: 0;
+    }*/
+    &>div{
+      width: 60% !important;
+      @include tablet-down{
+        width: 100% !important;
+      }
+      &>div{
+        margin: $ga-around 0;
+        z-index: 0;
+      }
+    }
   }
   &.content-small{
     p,
